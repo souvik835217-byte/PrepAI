@@ -240,14 +240,24 @@ function Navbar() {
                     </button>
                   </>
                 ) : (
-                  <Link
-                    to="/login"
-                    onClick={() => setIsProfileOpen(false)}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-purple-700 transition hover:bg-purple-50"
-                  >
-                    <FiLogIn />
-                    Log in
-                  </Link>
+                  <div className="space-y-1">
+                    <Link
+                      to="/login"
+                      onClick={() => setIsProfileOpen(false)}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-purple-50 hover:text-purple-700"
+                    >
+                      <FiLogIn />
+                      Log in
+                    </Link>
+
+                    <Link
+                      to="/login?mode=signup"
+                      onClick={() => setIsProfileOpen(false)}
+                      className="flex items-center justify-center rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:from-purple-700 hover:to-blue-700"
+                    >
+                      Sign up free
+                    </Link>
+                  </div>
                 )}
 
                 {logoutError && (

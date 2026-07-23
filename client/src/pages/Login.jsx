@@ -4,14 +4,20 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { FaRobot } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/authContextStore";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
+  const isSignUp =
+    searchParams.get("mode") === "signup";
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -104,7 +110,9 @@ const Login = () => {
         </h1>
 
         <p className="text-gray-400 mb-8">
-          AI powered interview preparation platform
+          {isSignUp
+            ? "Create your free account and start practicing."
+            : "Sign in to continue your interview preparation."}
         </p>
 
         <button
@@ -125,6 +133,8 @@ const Login = () => {
 
           {loading
             ? "Opening Google..."
+            : isSignUp
+            ? "Sign up with Google"
             : "Continue with Google"}
         </button>
 
