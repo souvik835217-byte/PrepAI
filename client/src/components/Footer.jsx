@@ -55,14 +55,6 @@ function Footer() {
                 </Link>
               </li>
 
-              <li>
-                <a
-                  href="/#contact"
-                  className="transition hover:text-white"
-                >
-                  Contact
-                </a>
-              </li>
             </ul>
           </div>
 
