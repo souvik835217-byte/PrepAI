@@ -32,7 +32,7 @@ import { auth } from "../firebase/firebase";
 
 const API_URL =
   import.meta.env.VITE_API_URL ||
-  "http://localhost:5000";
+  "http://import.meta.env.VITE_API_URL";
 
 const History = () => {
   const navigate = useNavigate();
