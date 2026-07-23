@@ -29,6 +29,48 @@ import {
 const API_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+const normalizeSpeechWord = (word) =>
+  word
+    .toLocaleLowerCase()
+    .replace(/[^\p{L}\p{N}']/gu, "");
+
+const getWordEditDistance = (firstWords, secondWords) => {
+  const previousRow = Array.from(
+    { length: secondWords.length + 1 },
+    (_, index) => index
+  );
+
+  for (
+    let firstIndex = 1;
+    firstIndex <= firstWords.length;
+    firstIndex++
+  ) {
+    const currentRow = [firstIndex];
+
+    for (
+      let secondIndex = 1;
+      secondIndex <= secondWords.length;
+      secondIndex++
+    ) {
+      const substitutionCost =
+        firstWords[firstIndex - 1] ===
+        secondWords[secondIndex - 1]
+          ? 0
+          : 1;
+
+      currentRow[secondIndex] = Math.min(
+        currentRow[secondIndex - 1] + 1,
+        previousRow[secondIndex] + 1,
+        previousRow[secondIndex - 1] + substitutionCost
+      );
+    }
+
+    previousRow.splice(0, previousRow.length, ...currentRow);
+  }
+
+  return previousRow[secondWords.length];
+};
+
 const mergeSpeechText = (existingText, incomingText) => {
   const existing = existingText.trim();
   const incoming = incomingText.trim();
@@ -43,12 +85,10 @@ const mergeSpeechText = (existingText, incomingText) => {
 
   const existingWords = existing.split(/\s+/);
   const incomingWords = incoming.split(/\s+/);
-  const normalizedExisting = existingWords.map((word) =>
-    word.toLocaleLowerCase()
-  );
-  const normalizedIncoming = incomingWords.map((word) =>
-    word.toLocaleLowerCase()
-  );
+  const normalizedExisting =
+    existingWords.map(normalizeSpeechWord);
+  const normalizedIncoming =
+    incomingWords.map(normalizeSpeechWord);
 
   const maximumOverlap = Math.min(
     normalizedExisting.length,
@@ -67,6 +107,56 @@ const mergeSpeechText = (existingText, incomingText) => {
       return [
         ...existingWords,
         ...incomingWords.slice(size),
+      ].join(" ");
+    }
+  }
+
+  if (incomingWords.length >= 3) {
+    const allowedLengthDifference = Math.max(
+      2,
+      Math.ceil(incomingWords.length * 0.3)
+    );
+    const minimumSuffixLength = Math.max(
+      1,
+      incomingWords.length - allowedLengthDifference
+    );
+    const maximumSuffixLength = Math.min(
+      existingWords.length,
+      incomingWords.length + allowedLengthDifference
+    );
+
+    let bestSimilarity = 0;
+    let bestSuffixLength = 0;
+
+    for (
+      let suffixLength = minimumSuffixLength;
+      suffixLength <= maximumSuffixLength;
+      suffixLength++
+    ) {
+      const existingSuffix =
+        normalizedExisting.slice(-suffixLength);
+      const distance = getWordEditDistance(
+        existingSuffix,
+        normalizedIncoming
+      );
+      const similarity =
+        1 -
+        distance /
+          Math.max(
+            existingSuffix.length,
+            normalizedIncoming.length
+          );
+
+      if (similarity > bestSimilarity) {
+        bestSimilarity = similarity;
+        bestSuffixLength = suffixLength;
+      }
+    }
+
+    if (bestSimilarity >= 0.7) {
+      return [
+        ...existingWords.slice(0, -bestSuffixLength),
+        ...incomingWords,
       ].join(" ");
     }
   }
@@ -1320,7 +1410,7 @@ const Interview = () => {
               error
             );
           }
-        }, 600);
+        }, 1200);
 
         return;
       }
