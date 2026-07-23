@@ -42,7 +42,16 @@ const Login = () => {
       );
 
       setUser(result.user);
-      navigate("/", { replace: true });
+      navigate("/", {
+        replace: true,
+        state: {
+          authMessage: `Welcome${
+            result.user.displayName
+              ? `, ${result.user.displayName.split(" ")[0]}`
+              : ""
+          }! You are signed in.`,
+        },
+      });
     } catch (error) {
       console.error(
         "Google login error:",

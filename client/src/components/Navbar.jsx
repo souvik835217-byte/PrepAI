@@ -1,12 +1,21 @@
-import { useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { signOut } from "firebase/auth";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   FiGrid,
   FiLogIn,
   FiLogOut,
   FiUser,
 } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useAuth } from "../context/authContextStore";
 import { auth } from "../firebase/firebase";
 
@@ -20,8 +29,81 @@ function Navbar() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [logoutError, setLogoutError] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+  const profileMenuRef = useRef(null);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleOutsideInteraction = (event) => {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target)
+      ) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "pointerdown",
+      handleOutsideInteraction
+    );
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener(
+        "pointerdown",
+        handleOutsideInteraction
+      );
+      document.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
+  }, []);
+
+  useEffect(() => {
+    const authMessage = location.state?.authMessage;
+
+    if (!authMessage) {
+      return;
+    }
+
+    setToastMessage(authMessage);
+
+    navigate(
+      `${location.pathname}${location.search}${location.hash}`,
+      {
+        replace: true,
+        state: null,
+      }
+    );
+  }, [
+    location.hash,
+    location.pathname,
+    location.search,
+    location.state,
+    navigate,
+  ]);
+
+  useEffect(() => {
+    if (!toastMessage) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setToastMessage("");
+    }, 3000);
+
+    return () => window.clearTimeout(timeout);
+  }, [toastMessage]);
 
   const handleLogout = async () => {
     if (isLoggingOut) {
@@ -33,6 +115,7 @@ function Navbar() {
       setLogoutError("");
       await signOut(auth);
       setIsProfileOpen(false);
+      setToastMessage("You have been logged out.");
       navigate("/", { replace: true });
     } catch {
       setLogoutError("Could not log out. Please try again.");
@@ -79,7 +162,10 @@ function Navbar() {
           ))}
         </div>
 
-        <div className="relative">
+        <div
+          ref={profileMenuRef}
+          className="relative"
+        >
           <button
             type="button"
             onClick={() => {
@@ -95,11 +181,29 @@ function Navbar() {
             <FiUser />
           </button>
 
-          {isProfileOpen && (
-            <div
-              id="profile-menu"
-              className="absolute right-0 top-14 w-64 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl shadow-gray-300/30"
-            >
+          <AnimatePresence>
+            {isProfileOpen && (
+              <motion.div
+                id="profile-menu"
+                role="menu"
+                initial={{
+                  opacity: 0,
+                  y: -8,
+                  scale: 0.96,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -6,
+                  scale: 0.97,
+                }}
+                transition={{ duration: 0.16 }}
+                className="absolute right-0 top-14 w-64 origin-top-right overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl shadow-gray-300/30"
+              >
               <div className="border-b border-gray-100 px-4 py-3">
                 <p className="truncate text-sm font-semibold text-gray-900">
                   {user?.displayName ||
@@ -155,10 +259,27 @@ function Navbar() {
                   </p>
                 )}
               </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
+
+      <AnimatePresence>
+        {toastMessage && (
+          <motion.div
+            role="status"
+            aria-live="polite"
+            initial={{ opacity: 0, y: -14, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.97 }}
+            transition={{ duration: 0.2 }}
+            className="fixed right-4 top-24 z-[60] max-w-[calc(100vw-2rem)] rounded-2xl border border-emerald-200 bg-white px-5 py-3 text-sm font-semibold text-emerald-700 shadow-xl shadow-emerald-900/10 sm:right-6"
+          >
+            {toastMessage}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
