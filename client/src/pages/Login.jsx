@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import {
-  signInWithPopup,
-  signOut,
   GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
@@ -18,42 +17,49 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     if (loading) return;
 
+    setLoading(true);
+    setErrorMessage("");
+
     try {
-      setLoading(true);
-      setErrorMessage("");
+      // Create a fresh provider for every login attempt
+      const provider = new GoogleAuthProvider();
 
-      // Clear any existing Firebase session
-      await signOut(auth);
-
-      // Create a fresh provider every time
-      const googleProvider = new GoogleAuthProvider();
-
-      // Force Google to show the account-selection screen
-      googleProvider.setCustomParameters({
+      // Ask Google to show the account chooser
+      provider.setCustomParameters({
         prompt: "select_account",
       });
 
-      googleProvider.addScope("email");
-      googleProvider.addScope("profile");
+      provider.addScope("email");
+      provider.addScope("profile");
 
+      // Call popup directly from the button click.
+      // Do not await signOut() before this.
       const result = await signInWithPopup(
         auth,
-        googleProvider
+        provider
       );
 
-      console.log("Logged in user:", result.user);
+      console.log(
+        "Logged in user:",
+        result.user
+      );
 
       navigate("/dashboard");
     } catch (error) {
-      console.error("Google login error:", error);
+      console.error(
+        "Google login error:",
+        error
+      );
 
-      if (error.code === "auth/popup-closed-by-user") {
+      if (error.code === "auth/popup-blocked") {
         setErrorMessage(
-          "Google login was cancelled. Please try again."
+          "The Google login popup was blocked. Allow popups for this website and try again."
         );
-      } else if (error.code === "auth/popup-blocked") {
+      } else if (
+        error.code === "auth/popup-closed-by-user"
+      ) {
         setErrorMessage(
-          "The login popup was blocked. Please allow popups for this website."
+          "The Google login window was closed before login completed."
         );
       } else if (
         error.code === "auth/unauthorized-domain"
@@ -80,7 +86,6 @@ const Login = () => {
         transition={{ duration: 0.5 }}
         className="bg-gray-900 p-10 rounded-3xl shadow-2xl w-full max-w-md text-center border border-gray-800"
       >
-        {/* Logo */}
         <div className="flex justify-center mb-6">
           <div className="bg-purple-600 p-5 rounded-full">
             <FaRobot className="text-4xl" />
@@ -95,7 +100,6 @@ const Login = () => {
           AI powered interview preparation platform
         </p>
 
-        {/* Google Login Button */}
         <button
           type="button"
           onClick={handleGoogleLogin}
@@ -124,8 +128,7 @@ const Login = () => {
         )}
 
         <p className="text-gray-500 text-sm mt-6">
-          Resume Analysis • AI Interview • Performance
-          Report
+          Resume Analysis • AI Interview • Performance Report
         </p>
       </motion.div>
     </div>
