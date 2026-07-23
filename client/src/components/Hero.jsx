@@ -1,16 +1,11 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase/firebase";
 
 function Hero() {
   const navigate = useNavigate();
 
   const handleStartFree = () => {
-    navigate(
-      auth.currentUser
-        ? "/company-selection"
-        : "/login"
-    );
+    navigate("/login");
   };
 
   const handleLearnMore = () => {
