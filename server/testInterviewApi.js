@@ -2,6 +2,10 @@ const testInterviewApi = async () => {
   try {
     console.log("Sending sample resume to interview API...");
 
+    const apiUrl = (
+      process.env.API_URL || "http://localhost:5000"
+    ).replace(/\/+$/, "");
+
     const sampleResumeText = `
       Souvik Das is a software engineering student graduating in 2027.
 
@@ -21,7 +25,7 @@ const testInterviewApi = async () => {
     `;
 
     const response = await fetch(
-      "http://import.meta.env.VITE_API_URL/api/interview/generate-questions",
+      `${apiUrl}/api/interview/generate-questions`,
       {
         method: "POST",
 

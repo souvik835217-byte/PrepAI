@@ -741,7 +741,6 @@ const Interview = () => {
       isAdvancingRef.current = false;
     }
   }, [
-    answers,
     interviewData,
     navigate,
     questions,

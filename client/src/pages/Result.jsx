@@ -94,14 +94,6 @@ const getQuestionId = (item, index) => {
   );
 };
 
-const makeFileNameSafe = (value) => {
-  return String(value || "Candidate")
-    .replace(/[<>:"/\\|?*]+/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
-};
-
 export default function Result() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -444,7 +436,12 @@ export default function Result() {
         ? currentSession
         : repairedSession;
     });
-  }, [result, interviewSession, evaluationOnlyQuestionAnalysis]);
+  }, [
+    result,
+    interviewSession,
+    questionAnalysis.length,
+    evaluationOnlyQuestionAnalysis,
+  ]);
 
   const createHistoryFingerprint = useCallback(() => {
     if (!currentUser?.uid || !result) {
