@@ -30,6 +30,11 @@ import QuestionBreakdown from "../components/QuestionBreakdown";
 import { auth } from "../firebase/firebase.js";
 import { downloadInterviewReport } from "../utils/generateInterviewPdf";
 
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.DEV ? "http://localhost:5000" : "")
+).replace(/\/+$/, "");
+
 const clampScore = (value) => {
   const numericValue = Number(value);
 
@@ -535,8 +540,14 @@ export default function Result() {
       setHistorySaveError("");
 
       try {
+        if (!API_URL) {
+          throw new Error(
+            "Backend URL is not configured. Add VITE_API_URL to the deployment environment."
+          );
+        }
+
         const response = await fetch(
-          "http://localhost:5000/api/interview-history",
+          `${API_URL}/api/interview-history`,
           {
             method: "POST",
             headers: {
@@ -617,8 +628,6 @@ export default function Result() {
           error?.message ||
             "Unable to save this interview report."
         );
-
-        saveAttemptedRef.current = false;
       } finally {
         setHistorySaving(false);
       }
