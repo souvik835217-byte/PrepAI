@@ -710,7 +710,11 @@ const Interview = () => {
   );
 
   const validateAndContinue = async () => {
-    if (!currentQuestion || isCheckingAnswer) {
+    if (
+      !currentQuestion ||
+      !questionFinished ||
+      isCheckingAnswer
+    ) {
       return;
     }
 
@@ -1009,7 +1013,7 @@ const Interview = () => {
   };
 
   const updateTypedAnswer = (event) => {
-    if (!currentQuestion) {
+    if (!currentQuestion || !questionFinished) {
       return;
     }
 
@@ -1043,7 +1047,11 @@ const Interview = () => {
   };
 
   const startListening = () => {
-    if (isCheckingAnswer || timeLeft <= 0) {
+    if (
+      !questionFinished ||
+      isCheckingAnswer ||
+      timeLeft <= 0
+    ) {
       return;
     }
 
@@ -1763,8 +1771,10 @@ const Interview = () => {
                         stopSpeaking();
                         setQuestionFinished(true);
                       } else {
+                        setQuestionFinished(false);
                         speakQuestion(
-                          currentQuestion.question
+                          currentQuestion.question,
+                          true
                         );
                       }
                     }}
@@ -1843,8 +1853,14 @@ const Interview = () => {
                     handleRewriteAnswer();
                   }
                 }}
-                disabled={isCheckingAnswer}
-                placeholder="Your answer will appear here..."
+                disabled={
+                  !questionFinished || isCheckingAnswer
+                }
+                placeholder={
+                  questionFinished
+                    ? "Your answer will appear here..."
+                    : "Listen to the complete question first..."
+                }
                 className="mt-3 min-h-[220px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-7 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-slate-100"
               />
 
@@ -1936,6 +1952,7 @@ const Interview = () => {
                 onClick={startListening}
                 disabled={
                   !speechSupported ||
+                  !questionFinished ||
                   isPaused ||
                   isCheckingAnswer ||
                   isRewriteMode ||
@@ -1963,6 +1980,7 @@ const Interview = () => {
               <button
                 onClick={validateAndContinue}
                 disabled={
+                  !questionFinished ||
                   isCheckingAnswer ||
                   isRewriteMode
                 }
