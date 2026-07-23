@@ -1149,9 +1149,11 @@ const Interview = () => {
           event.results[index][0].transcript || "";
 
         if (event.results[index].isFinal) {
-          finalTranscript += transcript;
+          finalTranscript =
+            `${finalTranscript} ${transcript}`.trim();
         } else {
-          interimTranscript += transcript;
+          interimTranscript =
+            `${interimTranscript} ${transcript}`.trim();
         }
       }
 
@@ -1180,12 +1182,6 @@ const Interview = () => {
         ...previous,
         [questionId]: updatedAnswer,
       }));
-
-      if (finalTranscript.trim()) {
-        baseAnswerRef.current = existingAnswer
-          ? `${existingAnswer} ${finalTranscript}`.trim()
-          : finalTranscript.trim();
-      }
 
       setAnswerWarning("");
       setIsRewriteMode(false);
