@@ -1275,7 +1275,7 @@ const Interview = () => {
 
     recognition.onresult = (event) => {
       let finalTranscript = "";
-      let interimTranscript = "";
+      let sessionTranscript = "";
 
       for (
         let index = 0;
@@ -1283,14 +1283,22 @@ const Interview = () => {
         index++
       ) {
         const transcript =
-          event.results[index][0].transcript || "";
+          event.results[index][0].transcript?.trim() || "";
+
+        if (!transcript) {
+          continue;
+        }
+
+        sessionTranscript = mergeSpeechText(
+          sessionTranscript,
+          transcript
+        );
 
         if (event.results[index].isFinal) {
-          finalTranscript =
-            `${finalTranscript} ${transcript}`.trim();
-        } else {
-          interimTranscript =
-            `${interimTranscript} ${transcript}`.trim();
+          finalTranscript = mergeSpeechText(
+            finalTranscript,
+            transcript
+          );
         }
       }
 
@@ -1304,14 +1312,12 @@ const Interview = () => {
       const existingAnswer =
         baseAnswerRef.current.trim();
 
-      const spokenText = `${finalTranscript} ${interimTranscript}`.trim();
-
       sessionFinalTranscriptRef.current =
         finalTranscript.trim();
 
       const updatedAnswer = mergeSpeechText(
         existingAnswer,
-        spokenText
+        sessionTranscript
       );
 
       answersRef.current = {
