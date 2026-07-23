@@ -71,7 +71,7 @@ function Hero() {
           transition={{ duration: 0.7 }}
           className="flex justify-center"
         >
-          <div className="w-80 h-80 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center text-8xl shadow-2xl">
+          <div className="flex h-52 w-52 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-6xl shadow-2xl sm:h-64 sm:w-64 sm:text-7xl lg:h-80 lg:w-80 lg:text-8xl">
             🤖
           </div>
         </motion.div>
