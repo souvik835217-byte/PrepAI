@@ -20,40 +20,74 @@ const PORT = Number(process.env.PORT) || 5000;
 ========================================================= */
 
 const allowedOrigins = [
+  // Local development
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:5178",
   "http://127.0.0.1:5173",
   "http://127.0.0.1:5174",
   "http://127.0.0.1:5178",
+
+  // Vercel production and current deployment domains
+  "https://prep-ai-souvik9.vercel.app",
+  "https://prep-ai-umber-three.vercel.app",
+  "https://prep-ipavvzp3a-souvik9.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+const isAllowedVercelPreview = (origin) => {
+  try {
+    const url = new URL(origin);
 
-      return callback(
-        new Error(`Origin ${origin} is not allowed by CORS`)
-      );
-    },
-    credentials: true,
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-    ],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
-  })
-);
+    return (
+      url.protocol === "https:" &&
+      url.hostname.endsWith("-souvik9.vercel.app")
+    );
+  } catch {
+    return false;
+  }
+};
+
+const corsOptions = {
+  origin(origin, callback) {
+    // Allows requests from Postman, Render health checks, and server-to-server calls
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (
+      allowedOrigins.includes(origin) ||
+      isAllowedVercelPreview(origin)
+    ) {
+      return callback(null, true);
+    }
+
+    console.warn(`⚠️ CORS blocked origin: ${origin}`);
+
+    return callback(
+      new Error(`Origin ${origin} is not allowed by CORS`)
+    );
+  },
+
+  credentials: true,
+
+  methods: [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+  ],
+
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+  ],
+
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 /* =========================================================
    Body parsing
@@ -88,7 +122,7 @@ app.get("/", (req, res) => {
   return res.status(200).json({
     success: true,
     message: "PrepAI backend is running",
-    port: PORT,
+    environment: process.env.NODE_ENV || "development",
   });
 });
 
@@ -153,6 +187,13 @@ app.use((error, req, res, next) => {
     });
   }
 
+  if (error.name === "MulterError") {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+
   return res.status(error.status || 500).json({
     success: false,
     message:
@@ -168,13 +209,13 @@ const startServer = async () => {
   try {
     if (!process.env.MONGODB_URI) {
       throw new Error(
-        "MONGODB_URI is missing from server/.env"
+        "MONGODB_URI environment variable is missing"
       );
     }
 
     if (!process.env.GEMINI_API_KEY) {
       console.warn(
-        "⚠️ GEMINI_API_KEY is missing from server/.env"
+        "⚠️ GEMINI_API_KEY environment variable is missing"
       );
     }
 
@@ -184,17 +225,17 @@ const startServer = async () => {
 
     console.log("✅ MongoDB Connected");
 
-    const server = app.listen(PORT, () => {
+    const server = app.listen(PORT, "0.0.0.0", () => {
       console.log(
-        `🚀 PrepAI server running on http://localhost:${PORT}`
+        `🚀 PrepAI server running on port ${PORT}`
       );
 
       console.log(
-        `✅ Health check: http://localhost:${PORT}/api/health`
+        `✅ Health check: /api/health`
       );
 
       console.log(
-        `✅ History API: http://localhost:${PORT}/api/interview-history`
+        `✅ History API: /api/interview-history`
       );
     });
 
@@ -208,6 +249,7 @@ const startServer = async () => {
     console.error(
       "❌ Failed to start PrepAI server:"
     );
+
     console.error(error.message);
 
     process.exit(1);
