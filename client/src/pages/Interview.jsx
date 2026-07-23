@@ -34,6 +34,8 @@ const Interview = () => {
   const navigate = useNavigate();
 
   const recognitionRef = useRef(null);
+  const keepListeningRef = useRef(false);
+  const recognitionRestartTimerRef = useRef(null);
   const activeQuestionIdRef = useRef(null);
   const baseAnswerRef = useRef("");
   const textareaRef = useRef(null);
@@ -155,6 +157,13 @@ const Interview = () => {
   }, []);
 
   const stopListening = useCallback(() => {
+    keepListeningRef.current = false;
+
+    if (recognitionRestartTimerRef.current) {
+      window.clearTimeout(recognitionRestartTimerRef.current);
+      recognitionRestartTimerRef.current = null;
+    }
+
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop();
@@ -966,6 +975,22 @@ const Interview = () => {
   };
 
   const handleRewriteAnswer = () => {
+    if (!currentQuestion) {
+      return;
+    }
+
+    stopListening();
+    saveCurrentAnswer("");
+    baseAnswerRef.current = "";
+
+    const updatedValidationResults = {
+      ...validationResultsRef.current,
+    };
+
+    delete updatedValidationResults[currentQuestion.id];
+    validationResultsRef.current = updatedValidationResults;
+    setValidationResults(updatedValidationResults);
+
     setAnswerWarning("");
     setIsRewriteMode(false);
     setCanContinueAnyway(false);
@@ -1063,9 +1088,13 @@ const Interview = () => {
     baseAnswerRef.current =
       currentAnswer.trim();
 
+    keepListeningRef.current = true;
+
     try {
       recognitionRef.current.start();
     } catch (error) {
+      keepListeningRef.current = false;
+
       console.error(
         "Could not start microphone:",
         error
@@ -1104,7 +1133,7 @@ const Interview = () => {
       let interimTranscript = "";
 
       for (
-        let index = event.resultIndex;
+        let index = 0;
         index < event.results.length;
         index++
       ) {
@@ -1156,14 +1185,9 @@ const Interview = () => {
     };
 
     recognition.onerror = (event) => {
-      console.error(
-        "Speech recognition error:",
-        event.error
-      );
-
-      setIsListening(false);
-
       if (event.error === "not-allowed") {
+        keepListeningRef.current = false;
+        setIsListening(false);
         setStatusMessage(
           "Microphone permission was denied. You can type your answer."
         );
@@ -1171,18 +1195,26 @@ const Interview = () => {
       }
 
       if (event.error === "no-speech") {
-        setStatusMessage(
-          "No speech was detected. Try again or type your answer."
-        );
+        setStatusMessage("Listening... Speak when you are ready.");
         return;
       }
 
       if (event.error === "audio-capture") {
+        keepListeningRef.current = false;
+        setIsListening(false);
         setStatusMessage(
           "No microphone was found. Check your device input settings."
         );
         return;
       }
+
+      keepListeningRef.current = false;
+      setIsListening(false);
+
+      console.error(
+        "Speech recognition error:",
+        event.error
+      );
 
       setStatusMessage(
         "Speech recognition stopped. You can try again."
@@ -1190,6 +1222,39 @@ const Interview = () => {
     };
 
     recognition.onend = () => {
+      if (keepListeningRef.current) {
+        setStatusMessage("Listening... Speak when you are ready.");
+
+        recognitionRestartTimerRef.current = window.setTimeout(() => {
+          if (!keepListeningRef.current) {
+            return;
+          }
+
+          const questionId = activeQuestionIdRef.current;
+
+          if (questionId) {
+            baseAnswerRef.current =
+              answersRef.current[questionId]?.trim() || "";
+          }
+
+          try {
+            recognition.start();
+          } catch (error) {
+            keepListeningRef.current = false;
+            setIsListening(false);
+            setStatusMessage(
+              "The microphone could not restart. Tap Speak answer to try again."
+            );
+            console.error(
+              "Could not restart microphone:",
+              error
+            );
+          }
+        }, 250);
+
+        return;
+      }
+
       setIsListening(false);
 
       setStatusMessage((previous) =>
@@ -1202,6 +1267,12 @@ const Interview = () => {
     recognitionRef.current = recognition;
 
     return () => {
+      keepListeningRef.current = false;
+
+      if (recognitionRestartTimerRef.current) {
+        window.clearTimeout(recognitionRestartTimerRef.current);
+      }
+
       try {
         recognition.stop();
       } catch {
@@ -1767,6 +1838,11 @@ const Interview = () => {
                 id="answer"
                 value={currentAnswer}
                 onChange={updateTypedAnswer}
+                onFocus={() => {
+                  if (isRewriteMode) {
+                    handleRewriteAnswer();
+                  }
+                }}
                 disabled={isCheckingAnswer}
                 placeholder="Your answer will appear here..."
                 className="mt-3 min-h-[220px] w-full resize-none rounded-2xl border border-slate-200 bg-white p-5 text-sm leading-7 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-slate-100"
