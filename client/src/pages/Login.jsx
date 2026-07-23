@@ -42,7 +42,7 @@ const Login = () => {
       );
 
       setUser(result.user);
-      navigate("/dashboard", { replace: true });
+      navigate("/", { replace: true });
     } catch (error) {
       console.error(
         "Google login error:",

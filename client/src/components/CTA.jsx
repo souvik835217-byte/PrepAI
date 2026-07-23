@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContextStore";
 
 function CTA() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleGetStarted = () => {
-    navigate("/login");
+    navigate(user ? "/company-selection" : "/login");
   };
 
   return (

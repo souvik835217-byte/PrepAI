@@ -22,6 +22,7 @@ import {
   FaClock,
   FaFileAlt,
   FaHistory,
+  FaHome,
   FaPlus,
   FaRedo,
   FaSignOutAlt,
@@ -314,6 +315,19 @@ const Dashboard = () => {
           </button>
 
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => navigate("/")}
+              aria-label="Go to landing page"
+              title="Home"
+              className="flex h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold transition hover:bg-slate-50"
+            >
+              <FaHome />
+              <span className="hidden md:inline">
+                Home
+              </span>
+            </button>
+
             <button
               type="button"
               onClick={() => navigate("/history")}

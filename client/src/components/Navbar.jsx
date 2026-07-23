@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/authContextStore";
 
 const navigationItems = [
   { href: "#features", label: "Features" },
@@ -10,6 +11,7 @@ const navigationItems = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <nav className="fixed left-0 top-0 z-50 w-full border-b border-gray-200/70 bg-white/90 backdrop-blur-xl">
@@ -51,10 +53,10 @@ function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/login"
+            to={user ? "/dashboard" : "/login"}
             className="rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2.5 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:from-purple-700 hover:to-blue-700 sm:px-6"
           >
-            Login
+            {user ? "Dashboard" : "Login"}
           </Link>
 
           <button

@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContextStore";
 
 function Hero() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleStartFree = () => {
-    navigate("/login");
+    navigate(user ? "/company-selection" : "/login");
   };
 
   const handleLearnMore = () => {
