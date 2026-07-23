@@ -176,6 +176,8 @@ const Interview = () => {
   const sessionFinalTranscriptRef = useRef("");
   const textareaRef = useRef(null);
   const isAdvancingRef = useRef(false);
+  const allowInterviewExitRef = useRef(false);
+  const interviewGuardEntryRef = useRef(false);
   const validationResultsRef = useRef({});
   const answersRef = useRef({});
 
@@ -1513,6 +1515,77 @@ const Interview = () => {
     stopSpeaking,
     timeLeft,
   ]);
+
+  useEffect(() => {
+    if (!hasStarted) {
+      return;
+    }
+
+    allowInterviewExitRef.current = false;
+
+    if (!interviewGuardEntryRef.current) {
+      window.history.pushState(
+        { prepAIInterviewGuard: true },
+        "",
+        window.location.href
+      );
+      interviewGuardEntryRef.current = true;
+    }
+
+    const confirmExitMessage =
+      "Your interview is still in progress. Are you sure you want to exit?";
+
+    const handleBeforeUnload = (event) => {
+      if (allowInterviewExitRef.current) {
+        return;
+      }
+
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    const handleBrowserBack = () => {
+      if (allowInterviewExitRef.current) {
+        return;
+      }
+
+      const shouldExit = window.confirm(
+        confirmExitMessage
+      );
+
+      if (shouldExit) {
+        allowInterviewExitRef.current = true;
+        window.history.back();
+        return;
+      }
+
+      window.history.pushState(
+        { prepAIInterviewGuard: true },
+        "",
+        window.location.href
+      );
+    };
+
+    window.addEventListener(
+      "beforeunload",
+      handleBeforeUnload
+    );
+    window.addEventListener(
+      "popstate",
+      handleBrowserBack
+    );
+
+    return () => {
+      window.removeEventListener(
+        "beforeunload",
+        handleBeforeUnload
+      );
+      window.removeEventListener(
+        "popstate",
+        handleBrowserBack
+      );
+    };
+  }, [hasStarted]);
 
   const startInterview = () => {
     setHasStarted(true);
