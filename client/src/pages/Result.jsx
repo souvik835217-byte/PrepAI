@@ -536,7 +536,7 @@ export default function Result() {
 
       try {
         const response = await fetch(
-          "http://import.meta.env.VITE_API_URL/api/interview-history",
+          "http://localhost:5000/api/interview-history",
           {
             method: "POST",
             headers: {

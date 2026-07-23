@@ -27,19 +27,15 @@ import {
 } from "react-icons/fi";
 
 const API_URL =
-  import.meta.env.VITE_API_URL || "http://import.meta.env.VITE_API_URL";
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 
 const Interview = () => {
   const navigate = useNavigate();
 
   const recognitionRef = useRef(null);
-  const shouldKeepListeningRef = useRef(false);
-  const recognitionStartPendingRef = useRef(false);
-  const recognitionRestartTimeoutRef = useRef(null);
   const activeQuestionIdRef = useRef(null);
   const baseAnswerRef = useRef("");
-  const sessionTranscriptRef = useRef("");
   const textareaRef = useRef(null);
   const isAdvancingRef = useRef(false);
   const validationResultsRef = useRef({});
@@ -150,66 +146,6 @@ const Interview = () => {
       100
     : 0;
 
-  const interviewerName =
-    interviewData?.interviewerName ||
-    interviewData?.interviewer?.name ||
-    "AI Interviewer";
-
-  const interviewerRole =
-    interviewData?.interviewerRole ||
-    interviewData?.interviewer?.role ||
-    "Technical Interviewer";
-
-  const interviewerInitials = interviewerName
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join("") || "AI";
-
-  const interviewerState = isCheckingAnswer
-    ? "thinking"
-    : isRewriteMode
-    ? "revision"
-    : isListening
-    ? "listening"
-    : questionSpeaking
-    ? "speaking"
-    : isPaused
-    ? "paused"
-    : "ready";
-
-  const interviewerStatus = {
-    thinking: {
-      title: isLastQuestion
-        ? "Preparing your final report"
-        : "Reviewing your answer",
-      message: isLastQuestion
-        ? "Your responses are being evaluated across communication, technical depth and problem solving."
-        : "A quick relevance check is running before the next question.",
-    },
-    revision: {
-      title: "Waiting for your revision",
-      message: "Add more detail, use a clear structure and support your answer with an example.",
-    },
-    listening: {
-      title: "Listening to your answer",
-      message: "Speak naturally and clearly. Your words will appear in the answer box.",
-    },
-    speaking: {
-      title: "Asking the question",
-      message: "The answer timer begins after the interviewer finishes speaking.",
-    },
-    paused: {
-      title: "Interview paused",
-      message: "Your remaining answer time is preserved until the interview resumes.",
-    },
-    ready: {
-      title: "Ready for your response",
-      message: "Use the microphone or keyboard. Explain your thinking as you would in a real interview.",
-    },
-  }[interviewerState];
-
   const stopSpeaking = useCallback(() => {
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
@@ -219,19 +155,6 @@ const Interview = () => {
   }, []);
 
   const stopListening = useCallback(() => {
-    shouldKeepListeningRef.current = false;
-    recognitionStartPendingRef.current = false;
-    activeQuestionIdRef.current = null;
-    baseAnswerRef.current = "";
-    sessionTranscriptRef.current = "";
-
-    if (recognitionRestartTimeoutRef.current) {
-      window.clearTimeout(
-        recognitionRestartTimeoutRef.current
-      );
-      recognitionRestartTimeoutRef.current = null;
-    }
-
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop();
@@ -1139,16 +1062,10 @@ const Interview = () => {
 
     baseAnswerRef.current =
       currentAnswer.trim();
-    sessionTranscriptRef.current = "";
-    shouldKeepListeningRef.current = true;
-    recognitionStartPendingRef.current = true;
 
     try {
       recognitionRef.current.start();
     } catch (error) {
-      shouldKeepListeningRef.current = false;
-      recognitionStartPendingRef.current = false;
-
       console.error(
         "Could not start microphone:",
         error
@@ -1173,57 +1090,45 @@ const Interview = () => {
     const recognition =
       new SpeechRecognition();
 
-    recognition.lang =
-      window.navigator.language || "en-US";
-    // Chrome on Windows can remain in a listening state without
-    // emitting results in continuous mode. Each completed phrase is
-    // restarted by onend below, which is more reliable.
-    recognition.continuous = false;
+    recognition.lang = "en-IN";
+    recognition.continuous = true;
     recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
 
     recognition.onstart = () => {
-      recognitionStartPendingRef.current = false;
       setIsListening(true);
       setStatusMessage("Listening...");
     };
 
     recognition.onresult = (event) => {
-      let sessionTranscript = "";
+      let finalTranscript = "";
+      let interimTranscript = "";
 
       for (
-        let index = 0;
+        let index = event.resultIndex;
         index < event.results.length;
         index++
       ) {
         const transcript =
           event.results[index][0].transcript || "";
 
-        sessionTranscript += ` ${transcript}`;
+        if (event.results[index].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
       }
 
       const questionId =
         activeQuestionIdRef.current;
 
-      if (
-        questionId === null ||
-        questionId === undefined
-      ) {
+      if (!questionId) {
         return;
       }
 
       const existingAnswer =
         baseAnswerRef.current.trim();
 
-      const spokenText = sessionTranscript
-        .replace(/\s+/g, " ")
-        .trim();
-
-      if (!spokenText) {
-        return;
-      }
-
-      sessionTranscriptRef.current = spokenText;
+      const spokenText = `${finalTranscript} ${interimTranscript}`.trim();
 
       const updatedAnswer = existingAnswer
         ? `${existingAnswer} ${spokenText}`.trim()
@@ -1239,36 +1144,26 @@ const Interview = () => {
         [questionId]: updatedAnswer,
       }));
 
+      if (finalTranscript.trim()) {
+        baseAnswerRef.current = existingAnswer
+          ? `${existingAnswer} ${finalTranscript}`.trim()
+          : finalTranscript.trim();
+      }
+
       setAnswerWarning("");
       setIsRewriteMode(false);
       setValidationScore(null);
-      setStatusMessage("Listening... your answer is being transcribed.");
     };
 
     recognition.onerror = (event) => {
-      recognitionStartPendingRef.current = false;
-
-      const isExpectedSilence =
-        event.error === "no-speech";
-
-      const isIntentionalStop =
-        event.error === "aborted" &&
-        !shouldKeepListeningRef.current;
-
-      if (
-        !isExpectedSilence &&
-        !isIntentionalStop
-      ) {
-        console.error(
-          "Speech recognition error:",
-          event.error
-        );
-      }
+      console.error(
+        "Speech recognition error:",
+        event.error
+      );
 
       setIsListening(false);
 
       if (event.error === "not-allowed") {
-        shouldKeepListeningRef.current = false;
         setStatusMessage(
           "Microphone permission was denied. You can type your answer."
         );
@@ -1277,28 +1172,16 @@ const Interview = () => {
 
       if (event.error === "no-speech") {
         setStatusMessage(
-          "Listening... start speaking when you are ready."
+          "No speech was detected. Try again or type your answer."
         );
         return;
       }
 
       if (event.error === "audio-capture") {
-        shouldKeepListeningRef.current = false;
         setStatusMessage(
           "No microphone was found. Check your device input settings."
         );
         return;
-      }
-
-      if (isIntentionalStop) {
-        return;
-      }
-
-      if (
-        event.error === "network" ||
-        event.error === "service-not-allowed"
-      ) {
-        shouldKeepListeningRef.current = false;
       }
 
       setStatusMessage(
@@ -1307,52 +1190,7 @@ const Interview = () => {
     };
 
     recognition.onend = () => {
-      recognitionStartPendingRef.current = false;
       setIsListening(false);
-
-      const completedSession =
-        sessionTranscriptRef.current.trim();
-
-      if (
-        activeQuestionIdRef.current &&
-        completedSession
-      ) {
-        baseAnswerRef.current = baseAnswerRef.current
-          ? `${baseAnswerRef.current} ${completedSession}`.trim()
-          : completedSession;
-        sessionTranscriptRef.current = "";
-      }
-
-      if (shouldKeepListeningRef.current) {
-        recognitionRestartTimeoutRef.current =
-          window.setTimeout(() => {
-            recognitionRestartTimeoutRef.current = null;
-
-            if (
-              !shouldKeepListeningRef.current ||
-              recognitionStartPendingRef.current
-            ) {
-              return;
-            }
-
-            try {
-              recognitionStartPendingRef.current = true;
-              recognition.start();
-            } catch (error) {
-              recognitionStartPendingRef.current = false;
-              shouldKeepListeningRef.current = false;
-              console.error(
-                "Could not restart microphone:",
-                error
-              );
-              setStatusMessage(
-                "Speech recognition stopped. Click Speak answer to try again."
-              );
-            }
-          }, 250);
-
-        return;
-      }
 
       setStatusMessage((previous) =>
         previous === "Listening..."
@@ -1364,14 +1202,6 @@ const Interview = () => {
     recognitionRef.current = recognition;
 
     return () => {
-      shouldKeepListeningRef.current = false;
-
-      if (recognitionRestartTimeoutRef.current) {
-        window.clearTimeout(
-          recognitionRestartTimeoutRef.current
-        );
-      }
-
       try {
         recognition.stop();
       } catch {
@@ -1619,8 +1449,8 @@ const Interview = () => {
 
               <div className="mt-8 space-y-3">
                 {[
-                  `${questions.length} personalized questions`,
-                  `${questions[0]?.timeLimit || 60} seconds for each answer`,
+                  "Five personalized questions",
+                  "Sixty seconds for each answer",
                   "Voice and typing supported",
                   "Quick relevance check after each answer",
                   "Complete AI evaluation at the end",
@@ -1694,129 +1524,89 @@ const Interview = () => {
       <main className="relative z-10 mx-auto max-w-7xl px-5 py-6 sm:px-8 lg:py-8">
         <div className="grid gap-6 lg:grid-cols-[0.68fr_1.32fr]">
           <section className="flex flex-col rounded-[28px] bg-gradient-to-br from-slate-950 via-slate-900 to-[#172554] p-7 text-white shadow-2xl shadow-slate-400/20 sm:p-8">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-base font-bold tracking-wide text-white">
-                  {interviewerInitials}
-                </div>
-
-                <div>
-                  <p className="font-semibold">{interviewerName}</p>
-
-                  <p className="mt-0.5 text-xs text-white/45">
-                    {interviewerRole} · {selectedCompany}
-                  </p>
-
-                  <div className="mt-1 flex items-center gap-2 text-xs text-emerald-300">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-50" />
-                      <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
-                    </span>
-                    Live interview session
-                  </div>
-                </div>
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl">
+                <FiUser />
               </div>
 
-              <span className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/55">
-                {interviewerState}
-              </span>
+              <div>
+                <p className="font-semibold">
+                  {interviewData.interviewerName ||
+                    interviewData.interviewer?.name ||
+                    "AI Interviewer"}
+                </p>
+
+                <p className="mt-0.5 text-xs text-white/45">
+                  {interviewData.interviewerRole ||
+                    interviewData.interviewer?.role ||
+                    "Technical Interviewer"}{" "}
+                  · {selectedCompany}
+                </p>
+
+                <div className="mt-1 flex items-center gap-2 text-xs text-emerald-300">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+
+                  {isCheckingAnswer
+                    ? "Saving answer"
+                    : isRewriteMode
+                    ? "Waiting for revision"
+                    : isPaused
+                    ? "Interview paused"
+                    : "Interview in progress"}
+                </div>
+              </div>
             </div>
 
-            <div className="mt-8 flex min-h-[300px] flex-1 flex-col items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-center">
-              <div className="relative flex h-40 w-40 items-center justify-center">
-                <motion.div
-                  animate={
-                    interviewerState === "speaking"
-                      ? { scale: [1, 1.06, 1] }
-                      : interviewerState === "listening"
-                      ? { scale: [1, 1.04, 1] }
-                      : { y: [0, -4, 0] }
-                  }
-                  transition={{
-                    duration:
-                      interviewerState === "speaking" ? 0.8 : 2.2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className={`absolute inset-2 rounded-full border ${
-                    interviewerState === "thinking"
-                      ? "border-amber-300/60 bg-amber-400/10"
-                      : interviewerState === "listening"
-                      ? "border-blue-300/70 bg-blue-400/10"
-                      : interviewerState === "speaking"
-                      ? "border-indigo-300/70 bg-indigo-400/10"
-                      : interviewerState === "revision"
-                      ? "border-orange-300/60 bg-orange-400/10"
-                      : "border-white/15 bg-white/[0.04]"
-                  }`}
-                />
-
-                {(interviewerState === "speaking" ||
-                  interviewerState === "listening") && (
-                  <motion.div
-                    initial={{ opacity: 0.55, scale: 0.8 }}
-                    animate={{ opacity: 0, scale: 1.35 }}
-                    transition={{
-                      duration: 1.3,
-                      repeat: Infinity,
-                      ease: "easeOut",
-                    }}
-                    className="absolute inset-1 rounded-full border border-blue-300/40"
-                  />
+            <div className="mt-8 flex min-h-[260px] flex-1 flex-col items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] p-6 text-center">
+              <div
+                className={`flex h-24 w-24 items-center justify-center rounded-full border text-4xl transition ${
+                  isCheckingAnswer
+                    ? "animate-pulse border-amber-300 bg-amber-400/20 text-amber-200"
+                    : isListening
+                    ? "animate-pulse border-blue-300 bg-blue-400/20 text-blue-200"
+                    : questionSpeaking
+                    ? "animate-pulse border-indigo-300 bg-indigo-400/20 text-indigo-200"
+                    : "border-white/10 bg-white/[0.06] text-white/70"
+                }`}
+              >
+                {isCheckingAnswer ? (
+                  <FiLoader className="animate-spin" />
+                ) : isListening ? (
+                  <FiMic />
+                ) : questionSpeaking ? (
+                  <FiVolume2 />
+                ) : isRewriteMode ? (
+                  <FiEdit3 />
+                ) : (
+                  <FiUser />
                 )}
-
-                <div className="relative flex h-28 w-28 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-white/15 to-white/[0.04] shadow-2xl">
-                  {interviewerState === "thinking" ? (
-                    <FiLoader className="animate-spin text-4xl text-amber-200" />
-                  ) : interviewerState === "listening" ? (
-                    <FiMic className="text-4xl text-blue-200" />
-                  ) : interviewerState === "speaking" ? (
-                    <FiVolume2 className="text-4xl text-indigo-200" />
-                  ) : interviewerState === "revision" ? (
-                    <FiEdit3 className="text-4xl text-orange-200" />
-                  ) : (
-                    <span className="text-3xl font-bold tracking-wide text-white">
-                      {interviewerInitials}
-                    </span>
-                  )}
-                </div>
               </div>
 
-              {interviewerState === "speaking" && (
-                <div className="mt-1 flex h-7 items-end gap-1">
-                  {[0, 1, 2, 3, 4].map((bar) => (
-                    <motion.span
-                      key={bar}
-                      animate={{ height: [6, 24, 10, 18, 6] }}
-                      transition={{
-                        duration: 0.8,
-                        repeat: Infinity,
-                        delay: bar * 0.08,
-                      }}
-                      className="w-1.5 rounded-full bg-indigo-300"
-                    />
-                  ))}
-                </div>
-              )}
-
-              <p className="mt-5 text-lg font-semibold">
-                {interviewerStatus.title}
+              <p className="mt-6 text-lg font-semibold">
+                {isCheckingAnswer
+                  ? isLastQuestion
+                    ? "Preparing your report..."
+                    : "Checking your answer..."
+                  : isRewriteMode
+                  ? "Answer needs more detail"
+                  : isListening
+                  ? "Listening..."
+                  : questionSpeaking
+                  ? "Asking the question..."
+                  : "Your interviewer is ready"}
               </p>
 
               <p className="mt-2 max-w-sm text-sm leading-6 text-white/50">
-                {interviewerStatus.message}
+                {isCheckingAnswer
+                  ? isLastQuestion
+                    ? "Your complete interview is being evaluated. This can take a few seconds."
+                    : "A quick relevance check is running before the interview continues."
+                  : isRewriteMode
+                  ? "Revise your answer now. The timer continues running."
+                  : isListening
+                  ? "Speak clearly. Your answer will appear live."
+                  : "Use your microphone or type your response."}
               </p>
-
-              {currentQuestion?.question && (
-                <div className="mt-6 w-full rounded-2xl border border-white/10 bg-slate-950/30 p-4 text-left">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-300">
-                    Current question
-                  </p>
-                  <p className="mt-2 line-clamp-3 text-sm leading-6 text-white/70">
-                    {currentQuestion.question}
-                  </p>
-                </div>
-              )}
             </div>
 
             <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
