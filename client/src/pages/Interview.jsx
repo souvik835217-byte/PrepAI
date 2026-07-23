@@ -29,6 +29,51 @@ import {
 const API_URL =
   import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+const mergeSpeechText = (existingText, incomingText) => {
+  const existing = existingText.trim();
+  const incoming = incomingText.trim();
+
+  if (!existing) {
+    return incoming;
+  }
+
+  if (!incoming) {
+    return existing;
+  }
+
+  const existingWords = existing.split(/\s+/);
+  const incomingWords = incoming.split(/\s+/);
+  const normalizedExisting = existingWords.map((word) =>
+    word.toLocaleLowerCase()
+  );
+  const normalizedIncoming = incomingWords.map((word) =>
+    word.toLocaleLowerCase()
+  );
+
+  const maximumOverlap = Math.min(
+    normalizedExisting.length,
+    normalizedIncoming.length
+  );
+
+  for (let size = maximumOverlap; size > 0; size--) {
+    const existingSuffix = normalizedExisting
+      .slice(-size)
+      .join(" ");
+    const incomingPrefix = normalizedIncoming
+      .slice(0, size)
+      .join(" ");
+
+    if (existingSuffix === incomingPrefix) {
+      return [
+        ...existingWords,
+        ...incomingWords.slice(size),
+      ].join(" ");
+    }
+  }
+
+  return `${existing} ${incoming}`;
+};
+
 
 const Interview = () => {
   const navigate = useNavigate();
@@ -38,6 +83,7 @@ const Interview = () => {
   const recognitionRestartTimerRef = useRef(null);
   const activeQuestionIdRef = useRef(null);
   const baseAnswerRef = useRef("");
+  const sessionFinalTranscriptRef = useRef("");
   const textareaRef = useRef(null);
   const isAdvancingRef = useRef(false);
   const validationResultsRef = useRef({});
@@ -1095,6 +1141,7 @@ const Interview = () => {
 
     baseAnswerRef.current =
       currentAnswer.trim();
+    sessionFinalTranscriptRef.current = "";
 
     keepListeningRef.current = true;
 
@@ -1169,9 +1216,13 @@ const Interview = () => {
 
       const spokenText = `${finalTranscript} ${interimTranscript}`.trim();
 
-      const updatedAnswer = existingAnswer
-        ? `${existingAnswer} ${spokenText}`.trim()
-        : spokenText;
+      sessionFinalTranscriptRef.current =
+        finalTranscript.trim();
+
+      const updatedAnswer = mergeSpeechText(
+        existingAnswer,
+        spokenText
+      );
 
       answersRef.current = {
         ...answersRef.current,
@@ -1229,16 +1280,31 @@ const Interview = () => {
       if (keepListeningRef.current) {
         setStatusMessage("Listening... Speak when you are ready.");
 
+        const questionId = activeQuestionIdRef.current;
+
+        if (questionId) {
+          const committedAnswer = mergeSpeechText(
+            baseAnswerRef.current,
+            sessionFinalTranscriptRef.current
+          );
+
+          baseAnswerRef.current = committedAnswer;
+          sessionFinalTranscriptRef.current = "";
+
+          answersRef.current = {
+            ...answersRef.current,
+            [questionId]: committedAnswer,
+          };
+
+          setAnswers((previous) => ({
+            ...previous,
+            [questionId]: committedAnswer,
+          }));
+        }
+
         recognitionRestartTimerRef.current = window.setTimeout(() => {
           if (!keepListeningRef.current) {
             return;
-          }
-
-          const questionId = activeQuestionIdRef.current;
-
-          if (questionId) {
-            baseAnswerRef.current =
-              answersRef.current[questionId]?.trim() || "";
           }
 
           try {
@@ -1254,7 +1320,7 @@ const Interview = () => {
               error
             );
           }
-        }, 250);
+        }, 600);
 
         return;
       }
