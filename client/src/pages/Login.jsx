@@ -34,14 +34,9 @@ const Login = () => {
 
       // Call popup directly from the button click.
       // Do not await signOut() before this.
-      const result = await signInWithPopup(
+      await signInWithPopup(
         auth,
         provider
-      );
-
-      console.log(
-        "Logged in user:",
-        result.user
       );
 
       navigate("/dashboard");

@@ -135,18 +135,6 @@ const ResumeAnalysis = () => {
       setIsGenerating(true);
       setError("");
 
-      console.log("Sending resume information to backend...");
-      console.log("Backend URL:", API_URL);
-      console.log("Selected company:", selectedCompany);
-      console.log(
-        "Interview configuration:",
-        interviewConfig
-      );
-      console.log(
-        "Requested question count:",
-        questionCount
-      );
-
       const response = await fetch(
         `${API_URL}/api/interview/generate-questions`,
         {
@@ -189,16 +177,6 @@ const ResumeAnalysis = () => {
           "The server returned an invalid response. Please check your backend."
         );
       }
-
-      console.log(
-        "Interview API status:",
-        response.status
-      );
-
-      console.log(
-        "Generated interview data:",
-        data
-      );
 
       if (!response.ok) {
         throw new Error(
@@ -276,21 +254,6 @@ const ResumeAnalysis = () => {
           company: selectedCompany,
           questionCount,
         })
-      );
-
-      console.log(
-        "Questions saved in localStorage:",
-        normalizedInterview.questions
-      );
-
-      console.log(
-        "Generated question count:",
-        normalizedInterview.questions.length
-      );
-
-      console.log(
-        "Interview company saved:",
-        normalizedInterview.company
       );
 
       if (

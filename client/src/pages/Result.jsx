@@ -28,7 +28,6 @@ import StrengthCard from "../components/StrengthCard";
 import WeaknessCard from "../components/WeaknessCard";
 import QuestionBreakdown from "../components/QuestionBreakdown";
 import { auth } from "../firebase/firebase.js";
-import { downloadInterviewReport } from "../utils/generateInterviewPdf";
 
 const API_URL = (
   import.meta.env.VITE_API_URL ||
@@ -611,10 +610,6 @@ export default function Result() {
         setHistorySaved(true);
         setHistorySaveError("");
 
-        console.log(
-          "Interview history saved successfully:",
-          data.history
-        );
       } catch (error) {
         console.error(
           "Save interview history error:",
@@ -724,6 +719,10 @@ export default function Result() {
     setDownloadError("");
 
     try {
+      const { downloadInterviewReport } = await import(
+        "../utils/generateInterviewPdf"
+      );
+
       await Promise.resolve(
         downloadInterviewReport({
           result: {

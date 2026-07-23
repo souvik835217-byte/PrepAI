@@ -59,9 +59,6 @@ const ResumeUpload = () => {
     setAnalysisComplete(false);
     setMessage("");
     setMessageType("");
-
-    console.log("Selected resume:", selectedFile);
-    console.log("Selected company:", selectedCompany);
   };
 
   const handleFileChange = (event) => {
@@ -121,9 +118,6 @@ const ResumeUpload = () => {
       formData.append("resume", file);
       formData.append("company", selectedCompany);
 
-      console.log("Sending resume to backend...");
-      console.log("Company interview mode:", selectedCompany);
-
       const response = await fetch(
         `${API_URL}/api/resume/analyze`,
         {
@@ -145,9 +139,6 @@ const ResumeUpload = () => {
             "The server returned an invalid response.",
         };
       }
-
-      console.log("Backend status:", response.status);
-      console.log("Resume analysis response:", data);
 
       if (!response.ok || data.success === false) {
         throw new Error(

@@ -584,11 +584,6 @@ const Interview = () => {
     let finalEvaluationTimeoutId = null;
 
     try {
-      console.log(
-        "Starting final interview evaluation:",
-        session
-      );
-
       const controller = new AbortController();
 
       finalEvaluationTimeoutId = window.setTimeout(
@@ -646,15 +641,6 @@ const Interview = () => {
             "The evaluation server returned invalid data.",
         };
       }
-
-      console.log(
-        "Final evaluation response:",
-        {
-          status: response.status,
-          ok: response.ok,
-          data,
-        }
-      );
 
       if (!response.ok || data.success === false) {
         throw new Error(
@@ -2030,6 +2016,7 @@ const Interview = () => {
 
             {answerWarning && (
               <motion.div
+                role="alert"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 p-5"
@@ -2084,6 +2071,9 @@ const Interview = () => {
 
             {statusMessage && !answerWarning && (
               <div
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
                 className={`mt-4 flex items-start gap-3 rounded-xl border px-4 py-3 text-sm ${
                   isCheckingAnswer
                     ? "border-amber-200 bg-amber-50 text-amber-700"
@@ -2107,6 +2097,12 @@ const Interview = () => {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={startListening}
+                aria-pressed={isListening}
+                aria-label={
+                  isListening
+                    ? "Stop listening to my answer"
+                    : "Start listening to my answer"
+                }
                 disabled={
                   !speechSupported ||
                   !questionFinished ||
