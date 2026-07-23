@@ -15,6 +15,11 @@ import {
   FiUsers,
 } from "react-icons/fi";
 
+// Read the backend URL from the Vite environment variable.
+// Remove trailing slashes to prevent URLs such as:
+// https://backend.com//api/interview/generate-questions
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
+
 const ResumeAnalysis = () => {
   const navigate = useNavigate();
 
@@ -37,14 +42,15 @@ const ResumeAnalysis = () => {
     }
   }, []);
 
-  // Read all interview configuration selected on CompanySelection page
+  // Read interview configuration
   const interviewConfig = useMemo(() => {
     try {
       const savedConfig = localStorage.getItem("interviewConfig");
 
       if (!savedConfig) {
         return {
-          company: localStorage.getItem("selectedCompany") || "General",
+          company:
+            localStorage.getItem("selectedCompany") || "General",
           targetRole: "Software Engineer",
           difficulty: "Medium",
           experienceLevel: "Fresher",
@@ -66,22 +72,25 @@ const ResumeAnalysis = () => {
           parsedConfig.role ||
           "Software Engineer",
 
-        difficulty:
-          parsedConfig.difficulty ||
-          "Medium",
+        difficulty: parsedConfig.difficulty || "Medium",
 
         experienceLevel:
           parsedConfig.experienceLevel ||
           parsedConfig.experience ||
           "Fresher",
 
-        questionCount: Number(parsedConfig.questionCount) || 5,
+        questionCount:
+          Number(parsedConfig.questionCount) || 5,
       };
     } catch (readError) {
-      console.error("Could not read interview configuration:", readError);
+      console.error(
+        "Could not read interview configuration:",
+        readError
+      );
 
       return {
-        company: localStorage.getItem("selectedCompany") || "General",
+        company:
+          localStorage.getItem("selectedCompany") || "General",
         targetRole: "Software Engineer",
         difficulty: "Medium",
         experienceLevel: "Fresher",
@@ -110,17 +119,36 @@ const ResumeAnalysis = () => {
       return;
     }
 
+    if (!API_URL) {
+      setError(
+        "Backend URL is not configured. Add VITE_API_URL in your Vercel environment variables."
+      );
+
+      console.error(
+        "Missing VITE_API_URL environment variable."
+      );
+
+      return;
+    }
+
     try {
       setIsGenerating(true);
       setError("");
 
-      console.log("Sending resume information to Gemini...");
+      console.log("Sending resume information to backend...");
+      console.log("Backend URL:", API_URL);
       console.log("Selected company:", selectedCompany);
-      console.log("Interview configuration:", interviewConfig);
-      console.log("Requested question count:", questionCount);
+      console.log(
+        "Interview configuration:",
+        interviewConfig
+      );
+      console.log(
+        "Requested question count:",
+        questionCount
+      );
 
       const response = await fetch(
-        "http://import.meta.env.VITE_API_URL/api/interview/generate-questions",
+        `${API_URL}/api/interview/generate-questions`,
         {
           method: "POST",
 
@@ -139,7 +167,8 @@ const ResumeAnalysis = () => {
 
             difficulty: interviewConfig.difficulty,
 
-            experienceLevel: interviewConfig.experienceLevel,
+            experienceLevel:
+              interviewConfig.experienceLevel,
 
             questionCount,
           }),
@@ -151,15 +180,25 @@ const ResumeAnalysis = () => {
       try {
         data = await response.json();
       } catch (jsonError) {
-        console.error("Could not parse backend response:", jsonError);
+        console.error(
+          "Could not parse backend response:",
+          jsonError
+        );
 
         throw new Error(
           "The server returned an invalid response. Please check your backend."
         );
       }
 
-      console.log("Interview API status:", response.status);
-      console.log("Generated interview data:", data);
+      console.log(
+        "Interview API status:",
+        response.status
+      );
+
+      console.log(
+        "Generated interview data:",
+        data
+      );
 
       if (!response.ok) {
         throw new Error(
@@ -174,15 +213,18 @@ const ResumeAnalysis = () => {
         !Array.isArray(data.interview.questions) ||
         data.interview.questions.length === 0
       ) {
-        throw new Error("No interview questions were generated.");
+        throw new Error(
+          "No interview questions were generated."
+        );
       }
 
-      const normalizedQuestions = data.interview.questions
-        .slice(0, questionCount)
-        .map((question, index) => ({
-          ...question,
-          id: question.id || index + 1,
-        }));
+      const normalizedQuestions =
+        data.interview.questions
+          .slice(0, questionCount)
+          .map((question, index) => ({
+            ...question,
+            id: question.id || index + 1,
+          }));
 
       const normalizedInterview = {
         ...data.interview,
@@ -227,7 +269,6 @@ const ResumeAnalysis = () => {
         JSON.stringify(normalizedInterview)
       );
 
-      // Keep the configuration saved for the Interview and Result pages
       localStorage.setItem(
         "interviewConfig",
         JSON.stringify({
@@ -252,7 +293,10 @@ const ResumeAnalysis = () => {
         normalizedInterview.company
       );
 
-      if (normalizedInterview.questions.length !== questionCount) {
+      if (
+        normalizedInterview.questions.length !==
+        questionCount
+      ) {
         console.warn(
           `Requested ${questionCount} questions, but backend returned ${normalizedInterview.questions.length}.`
         );
@@ -260,12 +304,21 @@ const ResumeAnalysis = () => {
 
       navigate("/interview");
     } catch (requestError) {
-      console.error("Interview generation failed:", requestError);
-
-      setError(
-        requestError.message ||
-          "Could not prepare your interview. Please try again."
+      console.error(
+        "Interview generation failed:",
+        requestError
       );
+
+      if (requestError instanceof TypeError) {
+        setError(
+          "Could not connect to the backend. Check the Render server, Vercel environment variable and CORS settings."
+        );
+      } else {
+        setError(
+          requestError.message ||
+            "Could not prepare your interview. Please try again."
+        );
+      }
     } finally {
       setIsGenerating(false);
     }
@@ -288,8 +341,8 @@ const ResumeAnalysis = () => {
           </h1>
 
           <p className="mt-3 text-sm leading-6 text-slate-500">
-            Upload your resume before preparing a personalized mock
-            interview.
+            Upload your resume before preparing a
+            personalized mock interview.
           </p>
 
           <button
@@ -303,7 +356,8 @@ const ResumeAnalysis = () => {
     );
   }
 
-  const fileName = resumeData.fileName || "Your resume.pdf";
+  const fileName =
+    resumeData.fileName || "Your resume.pdf";
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f2f5fa] text-slate-900">
@@ -326,7 +380,9 @@ const ResumeAnalysis = () => {
             </div>
 
             <div className="text-left">
-              <p className="font-bold tracking-tight">PrepAI</p>
+              <p className="font-bold tracking-tight">
+                PrepAI
+              </p>
 
               <p className="text-xs text-slate-500">
                 Interview preparation
@@ -369,9 +425,10 @@ const ResumeAnalysis = () => {
                 </h1>
 
                 <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500">
-                  PrepAI has reviewed your resume and is ready to create
-                  a {selectedCompany}-focused interview based on your
-                  projects, technical skills and experience.
+                  PrepAI has reviewed your resume and is
+                  ready to create a {selectedCompany}
+                  -focused interview based on your projects,
+                  technical skills and experience.
                 </p>
               </div>
 
@@ -393,7 +450,8 @@ const ResumeAnalysis = () => {
                   </p>
 
                   <p className="mt-1 text-sm text-slate-500">
-                    Ready for personalized interview preparation
+                    Ready for personalized interview
+                    preparation
                   </p>
                 </div>
 
@@ -482,8 +540,8 @@ const ResumeAnalysis = () => {
                 </h2>
 
                 <p className="mt-1 text-sm text-slate-500">
-                  Questions will be selected from the most relevant parts
-                  of your professional profile.
+                  Questions will be selected from the most
+                  relevant parts of your professional profile.
                 </p>
               </div>
 
@@ -557,9 +615,10 @@ const ResumeAnalysis = () => {
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-white/60">
-              PrepAI will create {questionCount} {selectedCompany}-focused
-              questions for the {interviewConfig.targetRole} role based on
-              your projects, skills, achievements and professional
+              PrepAI will create {questionCount}{" "}
+              {selectedCompany}-focused questions for the{" "}
+              {interviewConfig.targetRole} role based on your
+              projects, skills, achievements and professional
               experience.
             </p>
 
@@ -594,7 +653,8 @@ const ResumeAnalysis = () => {
                   </p>
 
                   <p className="mt-1 text-xs leading-5 text-white/50">
-                    {questionCount} questions with one minute per answer
+                    {questionCount} questions with one minute
+                    per answer
                   </p>
                 </div>
 
@@ -626,6 +686,7 @@ const ResumeAnalysis = () => {
             )}
 
             <button
+              type="button"
               onClick={generateInterview}
               disabled={isGenerating}
               className="group mt-8 flex w-full items-center justify-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-semibold text-slate-900 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-65"
@@ -647,8 +708,8 @@ const ResumeAnalysis = () => {
               <FiShield className="mt-0.5 shrink-0 text-blue-300" />
 
               <p className="text-xs leading-5 text-white/50">
-                Your questions are generated using your resume and selected
-                interview configuration.
+                Your questions are generated using your
+                resume and selected interview configuration.
               </p>
             </div>
           </motion.aside>
