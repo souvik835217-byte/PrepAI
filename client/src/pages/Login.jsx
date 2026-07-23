@@ -7,9 +7,11 @@ import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { FaRobot } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useAuth } from "../context/authContextStore";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -34,12 +36,13 @@ const Login = () => {
 
       // Call popup directly from the button click.
       // Do not await signOut() before this.
-      await signInWithPopup(
+      const result = await signInWithPopup(
         auth,
         provider
       );
 
-      navigate("/dashboard");
+      setUser(result.user);
+      navigate("/dashboard", { replace: true });
     } catch (error) {
       console.error(
         "Google login error:",

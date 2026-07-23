@@ -294,7 +294,8 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/dashboard")}
+            aria-label="Go to dashboard"
             className="flex items-center gap-3"
           >
             <div className="w-10 h-10 rounded-xl bg-slate-950 text-white flex items-center justify-center font-bold">
