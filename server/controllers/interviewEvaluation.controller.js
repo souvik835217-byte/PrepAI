@@ -7,10 +7,6 @@ const normalizeScore = (value) => {
     return 0;
   }
 
-  if (score >= 0 && score <= 10) {
-    return Math.round(score * 10);
-  }
-
   return Math.max(0, Math.min(100, Math.round(score)));
 };
 
