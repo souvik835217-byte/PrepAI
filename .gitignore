@@ -1,0 +1,5 @@
+# Generated runtime and test artifacts
+/tmp/
+/server/*.log
+/server/test-code.json
+

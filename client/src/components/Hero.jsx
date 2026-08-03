@@ -20,38 +20,35 @@ function Hero() {
   };
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 text-white px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-
-        {/* Left */}
+    <section className="flex min-h-[90vh] items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 px-6 text-white">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-purple-400 font-semibold mb-4">
-            🚀 AI Powered Interview Preparation
+          <p className="mb-4 font-semibold text-purple-400">
+            PrepAI — Learn. Practice. Compete. Succeed.
           </p>
 
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-            Practice Smarter.
+          <h1 className="text-5xl font-extrabold leading-tight md:text-6xl">
+            Prepare Smarter.
             <br />
             <span className="text-purple-400">
-              Get Hired Faster.
+              Practice DSA. Ace Interviews.
             </span>
           </h1>
 
-          <p className="mt-6 text-gray-300 text-lg">
-            Upload your resume, let AI generate personalized interview
-            questions, practice with voice interaction, and receive instant
-            feedback.
+          <p className="mt-6 text-lg text-gray-300">
+            Analyze your resume, master coding problems, compete in contests,
+            and practice AI-powered interviews—all in one platform.
           </p>
 
-          <div className="flex gap-4 mt-8">
+          <div className="mt-8 flex gap-4">
             <button
               type="button"
               onClick={handleStartFree}
-              className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-xl font-semibold"
+              className="rounded-xl bg-purple-600 px-6 py-3 font-semibold hover:bg-purple-700"
             >
               Start Free
             </button>
@@ -59,14 +56,13 @@ function Hero() {
             <button
               type="button"
               onClick={handleLearnMore}
-              className="border border-gray-400 hover:border-white px-6 py-3 rounded-xl"
+              className="rounded-xl border border-gray-400 px-6 py-3 hover:border-white"
             >
               Learn More
             </button>
           </div>
         </motion.div>
 
-        {/* Right */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -77,7 +73,6 @@ function Hero() {
             🤖
           </div>
         </motion.div>
-
       </div>
     </section>
   );

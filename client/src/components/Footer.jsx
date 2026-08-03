@@ -17,8 +17,8 @@ function Footer() {
             </h2>
 
             <p className="text-gray-400 mt-4 leading-7">
-              AI-powered interview preparation platform helping students
-              improve confidence, communication, and technical skills.
+              Practice DSA, compete in coding contests, analyze your resume,
+              and prepare for interviews with AI—all in one platform.
             </p>
           </div>
 

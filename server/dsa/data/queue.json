@@ -1,0 +1,568 @@
+[
+  {
+    "id": "implement-stack-using-queues",
+    "title": "Implement Stack using Queues",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Easy",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Implement a last-in-first-out stack using only standard queue operations.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "5\npush 1\npush 2\ntop\npop\nempty",
+        "output": "2\n2\nfalse",
+        "explanation": "The queue operations reproduce last-in-first-out behavior."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Implement Stack using Queues and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Implement Stack using Queues, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Implement Stack using Queues, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Implement Stack using Queues, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\npush 1\npush 2\ntop\npop\nempty",
+        "expectedOutput": "2\n2\nfalse"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "implement-queue-using-stacks",
+    "title": "Implement Queue using Stacks",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Implement a first-in-first-out queue using only standard stack operations.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "5\npush 1\npush 2\npeek\npop\nempty",
+        "output": "1\n1\nfalse",
+        "explanation": "The stacks reproduce first-in-first-out behavior."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Implement Queue using Stacks and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Implement Queue using Stacks, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Implement Queue using Stacks, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Implement Queue using Stacks, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\npush 1\npush 2\npeek\npop\nempty",
+        "expectedOutput": "1\n1\nfalse"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "design-circular-queue",
+    "title": "Design Circular Queue",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Design a fixed-capacity circular queue supporting insertion, deletion, front, rear, empty, and full operations.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "3 9\nenQueue 1\nenQueue 2\nenQueue 3\nenQueue 4\nRear\nisFull\ndeQueue\nenQueue 4\nRear",
+        "output": "true\ntrue\ntrue\nfalse\n3\ntrue\ntrue\ntrue\n4",
+        "explanation": "The fourth insertion initially fails because the queue is full."
+      }
+    ],
+    "functionName": "MyCircularQueue",
+    "starterCode": {
+      "cpp": "class MyCircularQueue {\npublic:\n    MyCircularQueue(int k) {\n    }\n\n    bool enQueue(int value) {\n        return false;\n    }\n\n    bool deQueue() {\n        return false;\n    }\n\n    int Front() {\n        return -1;\n    }\n\n    int Rear() {\n        return -1;\n    }\n\n    bool isEmpty() {\n        return true;\n    }\n\n    bool isFull() {\n        return false;\n    }\n};",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Design Circular Queue, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Design Circular Queue, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Design Circular Queue, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3 9\nenQueue 1\nenQueue 2\nenQueue 3\nenQueue 4\nRear\nisFull\ndeQueue\nenQueue 4\nRear",
+        "expectedOutput": "true\ntrue\ntrue\nfalse\n3\ntrue\ntrue\ntrue\n4"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "function"
+  },
+  {
+    "id": "time-needed-to-buy-tickets",
+    "title": "Time Needed to Buy Tickets",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "People repeatedly buy one ticket from the front of a queue. Return the seconds needed for the person at index k to finish.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "3\n2 3 2\n2",
+        "output": "6",
+        "explanation": "The person at index 2 finishes buying tickets after 6 seconds."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Time Needed to Buy Tickets and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Time Needed to Buy Tickets, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Time Needed to Buy Tickets, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Time Needed to Buy Tickets, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n2 3 2\n2",
+        "expectedOutput": "6"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "first-unique-number-in-a-stream",
+    "title": "First Unique Number in a Stream",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "For every prefix of a character stream, report the first non-repeating character or # when no such character exists.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "aabc\n",
+        "output": "a#bb",
+        "explanation": "After each character, report the first non-repeating character or #."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve First Unique Number in a Stream and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve First Unique Number in a Stream, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve First Unique Number in a Stream, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve First Unique Number in a Stream, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "aabc\n",
+        "expectedOutput": "a#bb"
+      },
+      {
+        "stdin": "zz\n",
+        "expectedOutput": "z#"
+      },
+      {
+        "stdin": "abcabc\n",
+        "expectedOutput": "aaabc#"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "dota2-senate",
+    "title": "Dota2 Senate",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Simulate senators banning opponents in cyclic order and return which party eventually retains the right to announce victory.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "RDD\n",
+        "output": "Dire",
+        "explanation": "The first Radiant senator bans one Dire senator, but Dire ultimately wins."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Dota2 Senate and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Dota2 Senate, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Dota2 Senate, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Dota2 Senate, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "RD\n",
+        "expectedOutput": "Radiant"
+      },
+      {
+        "stdin": "RDD\n",
+        "expectedOutput": "Dire"
+      },
+      {
+        "stdin": "RRDDD\n",
+        "expectedOutput": "Radiant"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "rotting-oranges",
+    "title": "Rotting Oranges",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Each minute, rotten oranges infect adjacent fresh oranges. Return the minimum minutes until none remain, or -1 if impossible.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "3 3\n2 1 1\n1 1 0\n0 1 1",
+        "output": "4",
+        "explanation": "All fresh oranges become rotten after four minutes."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Rotting Oranges and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Rotting Oranges, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Rotting Oranges, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Rotting Oranges, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3 3\n2 1 1\n1 1 0\n0 1 1",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "perfect-squares",
+    "title": "Perfect Squares (BFS)",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given n, return the fewest perfect-square numbers whose sum equals n.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "12",
+        "output": "3",
+        "explanation": "12 = 4 + 4 + 4."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Perfect Squares (BFS) and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Perfect Squares (BFS), and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Perfect Squares (BFS), and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Perfect Squares (BFS), and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "12",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "sliding-window-maximum-deque",
+    "title": "Sliding Window Maximum",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Return the maximum value in every contiguous window of size k as the window moves across the array.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "8\n1 3 -1 -3 5 3 6 7\n3",
+        "output": "[3,3,5,5,6,7]",
+        "explanation": "Each output value is the maximum of one window of size 3."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Sliding Window Maximum and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Sliding Window Maximum, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Sliding Window Maximum, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Sliding Window Maximum, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "8\n1 3 -1 -3 5 3 6 7\n3",
+        "expectedOutput": "[3,3,5,5,6,7]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "shortest-subarray-k",
+    "title": "Shortest Subarray with Sum at Least K",
+    "topic": "queue",
+    "topicName": "Queue",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Return the length of the shortest non-empty contiguous subarray whose sum is at least k, or -1 if none exists.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Inputs contain only values and operations described in the statement."
+    ],
+    "examples": [
+      {
+        "input": "3\n2 -1 2\n3",
+        "output": "3",
+        "explanation": "The complete array is the shortest subarray with sum at least 3."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Shortest Subarray with Sum at Least K and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Shortest Subarray with Sum at Least K, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Shortest Subarray with Sum at Least K, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Shortest Subarray with Sum at Least K, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n2 -1 2\n3",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Use a queue or deque to preserve processing order and discard states that can no longer affect the result."
+    ],
+    "editorial": {
+      "approach": "Use a queue or deque to preserve processing order and discard states that can no longer affect the result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  }
+]

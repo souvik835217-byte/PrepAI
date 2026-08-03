@@ -1,0 +1,547 @@
+[
+  {
+    "id": "climbing-stairs",
+    "title": "Climbing Stairs",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Easy",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "You may climb one or two steps at a time. Return the number of distinct ways to reach the nth step.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "5",
+        "output": "8",
+        "explanation": "There are eight distinct ways to reach the fifth step using jumps of one or two."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Climbing Stairs and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Climbing Stairs, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Climbing Stairs, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Climbing Stairs, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5",
+        "expectedOutput": "8"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "house-robber",
+    "title": "House Robber",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the maximum money obtainable from houses in a row when adjacent houses cannot both be robbed.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "4\n1 2 3 1",
+        "output": "4",
+        "explanation": "Rob houses 1 and 3 for a total of 4."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve House Robber and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve House Robber, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve House Robber, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve House Robber, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 2 3 1",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "coin-change",
+    "title": "Coin Change",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Given coin denominations and a target amount, return the fewest coins needed to make that amount. Return -1 if the amount cannot be formed. Each denomination may be used any number of times.",
+    "inputFormat": [
+      "First line: integer n, the number of denominations",
+      "Second line: n space-separated coin values",
+      "Third line: target amount"
+    ],
+    "outputFormat": "Print the minimum number of coins, or -1.",
+    "constraints": [
+      "1 <= n <= 12",
+      "1 <= coins[i] <= 2147483647",
+      "0 <= amount <= 10000"
+    ],
+    "examples": [
+      {
+        "input": "3\n1 2 5\n11",
+        "output": "3",
+        "explanation": "11 can be formed with 5 + 5 + 1 using three coins."
+      }
+    ],
+    "functionName": "coinChange",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int coinChange(vector<int>& coins, int amount) {\n        // Write your solution here\n        return -1;\n    }\n};"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n1 2 5\n11",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n2\n3",
+        "expectedOutput": "-1"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "longest-increasing-subsequence",
+    "title": "Longest Increasing Subsequence",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the length of the longest strictly increasing subsequence in the array.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "8\n10 9 2 5 3 7 101 18",
+        "output": "4",
+        "explanation": "One longest increasing subsequence is [2,3,7,101]."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Longest Increasing Subsequence and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Longest Increasing Subsequence, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Longest Increasing Subsequence, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Longest Increasing Subsequence, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "8\n10 9 2 5 3 7 101 18",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "partition-equal-subset-sum",
+    "title": "Partition Equal Subset Sum",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return whether the array can be divided into two subsets having equal sums.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "4\n1 5 11 5",
+        "output": "true",
+        "explanation": "The array can be partitioned into [1,5,5] and [11]."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Partition Equal Subset Sum and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Partition Equal Subset Sum, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Partition Equal Subset Sum, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Partition Equal Subset Sum, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 5 11 5",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "edit-distance-dp",
+    "title": "Edit Distance",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum insertions, deletions, and replacements needed to transform word1 into word2.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "horse\nros",
+        "output": "3",
+        "explanation": "Replace h with r, remove r, and remove e."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Edit Distance and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Edit Distance, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Edit Distance, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Edit Distance, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "horse\nros",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "distinct-subsequences",
+    "title": "Distinct Subsequences",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Count how many distinct subsequences of s equal t while preserving character order.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "rabbbit\nrabbit",
+        "output": "3",
+        "explanation": "There are three ways to remove one b and form the target."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Distinct Subsequences and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Distinct Subsequences, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Distinct Subsequences, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Distinct Subsequences, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "rabbbit\nrabbit",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "burst-balloons",
+    "title": "Burst Balloons",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Choose an order for bursting balloons and return the maximum coins obtainable from adjacent-value products.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "4\n3 1 5 8",
+        "output": "167",
+        "explanation": "An optimal bursting order produces 167 coins."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Burst Balloons and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Burst Balloons, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Burst Balloons, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Burst Balloons, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n3 1 5 8",
+        "expectedOutput": "167"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "regular-expression-matching-dp",
+    "title": "Regular Expression Matching",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return whether the entire string matches a pattern where . matches one character and * repeats the preceding element zero or more times.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "aab\nc*a*b",
+        "output": "true",
+        "explanation": "c* matches empty, a* matches aa, and b matches b."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Regular Expression Matching and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Regular Expression Matching, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Regular Expression Matching, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Regular Expression Matching, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "aab\nc*a*b",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "palindrome-partitioning-ii",
+    "title": "Palindrome Partitioning II",
+    "topic": "dp",
+    "topicName": "Dynamic Programming",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum cuts needed to partition a string so every resulting substring is a palindrome.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Use dynamic programming where repeated subproblems occur."
+    ],
+    "examples": [
+      {
+        "input": "aab",
+        "output": "1",
+        "explanation": "Split as aa | b, requiring one cut."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Palindrome Partitioning II and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Palindrome Partitioning II, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Palindrome Partitioning II, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Palindrome Partitioning II, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "aab",
+        "expectedOutput": "1"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states."
+    ],
+    "editorial": {
+      "approach": "Define a state that captures the smallest reusable subproblem, then build or memoize transitions without recomputing states.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  }
+]

@@ -6,6 +6,7 @@ import CompanySelection from "../pages/CompanySelection";
 import EvaluatingInterview from "../pages/EvaluatingInterview";
 import InterviewSetup from "../pages/InterviewSetup";
 import PreparingInterview from "../pages/PreparingInterview";
+import DSARoutes from "../dsa/routes/DSARoutes";
 
 const Home = lazy(() => import("../pages/Home"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -83,6 +84,7 @@ export default function AppRoutes() {
           path="/interview/result"
           element={requireAuth(<Result />)}
         />
+        <Route path="/dsa/*" element={<DSARoutes />} />
       </Routes>
     </Suspense>
   );

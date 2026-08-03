@@ -442,6 +442,14 @@ const Dashboard = () => {
                   View history
                   <FaArrowRight />
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/dsa")}
+                  className="rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+                >
+                  Open DSA Hub
+                </button>
               </div>
             </div>
 

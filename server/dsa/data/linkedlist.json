@@ -1,0 +1,629 @@
+[
+  {
+    "id": "reverse-linked-list-ii",
+    "title": "Reverse Linked List II",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Adobe"
+    ],
+    "description": "Reverse the nodes of a singly linked list from position left to position right, using one-based indexing, and return the resulting list.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated node values",
+      "Third line: integers left and right"
+    ],
+    "outputFormat": "Print the resulting linked list values separated by spaces.",
+    "constraints": [
+      "1 <= n <= 100000",
+      "1 <= left <= right <= n"
+    ],
+    "examples": [
+      {
+        "input": "5\n1 2 3 4 5\n2 4",
+        "output": "1 4 3 2 5",
+        "explanation": "Nodes from positions 2 through 4 are reversed."
+      }
+    ],
+    "functionName": "reverseBetween",
+    "starterCode": {
+      "cpp": "ListNode* reverseBetween(ListNode* head, int left, int right) {\n    // Write your code here\n}",
+      "java": "static ListNode reverseBetween(ListNode head, int left, int right) {\n    // Write your code here\n    return head;\n}",
+      "python": "def reverse_between(head, left, right):\n    # Write your code here\n    pass",
+      "javascript": "function reverseBetween(head, left, right) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n1 2 3 4 5\n2 4",
+        "expectedOutput": "1 4 3 2 5"
+      },
+      {
+        "stdin": "1\n5\n1 1",
+        "expectedOutput": "5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "4\n1 2 3 4\n1 4",
+        "expectedOutput": "4 3 2 1"
+      },
+      {
+        "stdin": "6\n1 2 3 4 5 6\n3 5",
+        "expectedOutput": "1 2 5 4 3 6"
+      },
+      {
+        "stdin": "2\n7 8\n1 2",
+        "expectedOutput": "8 7"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "remove-nth-node-from-end",
+    "title": "Remove Nth Node From End",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Remove the nth node from the end of a singly linked list and return the remaining list.",
+    "inputFormat": [
+      "First line: integer length",
+      "Second line: linked list values",
+      "Third line: integer n"
+    ],
+    "outputFormat": "Print the remaining linked list values separated by spaces. Print EMPTY if no nodes remain.",
+    "constraints": [
+      "1 <= length <= 100000",
+      "1 <= n <= length"
+    ],
+    "examples": [
+      {
+        "input": "5\n1 2 3 4 5\n2",
+        "output": "1 2 3 5",
+        "explanation": "The second node from the end contains 4."
+      }
+    ],
+    "functionName": "removeNthFromEnd",
+    "starterCode": {
+      "cpp": "ListNode* removeNthFromEnd(ListNode* head, int n) {\n    // Write your code here\n}",
+      "java": "static ListNode removeNthFromEnd(ListNode head, int n) {\n    // Write your code here\n    return head;\n}",
+      "python": "def remove_nth_from_end(head, n):\n    # Write your code here\n    pass",
+      "javascript": "function removeNthFromEnd(head, n) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n1 2 3 4 5\n2",
+        "expectedOutput": "1 2 3 5"
+      },
+      {
+        "stdin": "1\n1\n1",
+        "expectedOutput": "EMPTY"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "2\n1 2\n1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "2\n1 2\n2",
+        "expectedOutput": "2"
+      },
+      {
+        "stdin": "6\n4 8 15 16 23 42\n3",
+        "expectedOutput": "4 8 15 23 42"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "add-two-numbers",
+    "title": "Add Two Numbers",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ],
+    "description": "Two non-empty linked lists represent non-negative integers in reverse digit order. Add them and return the result as a reversed linked list.",
+    "inputFormat": [
+      "First line: integer n1",
+      "Second line: n1 digits",
+      "Third line: integer n2",
+      "Fourth line: n2 digits"
+    ],
+    "outputFormat": "Print the result digits in reverse order separated by spaces.",
+    "constraints": [
+      "1 <= n1,n2 <= 100000",
+      "0 <= digit <= 9",
+      "No leading zero except for zero itself"
+    ],
+    "examples": [
+      {
+        "input": "3\n2 4 3\n3\n5 6 4",
+        "output": "7 0 8",
+        "explanation": "342 + 465 = 807."
+      }
+    ],
+    "functionName": "addTwoNumbers",
+    "starterCode": {
+      "cpp": "ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n    // Write your code here\n}",
+      "java": "static ListNode addTwoNumbers(ListNode l1, ListNode l2) {\n    // Write your code here\n    return null;\n}",
+      "python": "def add_two_numbers(l1, l2):\n    # Write your code here\n    pass",
+      "javascript": "function addTwoNumbers(l1, l2) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n2 4 3\n3\n5 6 4",
+        "expectedOutput": "7 0 8"
+      },
+      {
+        "stdin": "1\n0\n1\n0",
+        "expectedOutput": "0"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "7\n9 9 9 9 9 9 9\n4\n9 9 9 9",
+        "expectedOutput": "8 9 9 9 0 0 0 1"
+      },
+      {
+        "stdin": "1\n5\n1\n5",
+        "expectedOutput": "0 1"
+      },
+      {
+        "stdin": "2\n1 8\n1\n0",
+        "expectedOutput": "1 8"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "reorder-list",
+    "title": "Reorder List",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Reorder a linked list from L0 â†’ L1 â†’ ... â†’ Ln into L0 â†’ Ln â†’ L1 â†’ Ln-1 â†’ L2 â†’ Ln-2 and so on.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n linked list values"
+    ],
+    "outputFormat": "Print the reordered list values separated by spaces.",
+    "constraints": [
+      "1 <= n <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "4\n1 2 3 4",
+        "output": "1 4 2 3",
+        "explanation": "Take alternately from the front and the back."
+      }
+    ],
+    "functionName": "reorderList",
+    "starterCode": {
+      "cpp": "void reorderList(ListNode* head) {\n    // Write your code here\n}",
+      "java": "static void reorderList(ListNode head) {\n    // Write your code here\n}",
+      "python": "def reorder_list(head):\n    # Write your code here\n    pass",
+      "javascript": "function reorderList(head) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 2 3 4",
+        "expectedOutput": "1 4 2 3"
+      },
+      {
+        "stdin": "5\n1 2 3 4 5",
+        "expectedOutput": "1 5 2 4 3"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n9",
+        "expectedOutput": "9"
+      },
+      {
+        "stdin": "2\n1 2",
+        "expectedOutput": "1 2"
+      },
+      {
+        "stdin": "6\n10 20 30 40 50 60",
+        "expectedOutput": "10 60 20 50 30 40"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "linked-list-cycle-ii",
+    "title": "Linked List Cycle II",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Google"
+    ],
+    "description": "Return the zero-based index of the node where a linked-list cycle begins. Return -1 if the list has no cycle.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n node values",
+      "Third line: integer pos, the index connected to by the last node, or -1"
+    ],
+    "outputFormat": "Print the cycle-entry index or -1.",
+    "constraints": [
+      "0 <= n <= 100000",
+      "-1 <= pos < n"
+    ],
+    "examples": [
+      {
+        "input": "4\n3 2 0 -4\n1",
+        "output": "1",
+        "explanation": "The tail connects to the node at index 1."
+      }
+    ],
+    "functionName": "detectCycle",
+    "starterCode": {
+      "cpp": "ListNode* detectCycle(ListNode* head) {\n    // Write your code here\n}",
+      "java": "static ListNode detectCycle(ListNode head) {\n    // Write your code here\n    return null;\n}",
+      "python": "def detect_cycle(head):\n    # Write your code here\n    pass",
+      "javascript": "function detectCycle(head) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n3 2 0 -4\n1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "2\n1 2\n0",
+        "expectedOutput": "0"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n1\n-1",
+        "expectedOutput": "-1"
+      },
+      {
+        "stdin": "3\n1 2 3\n-1",
+        "expectedOutput": "-1"
+      },
+      {
+        "stdin": "5\n1 2 3 4 5\n2",
+        "expectedOutput": "2"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "copy-list-with-random-pointer",
+    "title": "Copy List with Random Pointer",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ],
+    "description": "Create a deep copy of a linked list in which each node has next and random pointers. The random pointer may point to any node or null.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n node values",
+      "Third line: n integers representing random-pointer indices, where -1 means null"
+    ],
+    "outputFormat": "Print copied values on one line and copied random indices on the next line.",
+    "constraints": [
+      "0 <= n <= 100000",
+      "-1 <= randomIndex[i] < n"
+    ],
+    "examples": [
+      {
+        "input": "5\n7 13 11 10 1\n-1 0 4 2 0",
+        "output": "7 13 11 10 1\n-1 0 4 2 0",
+        "explanation": "The copied list has identical values and random relationships but new nodes."
+      }
+    ],
+    "functionName": "copyRandomList",
+    "starterCode": {
+      "cpp": "Node* copyRandomList(Node* head) {\n    // Write your code here\n}",
+      "java": "static Node copyRandomList(Node head) {\n    // Write your code here\n    return null;\n}",
+      "python": "def copy_random_list(head):\n    # Write your code here\n    pass",
+      "javascript": "function copyRandomList(head) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n7 13 11 10 1\n-1 0 4 2 0",
+        "expectedOutput": "7 13 11 10 1\n-1 0 4 2 0"
+      },
+      {
+        "stdin": "1\n1\n0",
+        "expectedOutput": "1\n0"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0\n\n",
+        "expectedOutput": "EMPTY"
+      },
+      {
+        "stdin": "2\n1 2\n1 1",
+        "expectedOutput": "1 2\n1 1"
+      },
+      {
+        "stdin": "3\n3 3 3\n-1 -1 -1",
+        "expectedOutput": "3 3 3\n-1 -1 -1"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "lru-cache",
+    "title": "LRU Cache",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Design a Least Recently Used cache supporting get and put operations in average O(1) time.",
+    "inputFormat": [
+      "First line: capacity and number of operations",
+      "Next lines: GET key or PUT key value"
+    ],
+    "outputFormat": "For every GET operation, print the returned value on its own line.",
+    "constraints": [
+      "1 <= capacity <= 10000",
+      "1 <= operations <= 200000"
+    ],
+    "examples": [
+      {
+        "input": "2 9\nPUT 1 1\nPUT 2 2\nGET 1\nPUT 3 3\nGET 2\nPUT 4 4\nGET 1\nGET 3\nGET 4",
+        "output": "1\n-1\n-1\n3\n4",
+        "explanation": "Least-recently-used entries are evicted when capacity is exceeded."
+      }
+    ],
+    "functionName": "LRUCache",
+    "starterCode": {
+      "cpp": "class LRUCache {\npublic:\n    LRUCache(int capacity) {\n    }\n\n    int get(int key) {\n        return -1;\n    }\n\n    void put(int key, int value) {\n    }\n};",
+      "java": "class LRUCache {\n    public LRUCache(int capacity) {\n    }\n\n    public int get(int key) {\n        return -1;\n    }\n\n    public void put(int key, int value) {\n    }\n}",
+      "python": "class LRUCache:\n    def __init__(self, capacity):\n        pass\n\n    def get(self, key):\n        pass\n\n    def put(self, key, value):\n        pass",
+      "javascript": "class LRUCache {\n  constructor(capacity) {\n  }\n\n  get(key) {\n    return -1;\n  }\n\n  put(key, value) {\n  }\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "2 9\nPUT 1 1\nPUT 2 2\nGET 1\nPUT 3 3\nGET 2\nPUT 4 4\nGET 1\nGET 3\nGET 4",
+        "expectedOutput": "1\n-1\n-1\n3\n4"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1 5\nPUT 1 10\nGET 1\nPUT 2 20\nGET 1\nGET 2",
+        "expectedOutput": "10\n-1\n20"
+      },
+      {
+        "stdin": "2 6\nPUT 1 1\nPUT 2 2\nPUT 1 10\nGET 1\nGET 2\nGET 3",
+        "expectedOutput": "10\n2\n-1"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "reverse-nodes-in-k-group",
+    "title": "Reverse Nodes in K Group",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Reverse linked-list nodes in consecutive groups of size k. Leave the final group unchanged if it contains fewer than k nodes.",
+    "inputFormat": [
+      "First line: integers n and k",
+      "Second line: n linked list values"
+    ],
+    "outputFormat": "Print the resulting list values separated by spaces.",
+    "constraints": [
+      "1 <= k <= n <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "5 2\n1 2 3 4 5",
+        "output": "2 1 4 3 5",
+        "explanation": "Each complete group of two nodes is reversed."
+      }
+    ],
+    "functionName": "reverseKGroup",
+    "starterCode": {
+      "cpp": "ListNode* reverseKGroup(ListNode* head, int k) {\n    // Write your code here\n}",
+      "java": "static ListNode reverseKGroup(ListNode head, int k) {\n    // Write your code here\n    return head;\n}",
+      "python": "def reverse_k_group(head, k):\n    # Write your code here\n    pass",
+      "javascript": "function reverseKGroup(head, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5 2\n1 2 3 4 5",
+        "expectedOutput": "2 1 4 3 5"
+      },
+      {
+        "stdin": "5 3\n1 2 3 4 5",
+        "expectedOutput": "3 2 1 4 5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "4 4\n1 2 3 4",
+        "expectedOutput": "4 3 2 1"
+      },
+      {
+        "stdin": "3 1\n1 2 3",
+        "expectedOutput": "1 2 3"
+      },
+      {
+        "stdin": "6 2\n10 20 30 40 50 60",
+        "expectedOutput": "20 10 40 30 60 50"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "merge-k-sorted-lists",
+    "title": "Merge K Sorted Lists",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Merge k individually sorted linked lists into one sorted linked list.",
+    "inputFormat": [
+      "First line: integer k",
+      "For each list: one line with its length followed by its sorted values"
+    ],
+    "outputFormat": "Print all merged values in non-decreasing order. Print EMPTY when all lists are empty.",
+    "constraints": [
+      "0 <= k <= 10000",
+      "Total number of nodes <= 200000"
+    ],
+    "examples": [
+      {
+        "input": "3\n3 1 4 5\n3 1 3 4\n2 2 6",
+        "output": "1 1 2 3 4 4 5 6",
+        "explanation": "All nodes are merged in sorted order."
+      }
+    ],
+    "functionName": "mergeKLists",
+    "starterCode": {
+      "cpp": "ListNode* mergeKLists(vector<ListNode*>& lists) {\n    // Write your code here\n}",
+      "java": "static ListNode mergeKLists(ListNode[] lists) {\n    // Write your code here\n    return null;\n}",
+      "python": "def merge_k_lists(lists):\n    # Write your code here\n    pass",
+      "javascript": "function mergeKLists(lists) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n3 1 4 5\n3 1 3 4\n2 2 6",
+        "expectedOutput": "1 1 2 3 4 4 5 6"
+      },
+      {
+        "stdin": "1\n0",
+        "expectedOutput": "EMPTY"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0",
+        "expectedOutput": "EMPTY"
+      },
+      {
+        "stdin": "2\n3 -3 -1 2\n4 -2 0 3 5",
+        "expectedOutput": "-3 -2 -1 0 2 3 5"
+      },
+      {
+        "stdin": "4\n1 1\n1 1\n1 1\n1 1",
+        "expectedOutput": "1 1 1 1"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "sort-list",
+    "title": "Sort List",
+    "topic": "linkedlist",
+    "topicName": "Linked List",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Adobe"
+    ],
+    "description": "Sort a linked list in ascending order using O(n log n) time. Prefer constant or logarithmic auxiliary space.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n linked list values"
+    ],
+    "outputFormat": "Print the sorted values separated by spaces.",
+    "constraints": [
+      "0 <= n <= 200000",
+      "-1000000000 <= value <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "4\n4 2 1 3",
+        "output": "1 2 3 4",
+        "explanation": "The nodes are sorted by value."
+      }
+    ],
+    "functionName": "sortList",
+    "starterCode": {
+      "cpp": "ListNode* sortList(ListNode* head) {\n    // Write your code here\n}",
+      "java": "static ListNode sortList(ListNode head) {\n    // Write your code here\n    return head;\n}",
+      "python": "def sort_list(head):\n    # Write your code here\n    pass",
+      "javascript": "function sortList(head) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n4 2 1 3",
+        "expectedOutput": "1 2 3 4"
+      },
+      {
+        "stdin": "5\n-1 5 3 4 0",
+        "expectedOutput": "-1 0 3 4 5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0\n",
+        "expectedOutput": "EMPTY"
+      },
+      {
+        "stdin": "4\n1 1 1 1",
+        "expectedOutput": "1 1 1 1"
+      },
+      {
+        "stdin": "6\n9 7 5 3 1 -1",
+        "expectedOutput": "-1 1 3 5 7 9"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  }
+]

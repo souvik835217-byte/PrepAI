@@ -145,7 +145,7 @@ function Navbar() {
               PrepAI
             </span>
             <span className="text-xs text-gray-500">
-              AI Interview Platform
+              AI-Powered Tech Career Platform
             </span>
           </div>
         </Link>
@@ -160,6 +160,13 @@ function Navbar() {
               {item.label}
             </a>
           ))}
+
+          <Link
+            to="/dsa"
+            className="rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700 transition hover:border-purple-300 hover:bg-purple-100"
+          >
+            Explore DSA
+          </Link>
         </div>
 
         <div

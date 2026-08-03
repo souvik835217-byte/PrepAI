@@ -1,0 +1,358 @@
+[
+  {
+    "id": "single-number",
+    "title": "Single Number",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 83,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Every value in the array appears exactly twice except for one value. Return the value that appears only once. Solve the problem using constant extra space.",
+    "inputFormat": [
+      "First line: integer n, the number of elements",
+      "Second line: n space-separated integers"
+    ],
+    "outputFormat": "Print the integer that appears only once.",
+    "constraints": [
+      "1 <= n <= 100000",
+      "Every element appears twice except for one element",
+      "-1000000000 <= nums[i] <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "3\n2 2 1",
+        "output": "1",
+        "explanation": "The value 1 is the only value that occurs once."
+      },
+      {
+        "input": "5\n4 1 2 1 2",
+        "output": "4",
+        "explanation": "The values 1 and 2 occur twice, leaving 4 as the single number."
+      }
+    ],
+    "functionName": "singleNumber",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n2 2 1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "5\n4 1 2 1 2",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "5\n-1 2 2 3 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "stdin": "7\n0 1 0 2 2 4 4",
+        "expectedOutput": "1"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "number-of-1-bits",
+    "title": "Number of 1 Bits",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 74,
+    "companies": ["Amazon", "Microsoft"],
+    "description": "Given a non-negative integer n, return the number of set bits in its binary representation.",
+    "inputFormat": ["One unsigned integer n"],
+    "outputFormat": "Print the number of set bits.",
+    "constraints": ["0 <= n <= 4294967295"],
+    "examples": [
+      {
+        "input": "11",
+        "output": "3",
+        "explanation": "The binary representation 1011 contains three set bits."
+      }
+    ],
+    "functionName": "hammingWeight",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int hammingWeight(uint32_t n) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "11", "expectedOutput": "3"}],
+    "hiddenTestCases": [
+      {"stdin": "0", "expectedOutput": "0"},
+      {"stdin": "128", "expectedOutput": "1"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "counting-bits",
+    "title": "Counting Bits",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 78,
+    "companies": ["Google", "Amazon"],
+    "description": "Given n, return an array where answer[i] is the number of set bits in i for every integer from 0 through n.",
+    "inputFormat": ["One integer n"],
+    "outputFormat": "Print n + 1 space-separated bit counts.",
+    "constraints": ["0 <= n <= 100000"],
+    "examples": [
+      {
+        "input": "5",
+        "output": "0 1 1 2 1 2",
+        "explanation": "These are the set-bit counts for the integers 0 through 5."
+      }
+    ],
+    "functionName": "countBits",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    vector<int> countBits(int n) {\n        // Write your solution here\n        return {};\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "5", "expectedOutput": "0 1 1 2 1 2"}],
+    "hiddenTestCases": [
+      {"stdin": "2", "expectedOutput": "0 1 1"},
+      {"stdin": "0", "expectedOutput": "0"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "reverse-bits",
+    "title": "Reverse Bits",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 61,
+    "companies": ["Apple", "Amazon"],
+    "description": "Reverse all 32 bits of an unsigned integer and return the resulting unsigned integer.",
+    "inputFormat": ["One unsigned 32-bit integer n"],
+    "outputFormat": "Print the integer represented by the reversed bits.",
+    "constraints": ["0 <= n <= 4294967295"],
+    "examples": [
+      {
+        "input": "43261596",
+        "output": "964176192",
+        "explanation": "Reversing the 32-bit representation produces the output value."
+      }
+    ],
+    "functionName": "reverseBits",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    uint32_t reverseBits(uint32_t n) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "43261596", "expectedOutput": "964176192"}],
+    "hiddenTestCases": [
+      {"stdin": "1", "expectedOutput": "2147483648"},
+      {"stdin": "0", "expectedOutput": "0"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "missing-number",
+    "title": "Missing Number",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 69,
+    "companies": ["Amazon", "Microsoft", "Facebook"],
+    "description": "An array contains n distinct values selected from the range 0 through n. Return the one value missing from the range.",
+    "inputFormat": ["First line: integer n", "Second line: n space-separated integers"],
+    "outputFormat": "Print the missing integer.",
+    "constraints": ["1 <= n <= 100000", "All input values are distinct"],
+    "examples": [
+      {
+        "input": "3\n3 0 1",
+        "output": "2",
+        "explanation": "The value 2 is absent from the range 0 through 3."
+      }
+    ],
+    "functionName": "missingNumber",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int missingNumber(vector<int>& nums) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "3\n3 0 1", "expectedOutput": "2"}],
+    "hiddenTestCases": [
+      {"stdin": "2\n0 1", "expectedOutput": "2"},
+      {"stdin": "1\n1", "expectedOutput": "0"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "power-of-two",
+    "title": "Power of Two",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 49,
+    "companies": ["Google", "Microsoft"],
+    "description": "Return true when the given integer is an exact power of two; otherwise return false.",
+    "inputFormat": ["One signed integer n"],
+    "outputFormat": "Print true or false.",
+    "constraints": ["-2147483648 <= n <= 2147483647"],
+    "examples": [
+      {
+        "input": "16",
+        "output": "true",
+        "explanation": "16 equals 2 raised to the fourth power."
+      }
+    ],
+    "functionName": "isPowerOfTwo",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    bool isPowerOfTwo(int n) {\n        // Write your solution here\n        return false;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "16", "expectedOutput": "true"}],
+    "hiddenTestCases": [
+      {"stdin": "3", "expectedOutput": "false"},
+      {"stdin": "1", "expectedOutput": "true"},
+      {"stdin": "0", "expectedOutput": "false"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "minimum-bit-flips",
+    "title": "Minimum Bit Flips to Convert Number",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Easy",
+    "acceptance": 87,
+    "companies": ["Amazon", "Adobe"],
+    "description": "Given integers start and goal, return the minimum number of individual bit flips needed to convert start into goal.",
+    "inputFormat": ["Two space-separated integers start and goal"],
+    "outputFormat": "Print the minimum number of bit flips.",
+    "constraints": ["0 <= start, goal <= 1000000000"],
+    "examples": [
+      {
+        "input": "10 7",
+        "output": "3",
+        "explanation": "The values differ at three bit positions."
+      }
+    ],
+    "functionName": "minBitFlips",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int minBitFlips(int start, int goal) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "10 7", "expectedOutput": "3"}],
+    "hiddenTestCases": [
+      {"stdin": "3 4", "expectedOutput": "3"},
+      {"stdin": "8 8", "expectedOutput": "0"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "single-number-ii",
+    "title": "Single Number II",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Medium",
+    "acceptance": 64,
+    "companies": ["Google", "Amazon"],
+    "description": "Every array value appears three times except one value that appears once. Return the unique value using constant extra space.",
+    "inputFormat": ["First line: integer n", "Second line: n space-separated integers"],
+    "outputFormat": "Print the value that occurs once.",
+    "constraints": ["1 <= n <= 100000", "Each repeated value occurs exactly three times"],
+    "examples": [
+      {
+        "input": "4\n2 2 3 2",
+        "output": "3",
+        "explanation": "The value 2 occurs three times and 3 occurs once."
+      }
+    ],
+    "functionName": "singleNumber",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "4\n2 2 3 2", "expectedOutput": "3"}],
+    "hiddenTestCases": [
+      {"stdin": "7\n0 1 0 1 0 1 99", "expectedOutput": "99"},
+      {"stdin": "1\n-5", "expectedOutput": "-5"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "bitwise-and-range",
+    "title": "Bitwise AND of Numbers Range",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Medium",
+    "acceptance": 47,
+    "companies": ["Facebook", "Amazon"],
+    "description": "Given left and right, return the bitwise AND of every integer in the inclusive range.",
+    "inputFormat": ["Two space-separated integers left and right"],
+    "outputFormat": "Print the range bitwise AND.",
+    "constraints": ["0 <= left <= right <= 2147483647"],
+    "examples": [
+      {
+        "input": "5 7",
+        "output": "4",
+        "explanation": "5 AND 6 AND 7 equals 4."
+      }
+    ],
+    "functionName": "rangeBitwiseAnd",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int rangeBitwiseAnd(int left, int right) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "5 7", "expectedOutput": "4"}],
+    "hiddenTestCases": [
+      {"stdin": "0 0", "expectedOutput": "0"},
+      {"stdin": "1 2147483647", "expectedOutput": "0"}
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "maximum-xor",
+    "title": "Maximum XOR of Two Numbers",
+    "topic": "bit-manipulation",
+    "topicName": "Bit Manipulation",
+    "difficulty": "Medium",
+    "acceptance": 55,
+    "companies": ["Google", "Amazon", "Microsoft"],
+    "description": "Given an integer array, return the maximum XOR obtainable from any pair of array values.",
+    "inputFormat": ["First line: integer n", "Second line: n space-separated integers"],
+    "outputFormat": "Print the maximum pair XOR.",
+    "constraints": ["2 <= n <= 200000", "0 <= nums[i] <= 2147483647"],
+    "examples": [
+      {
+        "input": "6\n3 10 5 25 2 8",
+        "output": "28",
+        "explanation": "The pair 5 and 25 produces the maximum XOR value 28."
+      }
+    ],
+    "functionName": "findMaximumXOR",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nclass Solution {\npublic:\n    int findMaximumXOR(vector<int>& nums) {\n        // Write your solution here\n        return 0;\n    }\n};"
+    },
+    "publicTestCases": [{"stdin": "6\n3 10 5 25 2 8", "expectedOutput": "28"}],
+    "hiddenTestCases": [
+      {"stdin": "2\n0 0", "expectedOutput": "0"},
+      {"stdin": "3\n2 4 7", "expectedOutput": "6"}
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  }
+]

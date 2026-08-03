@@ -1,0 +1,552 @@
+[
+  {
+    "id": "two-sum-hashing",
+    "title": "Two Sum",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Easy",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return indices of two distinct array elements whose values add to target. Exactly one valid pair exists.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "4\n2 7 11 15\n9",
+        "output": "[0,1]",
+        "explanation": "nums[0] + nums[1] equals the target."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Two Sum and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Two Sum, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Two Sum, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Two Sum, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n2 7 11 15\n9",
+        "expectedOutput": "[0,1]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "contains-duplicate",
+    "title": "Contains Duplicate",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Easy",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return true when any integer appears at least twice in the array, otherwise return false.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "4\n1 2 3 1",
+        "output": "true",
+        "explanation": "The value 1 appears more than once."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Contains Duplicate and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Contains Duplicate, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Contains Duplicate, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Contains Duplicate, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 2 3 1",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "valid-anagram",
+    "title": "Valid Anagram",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Easy",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return whether two strings contain exactly the same characters with the same frequencies.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "anagram\nnagaram",
+        "output": "true",
+        "explanation": "Both strings contain the same character frequencies."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Valid Anagram and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Valid Anagram, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Valid Anagram, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Valid Anagram, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "anagram\nnagaram",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "group-anagrams-hashing",
+    "title": "Group Anagrams",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Group strings that are anagrams of one another; the groups may be returned in any order.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "6\neat\ntea\ntan\nate\nnat\nbat",
+        "output": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]",
+        "explanation": "Words with identical character counts are grouped together; group order may vary."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Group Anagrams and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Group Anagrams, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Group Anagrams, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Group Anagrams, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\neat\ntea\ntan\nate\nnat\nbat",
+        "expectedOutput": "[[\"bat\"],[\"nat\",\"tan\"],[\"ate\",\"eat\",\"tea\"]]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "top-k-frequent-elements-hashing",
+    "title": "Top K Frequent Elements",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the k most frequent values in the array in any order.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "6\n1 1 1 2 2 3\n2",
+        "output": "[1,2]",
+        "explanation": "The two most frequent values are 1 and 2."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Top K Frequent Elements and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Top K Frequent Elements, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Top K Frequent Elements, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Top K Frequent Elements, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n1 1 1 2 2 3\n2",
+        "expectedOutput": "[1,2]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "longest-consecutive-sequence",
+    "title": "Longest Consecutive Sequence",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the length of the longest run of consecutive integer values in an unsorted array.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "6\n100 4 200 1 3 2",
+        "output": "4",
+        "explanation": "The longest consecutive sequence is [1,2,3,4]."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Longest Consecutive Sequence and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Longest Consecutive Sequence, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Longest Consecutive Sequence, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Longest Consecutive Sequence, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n100 4 200 1 3 2",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "subarray-sum-equals-k",
+    "title": "Subarray Sum Equals K",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Count the non-empty contiguous subarrays whose sum equals k.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "3\n1 1 1\n2",
+        "output": "2",
+        "explanation": "Two contiguous subarrays have sum 2."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Subarray Sum Equals K and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Subarray Sum Equals K, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Subarray Sum Equals K, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Subarray Sum Equals K, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n1 1 1\n2",
+        "expectedOutput": "2"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "find-all-anagrams-in-a-string",
+    "title": "Find All Anagrams in a String",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return every starting index where a substring of s is an anagram of p.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "cbaebabacd\nabc",
+        "output": "[0,6]",
+        "explanation": "Substrings beginning at indices 0 and 6 are anagrams of p."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Find All Anagrams in a String and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Find All Anagrams in a String, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Find All Anagrams in a String, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Find All Anagrams in a String, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "cbaebabacd\nabc",
+        "expectedOutput": "[0,6]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "minimum-window-substring-hashing",
+    "title": "Minimum Window Substring",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the shortest substring of s containing every character of t with required multiplicity, or an empty string if none exists.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "ADOBECODEBANC\nABC",
+        "output": "\"BANC\"",
+        "explanation": "BANC is the shortest substring containing A, B, and C."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Minimum Window Substring and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Minimum Window Substring, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Minimum Window Substring, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Minimum Window Substring, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "ADOBECODEBANC\nABC",
+        "expectedOutput": "\"BANC\""
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "all-oone-data-structure",
+    "title": "All O`one Data Structure",
+    "topic": "hashing",
+    "topicName": "Hashing",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Design a data structure supporting key increment, decrement, and retrieval of any minimum- or maximum-count key in constant average time.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Strings contain standard English letters and array values fit in a signed 32-bit integer."
+    ],
+    "examples": [
+      {
+        "input": "7\ninc hello\ninc hello\ngetMaxKey\ngetMinKey\ninc leet\ngetMaxKey\ngetMinKey",
+        "output": "hello\nhello\nhello\nleet",
+        "explanation": "The structure returns a key with maximum or minimum frequency in constant time."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve All O`one Data Structure and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve All O`one Data Structure, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve All O`one Data Structure, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve All O`one Data Structure, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\ninc hello\ninc hello\ngetMaxKey\ngetMinKey\ninc leet\ngetMaxKey\ngetMinKey",
+        "expectedOutput": "hello\nhello\nhello\nleet"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup."
+    ],
+    "editorial": {
+      "approach": "Store frequencies, positions, or prefix-state information in a hash table for constant-average-time lookup.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  }
+]

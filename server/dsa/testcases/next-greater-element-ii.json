@@ -1,0 +1,38 @@
+{
+  "id": "next-greater-element-ii",
+  "functionName": "nextGreaterElements",
+  "returnType": "vector<int>",
+  "parameters": [
+    {
+      "name": "nums",
+      "type": "vector<int>"
+    }
+  ],
+  "driverType": "function",
+  "supportedLanguages": [
+    "cpp",
+    "java",
+    "python",
+    "javascript"
+  ],
+  "testCases": [
+    {
+      "input": {
+        "nums": [1, 2, 1]
+      },
+      "expected": [2, -1, 2]
+    },
+    {
+      "input": {
+        "nums": [1, 2, 3, 4, 3]
+      },
+      "expected": [2, 3, 4, -1, 4]
+    },
+    {
+      "input": {
+        "nums": [5, 4, 3, 2, 1]
+      },
+      "expected": [-1, 5, 5, 5, 5]
+    }
+  ]
+}

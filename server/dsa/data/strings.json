@@ -1,0 +1,644 @@
+[
+  {
+    "id": "longest-substring-without-repeating",
+    "title": "Longest Substring Without Repeating Characters",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given a string s, find the length of the longest substring containing no repeated characters.",
+    "inputFormat": [
+      "One line containing string s"
+    ],
+    "outputFormat": "Print one integer: the maximum length.",
+    "constraints": [
+      "0 <= |s| <= 100000",
+      "s may contain letters, digits, spaces, and symbols"
+    ],
+    "examples": [
+      {
+        "input": "abcabcbb",
+        "output": "3",
+        "explanation": "The longest valid substring is abc."
+      },
+      {
+        "input": "bbbbb",
+        "output": "1",
+        "explanation": "The longest valid substring is b."
+      }
+    ],
+    "functionName": "lengthOfLongestSubstring",
+    "starterCode": {
+      "cpp": "int lengthOfLongestSubstring(string s) {\n    // Write your code here\n}",
+      "java": "static int lengthOfLongestSubstring(String s) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def length_of_longest_substring(s):\n    # Write your code here\n    pass",
+      "javascript": "function lengthOfLongestSubstring(s) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "abcabcbb",
+        "expectedOutput": "3"
+      },
+      {
+        "stdin": "bbbbb",
+        "expectedOutput": "1"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "pwwkew",
+        "expectedOutput": "3"
+      },
+      {
+        "stdin": "",
+        "expectedOutput": "0"
+      },
+      {
+        "stdin": "dvdf",
+        "expectedOutput": "3"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "group-anagrams",
+    "title": "Group Anagrams",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Meta",
+      "Microsoft"
+    ],
+    "description": "Group strings that are anagrams of one another. Sort strings inside each group and sort the groups lexicographically by their first element.",
+    "inputFormat": [
+      "First line: integer n",
+      "Next n lines: one string per line"
+    ],
+    "outputFormat": "Print the number of groups, followed by one space-separated group per line.",
+    "constraints": [
+      "1 <= n <= 10000",
+      "1 <= length of each string <= 100"
+    ],
+    "examples": [
+      {
+        "input": "6\neat\ntea\ntan\nate\nnat\nbat",
+        "output": "3\nate eat tea\nbat\nnat tan",
+        "explanation": "Strings with identical character counts belong together."
+      }
+    ],
+    "functionName": "groupAnagrams",
+    "starterCode": {
+      "cpp": "vector<vector<string>> groupAnagrams(vector<string>& words) {\n    // Write your code here\n}",
+      "java": "static List<List<String>> groupAnagrams(String[] words) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def group_anagrams(words):\n    # Write your code here\n    pass",
+      "javascript": "function groupAnagrams(words) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\neat\ntea\ntan\nate\nnat\nbat",
+        "expectedOutput": "3\nate eat tea\nbat\nnat tan"
+      },
+      {
+        "stdin": "1\na",
+        "expectedOutput": "1\na"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3\nabc\nbca\ncab",
+        "expectedOutput": "1\nabc bca cab"
+      },
+      {
+        "stdin": "4\nab\nba\ncd\ndc",
+        "expectedOutput": "2\nab ba\ncd dc"
+      },
+      {
+        "stdin": "2\nx\ny",
+        "expectedOutput": "2\nx\ny"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "longest-palindromic-substring",
+    "title": "Longest Palindromic Substring",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Return the longest palindromic substring. If multiple answers have the same length, return the leftmost one.",
+    "inputFormat": [
+      "One line containing string s"
+    ],
+    "outputFormat": "Print the longest palindromic substring.",
+    "constraints": [
+      "1 <= |s| <= 5000"
+    ],
+    "examples": [
+      {
+        "input": "babad",
+        "output": "bab",
+        "explanation": "bab and aba are valid, but bab appears first."
+      },
+      {
+        "input": "cbbd",
+        "output": "bb",
+        "explanation": "bb is the longest palindrome."
+      }
+    ],
+    "functionName": "longestPalindrome",
+    "starterCode": {
+      "cpp": "string longestPalindrome(string s) {\n    // Write your code here\n}",
+      "java": "static String longestPalindrome(String s) {\n    // Write your code here\n    return \"\";\n}",
+      "python": "def longest_palindrome(s):\n    # Write your code here\n    pass",
+      "javascript": "function longestPalindrome(s) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "babad",
+        "expectedOutput": "bab"
+      },
+      {
+        "stdin": "cbbd",
+        "expectedOutput": "bb"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "a",
+        "expectedOutput": "a"
+      },
+      {
+        "stdin": "forgeeksskeegfor",
+        "expectedOutput": "geeksskeeg"
+      },
+      {
+        "stdin": "ac",
+        "expectedOutput": "a"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "decode-string",
+    "title": "Decode String",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Decode an encoded string where k[encoded_text] means encoded_text is repeated k times. Encodings may be nested.",
+    "inputFormat": [
+      "One line containing the encoded string"
+    ],
+    "outputFormat": "Print the decoded string.",
+    "constraints": [
+      "1 <= |s| <= 10000",
+      "Repeat counts are positive integers"
+    ],
+    "examples": [
+      {
+        "input": "3[a]2[bc]",
+        "output": "aaabcbc",
+        "explanation": "a is repeated three times and bc twice."
+      },
+      {
+        "input": "3[a2[c]]",
+        "output": "accaccacc",
+        "explanation": "Nested content is decoded first."
+      }
+    ],
+    "functionName": "decodeString",
+    "starterCode": {
+      "cpp": "string decodeString(string s) {\n    // Write your code here\n}",
+      "java": "static String decodeString(String s) {\n    // Write your code here\n    return \"\";\n}",
+      "python": "def decode_string(s):\n    # Write your code here\n    pass",
+      "javascript": "function decodeString(s) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3[a]2[bc]",
+        "expectedOutput": "aaabcbc"
+      },
+      {
+        "stdin": "3[a2[c]]",
+        "expectedOutput": "accaccacc"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "2[abc]3[cd]ef",
+        "expectedOutput": "abcabccdcdcdef"
+      },
+      {
+        "stdin": "10[a]",
+        "expectedOutput": "aaaaaaaaaa"
+      },
+      {
+        "stdin": "2[x3[y]]",
+        "expectedOutput": "xyyyxyyy"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "word-break",
+    "title": "Word Break",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Determine whether the string can be segmented into one or more dictionary words. Dictionary words may be reused.",
+    "inputFormat": [
+      "First line: string s",
+      "Second line: integer n",
+      "Next n lines: dictionary words"
+    ],
+    "outputFormat": "Print true or false.",
+    "constraints": [
+      "1 <= |s| <= 10000",
+      "1 <= n <= 10000"
+    ],
+    "examples": [
+      {
+        "input": "leetcode\n2\nleet\ncode",
+        "output": "true",
+        "explanation": "leetcode = leet + code."
+      }
+    ],
+    "functionName": "wordBreak",
+    "starterCode": {
+      "cpp": "bool wordBreak(string s, vector<string>& wordDict) {\n    // Write your code here\n}",
+      "java": "static boolean wordBreak(String s, List<String> wordDict) {\n    // Write your code here\n    return false;\n}",
+      "python": "def word_break(s, word_dict):\n    # Write your code here\n    pass",
+      "javascript": "function wordBreak(s, wordDict) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "leetcode\n2\nleet\ncode",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "applepenapple\n2\napple\npen",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "catsandog\n5\ncats\ndog\nsand\nand\ncat",
+        "expectedOutput": "false"
+      },
+      {
+        "stdin": "aaaaaaa\n2\naaaa\naaa",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "a\n1\nb",
+        "expectedOutput": "false"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "minimum-window-substring",
+    "title": "Minimum Window Substring",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Meta"
+    ],
+    "description": "Find the shortest substring of s containing every character of t with the required frequency. Return an empty string if no such window exists.",
+    "inputFormat": [
+      "First line: string s",
+      "Second line: string t"
+    ],
+    "outputFormat": "Print the minimum valid window, or an empty line.",
+    "constraints": [
+      "1 <= |s|, |t| <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "ADOBECODEBANC\nABC",
+        "output": "BANC",
+        "explanation": "BANC is the shortest substring containing A, B, and C."
+      }
+    ],
+    "functionName": "minWindow",
+    "starterCode": {
+      "cpp": "string minWindow(string s, string t) {\n    // Write your code here\n}",
+      "java": "static String minWindow(String s, String t) {\n    // Write your code here\n    return \"\";\n}",
+      "python": "def min_window(s, t):\n    # Write your code here\n    pass",
+      "javascript": "function minWindow(s, t) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "ADOBECODEBANC\nABC",
+        "expectedOutput": "BANC"
+      },
+      {
+        "stdin": "a\na",
+        "expectedOutput": "a"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "a\naa",
+        "expectedOutput": ""
+      },
+      {
+        "stdin": "aa\naa",
+        "expectedOutput": "aa"
+      },
+      {
+        "stdin": "abdecfab\nabc",
+        "expectedOutput": "cfab"
+      }
+    ],
+    "timeLimitMs": 1500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "regular-expression-matching",
+    "title": "Regular Expression Matching",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Microsoft",
+      "Amazon"
+    ],
+    "description": "Implement full-string matching for a pattern containing '.' and '*'. Dot matches any single character; star matches zero or more of the preceding element.",
+    "inputFormat": [
+      "First line: string s",
+      "Second line: pattern p"
+    ],
+    "outputFormat": "Print true or false.",
+    "constraints": [
+      "0 <= |s| <= 2000",
+      "1 <= |p| <= 2000"
+    ],
+    "examples": [
+      {
+        "input": "aa\na",
+        "output": "false",
+        "explanation": "The pattern matches only one character."
+      },
+      {
+        "input": "aa\na*",
+        "output": "true",
+        "explanation": "a* matches both a characters."
+      }
+    ],
+    "functionName": "isMatch",
+    "starterCode": {
+      "cpp": "bool isMatch(string s, string p) {\n    // Write your code here\n}",
+      "java": "static boolean isMatch(String s, String p) {\n    // Write your code here\n    return false;\n}",
+      "python": "def is_match(s, p):\n    # Write your code here\n    pass",
+      "javascript": "function isMatch(s, p) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "aa\na",
+        "expectedOutput": "false"
+      },
+      {
+        "stdin": "aa\na*",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "ab\n.*",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "aab\nc*a*b",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "mississippi\nmis*is*p*.",
+        "expectedOutput": "false"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "wildcard-matching",
+    "title": "Wildcard Matching",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Implement full-string wildcard matching where '?' matches one character and '*' matches any sequence, including the empty sequence.",
+    "inputFormat": [
+      "First line: string s",
+      "Second line: pattern p"
+    ],
+    "outputFormat": "Print true or false.",
+    "constraints": [
+      "0 <= |s| <= 2000",
+      "1 <= |p| <= 2000"
+    ],
+    "examples": [
+      {
+        "input": "aa\na",
+        "output": "false",
+        "explanation": "The pattern is too short."
+      },
+      {
+        "input": "aa\n*",
+        "output": "true",
+        "explanation": "Star can match the whole string."
+      }
+    ],
+    "functionName": "isWildcardMatch",
+    "starterCode": {
+      "cpp": "bool isWildcardMatch(string s, string p) {\n    // Write your code here\n}",
+      "java": "static boolean isWildcardMatch(String s, String p) {\n    // Write your code here\n    return false;\n}",
+      "python": "def is_wildcard_match(s, p):\n    # Write your code here\n    pass",
+      "javascript": "function isWildcardMatch(s, p) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "aa\na",
+        "expectedOutput": "false"
+      },
+      {
+        "stdin": "aa\n*",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "cb\n?a",
+        "expectedOutput": "false"
+      },
+      {
+        "stdin": "adceb\n*a*b",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "acdcb\na*c?b",
+        "expectedOutput": "false"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "edit-distance",
+    "title": "Edit Distance",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum number of insertions, deletions, and replacements needed to transform word1 into word2.",
+    "inputFormat": [
+      "First line: word1",
+      "Second line: word2"
+    ],
+    "outputFormat": "Print the minimum edit distance.",
+    "constraints": [
+      "0 <= |word1|, |word2| <= 5000"
+    ],
+    "examples": [
+      {
+        "input": "horse\nros",
+        "output": "3",
+        "explanation": "Three operations are sufficient."
+      }
+    ],
+    "functionName": "minDistance",
+    "starterCode": {
+      "cpp": "int minDistance(string word1, string word2) {\n    // Write your code here\n}",
+      "java": "static int minDistance(String word1, String word2) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def min_distance(word1, word2):\n    # Write your code here\n    pass",
+      "javascript": "function minDistance(word1, word2) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "horse\nros",
+        "expectedOutput": "3"
+      },
+      {
+        "stdin": "intention\nexecution",
+        "expectedOutput": "5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "\nabc",
+        "expectedOutput": "3"
+      },
+      {
+        "stdin": "abc\nabc",
+        "expectedOutput": "0"
+      },
+      {
+        "stdin": "kitten\nsitting",
+        "expectedOutput": "3"
+      }
+    ],
+    "timeLimitMs": 2500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "text-justification",
+    "title": "Text Justification",
+    "topic": "strings",
+    "topicName": "Strings",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Format words into lines of exactly maxWidth characters. Fully justify all lines except the last, which must be left-justified.",
+    "inputFormat": [
+      "First line: integers n and maxWidth",
+      "Next n lines: one word per line"
+    ],
+    "outputFormat": "Print each justified line between pipe characters so spaces remain visible.",
+    "constraints": [
+      "1 <= n <= 10000",
+      "1 <= word length <= maxWidth <= 100"
+    ],
+    "examples": [
+      {
+        "input": "7 16\nThis\nis\nan\nexample\nof\ntext\njustification.",
+        "output": "|This    is    an|\n|example  of text|\n|justification.  |",
+        "explanation": "Spaces are distributed evenly, with extra spaces placed from left to right."
+      }
+    ],
+    "functionName": "fullJustify",
+    "starterCode": {
+      "cpp": "vector<string> fullJustify(vector<string>& words, int maxWidth) {\n    // Write your code here\n}",
+      "java": "static List<String> fullJustify(String[] words, int maxWidth) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def full_justify(words, max_width):\n    # Write your code here\n    pass",
+      "javascript": "function fullJustify(words, maxWidth) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7 16\nThis\nis\nan\nexample\nof\ntext\njustification.",
+        "expectedOutput": "|This    is    an|\n|example  of text|\n|justification.  |"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "6 16\nWhat\nmust\nbe\nacknowledgment\nshall\nbe",
+        "expectedOutput": "|What   must   be|\n|acknowledgment  |\n|shall be        |"
+      },
+      {
+        "stdin": "1 5\nhello",
+        "expectedOutput": "|hello|"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  }
+]

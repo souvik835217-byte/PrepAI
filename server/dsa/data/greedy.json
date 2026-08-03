@@ -1,0 +1,552 @@
+[
+  {
+    "id": "assign-cookies",
+    "title": "Assign Cookies",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Easy",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Assign at most one cookie to each child and return the maximum number of children whose greed can be satisfied.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "3\n1 2 3\n2\n1 1",
+        "output": "1",
+        "explanation": "Only one child can be satisfied."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Assign Cookies and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Assign Cookies, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Assign Cookies, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Assign Cookies, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n1 2 3\n2\n1 1",
+        "expectedOutput": "1"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 72,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "best-time-to-buy-and-sell-stock-ii",
+    "title": "Best Time to Buy and Sell Stock II",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the maximum profit from any number of stock transactions while holding at most one share at a time.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "6\n7 1 5 3 6 4",
+        "output": "7",
+        "explanation": "Buy at 1 and sell at 5, then buy at 3 and sell at 6."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Best Time to Buy and Sell Stock II and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Best Time to Buy and Sell Stock II, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Best Time to Buy and Sell Stock II, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Best Time to Buy and Sell Stock II, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n7 1 5 3 6 4",
+        "expectedOutput": "7"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "jump-game",
+    "title": "Jump Game",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Each value is the maximum jump length from that index. Return whether the last index is reachable.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "5\n2 3 1 1 4",
+        "output": "true",
+        "explanation": "Jump from index 0 to 1, then reach the last index."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Jump Game and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Jump Game, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Jump Game, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Jump Game, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n2 3 1 1 4",
+        "expectedOutput": "true"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "jump-game-ii",
+    "title": "Jump Game II",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum number of jumps needed to reach the last index when it is guaranteed to be reachable.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "5\n2 3 1 1 4",
+        "output": "2",
+        "explanation": "Jump from index 0 to index 1, then to the last index."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Jump Game II and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Jump Game II, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Jump Game II, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Jump Game II, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n2 3 1 1 4",
+        "expectedOutput": "2"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "gas-station",
+    "title": "Gas Station",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the unique starting station from which a car can complete the circular route, or -1 if no solution exists.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "5\n1 2 3 4 5\n3 4 5 1 2",
+        "output": "3",
+        "explanation": "Starting at index 3 allows a complete circuit."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Gas Station and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Gas Station, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Gas Station, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Gas Station, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5\n1 2 3 4 5\n3 4 5 1 2",
+        "expectedOutput": "3"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "non-overlapping-intervals",
+    "title": "Non-overlapping Intervals",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum number of intervals to remove so the remaining intervals do not overlap.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "4\n1 2\n2 3\n3 4\n1 3",
+        "output": "1",
+        "explanation": "Remove [1,3] so the remaining intervals do not overlap."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Non-overlapping Intervals and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Non-overlapping Intervals, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Non-overlapping Intervals, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Non-overlapping Intervals, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 2\n2 3\n3 4\n1 3",
+        "expectedOutput": "1"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "queue-reconstruction-by-height",
+    "title": "Queue Reconstruction by Height",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Reconstruct the queue from pairs [h,k], where k is the number of people with height at least h standing ahead.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "6\n7 0\n4 4\n7 1\n5 0\n6 1\n5 2",
+        "output": "[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]",
+        "explanation": "Each pair [h,k] has exactly k people of height at least h before it."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Queue Reconstruction by Height and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Queue Reconstruction by Height, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Queue Reconstruction by Height, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Queue Reconstruction by Height, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n7 0\n4 4\n7 1\n5 0\n6 1\n5 2",
+        "expectedOutput": "[[5,0],[7,0],[5,2],[6,1],[4,4],[7,1]]"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "task-scheduler",
+    "title": "Task Scheduler",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Medium",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Schedule tasks with a cooldown of n intervals between equal tasks and return the minimum total intervals required.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "6\nA A A B B B\n2",
+        "output": "8",
+        "explanation": "A valid schedule is A B idle A B idle A B."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Task Scheduler and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Task Scheduler, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Task Scheduler, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Task Scheduler, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\nA A A B B B\n2",
+        "expectedOutput": "8"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "candy",
+    "title": "Candy",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Give each child at least one candy and more than an adjacent lower-rated child; return the minimum candies required.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "3\n1 0 2",
+        "output": "5",
+        "explanation": "Distribute candies as [2,1,2]."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Candy and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Candy, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Candy, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Candy, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n1 0 2",
+        "expectedOutput": "5"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  },
+  {
+    "id": "minimum-number-of-refueling-stops",
+    "title": "Minimum Number of Refueling Stops",
+    "topic": "greedy",
+    "topicName": "Greedy",
+    "difficulty": "Hard",
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Return the minimum refueling stops needed to reach the target, or -1 when the target cannot be reached.",
+    "inputFormat": [
+      "Read from standard input exactly in the line-based format shown in the example."
+    ],
+    "outputFormat": "Print only the requested result to standard output.",
+    "constraints": [
+      "1 <= input size <= 100000",
+      "Input values fit in a signed 32-bit integer unless stated otherwise."
+    ],
+    "examples": [
+      {
+        "input": "100 10\n4\n10 60\n20 30\n30 30\n60 40",
+        "output": "2",
+        "explanation": "Refuel at positions 10 and 60 to reach the target."
+      }
+    ],
+    "functionName": "main",
+    "starterCode": {
+      "cpp": "#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\n    // Read the console input described on the left.\n    // Solve Minimum Number of Refueling Stops and print the requested output.\n\n    return 0;\n}",
+      "java": "import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // Read input, solve Minimum Number of Refueling Stops, and print the result.\n    }\n}",
+      "python": "import sys\n\ndef solve():\n    data = sys.stdin.buffer.read().split()\n    # Parse data, solve Minimum Number of Refueling Stops, and print the result.\n\nif __name__ == \"__main__\":\n    solve()\n",
+      "javascript": "const fs = require(\"fs\");\nconst input = fs.readFileSync(0, \"utf8\").trim();\n// Parse input, solve Minimum Number of Refueling Stops, and print the result.\n"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "100 10\n4\n10 60\n20 30\n30 30\n60 40",
+        "expectedOutput": "2"
+      }
+    ],
+    "hiddenTestCases": [],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 43,
+    "hints": [
+      "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result."
+    ],
+    "editorial": {
+      "approach": "Maintain the locally optimal feasible choice and prove that delaying or replacing it cannot improve the final result.",
+      "timeComplexity": "Depends on the selected data structure and input size",
+      "spaceComplexity": "Depends on the selected data structure and input size"
+    },
+    "executionMode": "stdin"
+  }
+]

@@ -1,0 +1,619 @@
+[
+  {
+    "id": "binary-tree-level-order-traversal",
+    "title": "Binary Tree Level Order Traversal",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Easy",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given the root of a binary tree, return its node values level by level from left to right.",
+    "inputFormat": [
+      "First line: integer n, the number of level-order tokens",
+      "Second line: n space-separated values, using null for missing children"
+    ],
+    "outputFormat": "Print one level per line with values separated by spaces.",
+    "constraints": [
+      "0 <= number of nodes <= 2000",
+      "-1000 <= node value <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "7\n3 9 20 null null 15 7",
+        "output": "3\n9 20\n15 7",
+        "explanation": "The tree has three levels."
+      },
+      {
+        "input": "1\n1",
+        "output": "1",
+        "explanation": "The tree contains only its root."
+      }
+    ],
+    "functionName": "levelOrder",
+    "starterCode": {
+      "cpp": "vector<vector<int>> levelOrder(TreeNode* root) {\n    // Write your code here\n    return {};\n}",
+      "java": "static List<List<Integer>> levelOrder(TreeNode root) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def level_order(root):\n    # Write your code here\n    pass",
+      "javascript": "function levelOrder(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\n3 9 20 null null 15 7",
+        "expectedOutput": "3\n9 20\n15 7"
+      },
+      {
+        "stdin": "1\n1",
+        "expectedOutput": "1"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0\n",
+        "expectedOutput": ""
+      },
+      {
+        "stdin": "3\n1 2 3",
+        "expectedOutput": "1\n2 3"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 69
+  },
+  {
+    "id": "validate-binary-search-tree",
+    "title": "Validate Binary Search Tree",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Easy",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given the root of a binary tree, determine whether it is a valid binary search tree. Every node in the left subtree must be strictly smaller and every node in the right subtree strictly greater than the node.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print true if the tree is a valid BST; otherwise print false.",
+    "constraints": [
+      "1 <= number of nodes <= 10000",
+      "-2147483648 <= node value <= 2147483647"
+    ],
+    "examples": [
+      {
+        "input": "3\n2 1 3",
+        "output": "true",
+        "explanation": "Both children satisfy the strict BST ordering."
+      },
+      {
+        "input": "7\n5 1 4 null null 3 6",
+        "output": "false",
+        "explanation": "The value 3 lies in the right subtree of 5 but is smaller than 5."
+      }
+    ],
+    "functionName": "isValidBST",
+    "starterCode": {
+      "cpp": "bool isValidBST(TreeNode* root) {\n    // Write your code here\n    return false;\n}",
+      "java": "static boolean isValidBST(TreeNode root) {\n    // Write your code here\n    return false;\n}",
+      "python": "def is_valid_bst(root):\n    # Write your code here\n    pass",
+      "javascript": "function isValidBST(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n2 1 3",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "7\n5 1 4 null null 3 6",
+        "expectedOutput": "false"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n1",
+        "expectedOutput": "true"
+      },
+      {
+        "stdin": "3\n2 2 3",
+        "expectedOutput": "false"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 33
+  },
+  {
+    "id": "lowest-common-ancestor-bst",
+    "title": "Lowest Common Ancestor of BST",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Easy",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given a binary search tree and two distinct node values p and q, return the value of their lowest common ancestor.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens",
+      "Third line: integers p and q"
+    ],
+    "outputFormat": "Print the value of the lowest common ancestor.",
+    "constraints": [
+      "2 <= number of nodes <= 100000",
+      "All node values are unique",
+      "p and q exist in the tree"
+    ],
+    "examples": [
+      {
+        "input": "7\n6 2 8 0 4 7 9\n2 8",
+        "output": "6",
+        "explanation": "Nodes 2 and 8 lie on opposite sides of 6."
+      },
+      {
+        "input": "7\n6 2 8 0 4 7 9\n2 4",
+        "output": "2",
+        "explanation": "A node may be an ancestor of itself."
+      }
+    ],
+    "functionName": "lowestCommonAncestor",
+    "starterCode": {
+      "cpp": "TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {\n    // Write your code here\n    return nullptr;\n}",
+      "java": "static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {\n    // Write your code here\n    return null;\n}",
+      "python": "def lowest_common_ancestor(root, p, q):\n    # Write your code here\n    pass",
+      "javascript": "function lowestCommonAncestor(root, p, q) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\n6 2 8 0 4 7 9\n2 8",
+        "expectedOutput": "6"
+      },
+      {
+        "stdin": "7\n6 2 8 0 4 7 9\n2 4",
+        "expectedOutput": "2"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3\n2 1 3\n1 3",
+        "expectedOutput": "2"
+      },
+      {
+        "stdin": "2\n2 1\n2 1",
+        "expectedOutput": "2"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 68
+  },
+  {
+    "id": "path-sum-ii",
+    "title": "Path Sum II",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given a binary tree and a target sum, return every root-to-leaf path whose node values add up to the target. Preserve left-to-right traversal order.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens",
+      "Third line: integer targetSum"
+    ],
+    "outputFormat": "First print the number of paths, then print one path per line.",
+    "constraints": [
+      "0 <= number of nodes <= 5000",
+      "-1000 <= node value, targetSum <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "13\n5 4 8 11 null 13 4 7 2 null null 5 1\n22",
+        "output": "2\n5 4 11 2\n5 8 4 5",
+        "explanation": "Both displayed root-to-leaf paths sum to 22."
+      }
+    ],
+    "functionName": "pathSum",
+    "starterCode": {
+      "cpp": "vector<vector<int>> pathSum(TreeNode* root, int targetSum) {\n    // Write your code here\n    return {};\n}",
+      "java": "static List<List<Integer>> pathSum(TreeNode root, int targetSum) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def path_sum(root, target_sum):\n    # Write your code here\n    pass",
+      "javascript": "function pathSum(root, targetSum) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "13\n5 4 8 11 null 13 4 7 2 null null 5 1\n22",
+        "expectedOutput": "2\n5 4 11 2\n5 8 4 5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3\n1 2 3\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "stdin": "2\n1 2\n3",
+        "expectedOutput": "1\n1 2"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 59
+  },
+  {
+    "id": "binary-tree-right-side-view",
+    "title": "Binary Tree Right Side View",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given the root of a binary tree, return the values visible when the tree is viewed from its right side, ordered from top to bottom.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print the visible values separated by spaces.",
+    "constraints": [
+      "0 <= number of nodes <= 10000",
+      "-100 <= node value <= 100"
+    ],
+    "examples": [
+      {
+        "input": "7\n1 2 3 null 5 null 4",
+        "output": "1 3 4",
+        "explanation": "The rightmost nodes at the three levels are 1, 3, and 4."
+      }
+    ],
+    "functionName": "rightSideView",
+    "starterCode": {
+      "cpp": "vector<int> rightSideView(TreeNode* root) {\n    // Write your code here\n    return {};\n}",
+      "java": "static List<Integer> rightSideView(TreeNode root) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def right_side_view(root):\n    # Write your code here\n    pass",
+      "javascript": "function rightSideView(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\n1 2 3 null 5 null 4",
+        "expectedOutput": "1 3 4"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0\n",
+        "expectedOutput": ""
+      },
+      {
+        "stdin": "3\n1 null 3",
+        "expectedOutput": "1 3"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 65
+  },
+  {
+    "id": "serialize-deserialize-binary-tree",
+    "title": "Serialize and Deserialize Binary Tree",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Medium",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Design serialization and deserialization for a binary tree. Serialize the tree to a comma-separated preorder string using # for null children. Deserializing that string must reconstruct the original tree.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print the canonical preorder serialization with commas and # null markers.",
+    "constraints": [
+      "0 <= number of nodes <= 10000",
+      "-1000 <= node value <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "7\n1 2 3 null null 4 5",
+        "output": "1,2,#,#,3,4,#,#,5,#,#",
+        "explanation": "Preorder traversal records both values and null child positions."
+      }
+    ],
+    "functionName": "serialize",
+    "starterCode": {
+      "cpp": "class Codec {\npublic:\n    string serialize(TreeNode* root) {\n        // Write your code here\n        return \"\";\n    }\n\n    TreeNode* deserialize(const string& data) {\n        // Write your code here\n        return nullptr;\n    }\n};",
+      "java": "class Codec {\n    String serialize(TreeNode root) {\n        // Write your code here\n        return \"\";\n    }\n\n    TreeNode deserialize(String data) {\n        // Write your code here\n        return null;\n    }\n}",
+      "python": "class Codec:\n    def serialize(self, root):\n        # Write your code here\n        pass\n\n    def deserialize(self, data):\n        # Write your code here\n        pass",
+      "javascript": "class Codec {\n  serialize(root) {\n    // Write your code here\n  }\n\n  deserialize(data) {\n    // Write your code here\n  }\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\n1 2 3 null null 4 5",
+        "expectedOutput": "1,2,#,#,3,4,#,#,5,#,#"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "0\n",
+        "expectedOutput": "#"
+      },
+      {
+        "stdin": "1\n-1",
+        "expectedOutput": "-1,#,#"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 58
+  },
+  {
+    "id": "binary-tree-maximum-path-sum",
+    "title": "Binary Tree Maximum Path Sum",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Medium",
+    "acceptance": 42,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "A path in a binary tree is a sequence of connected nodes in which each adjacent pair is joined by an edge. A node may appear at most once, and the path does not need to pass through the root. Return the maximum sum along any path.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print the maximum path sum.",
+    "constraints": [
+      "1 <= number of nodes <= 30000",
+      "-1000 <= node value <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "3\n1 2 3",
+        "output": "6",
+        "explanation": "The optimal path is 2 -> 1 -> 3."
+      },
+      {
+        "input": "7\n-10 9 20 null null 15 7",
+        "output": "42",
+        "explanation": "The optimal path is 15 -> 20 -> 7."
+      }
+    ],
+    "functionName": "maxPathSum",
+    "starterCode": {
+      "cpp": "int maxPathSum(TreeNode* root) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static int maxPathSum(TreeNode root) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def max_path_sum(root):\n    # Write your code here\n    pass",
+      "javascript": "function maxPathSum(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n1 2 3",
+        "expectedOutput": "6"
+      },
+      {
+        "stdin": "7\n-10 9 20 null null 15 7",
+        "expectedOutput": "42"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n-3",
+        "expectedOutput": "-3"
+      },
+      {
+        "stdin": "5\n2 -1 -2 3 4",
+        "expectedOutput": "8"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "recover-binary-search-tree",
+    "title": "Recover Binary Search Tree",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Exactly two nodes in a binary search tree were swapped by mistake. Restore the tree without changing its structure.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens representing the corrupted BST"
+    ],
+    "outputFormat": "Print the inorder traversal of the restored BST.",
+    "constraints": [
+      "2 <= number of nodes <= 1000",
+      "Exactly two node values are swapped"
+    ],
+    "examples": [
+      {
+        "input": "4\n1 3 null null 2",
+        "output": "1 2 3",
+        "explanation": "Swapping values 1 and 3 restores the BST."
+      },
+      {
+        "input": "7\n3 1 4 null null 2 null",
+        "output": "1 2 3 4",
+        "explanation": "Swapping 2 and 3 restores the ordering."
+      }
+    ],
+    "functionName": "recoverTree",
+    "starterCode": {
+      "cpp": "void recoverTree(TreeNode* root) {\n    // Write your code here\n}",
+      "java": "static void recoverTree(TreeNode root) {\n    // Write your code here\n}",
+      "python": "def recover_tree(root):\n    # Write your code here\n    pass",
+      "javascript": "function recoverTree(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n1 3 null null 2",
+        "expectedOutput": "1 2 3"
+      },
+      {
+        "stdin": "7\n3 1 4 null null 2 null",
+        "expectedOutput": "1 2 3 4"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3\n2 3 1",
+        "expectedOutput": "1 2 3"
+      },
+      {
+        "stdin": "2\n2 1",
+        "expectedOutput": "1 2"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 53
+  },
+  {
+    "id": "vertical-order-traversal",
+    "title": "Vertical Order Traversal",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Return the vertical order traversal of a binary tree. Nodes are grouped by column from left to right; within a column they are ordered by row, then by value when row and column are equal.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print one vertical column per line with values separated by spaces.",
+    "constraints": [
+      "1 <= number of nodes <= 1000",
+      "0 <= node value <= 1000"
+    ],
+    "examples": [
+      {
+        "input": "7\n3 9 20 null null 15 7",
+        "output": "9\n3 15\n20\n7",
+        "explanation": "Columns are emitted from horizontal position -1 through 2."
+      }
+    ],
+    "functionName": "verticalTraversal",
+    "starterCode": {
+      "cpp": "vector<vector<int>> verticalTraversal(TreeNode* root) {\n    // Write your code here\n    return {};\n}",
+      "java": "static List<List<Integer>> verticalTraversal(TreeNode root) {\n    // Write your code here\n    return new ArrayList<>();\n}",
+      "python": "def vertical_traversal(root):\n    # Write your code here\n    pass",
+      "javascript": "function verticalTraversal(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "7\n3 9 20 null null 15 7",
+        "expectedOutput": "9\n3 15\n20\n7"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "3\n1 2 3",
+        "expectedOutput": "2\n1\n3"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 50
+  },
+  {
+    "id": "binary-tree-cameras",
+    "title": "Binary Tree Cameras",
+    "topic": "trees",
+    "topicName": "Trees",
+    "difficulty": "Hard",
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Place cameras on tree nodes so every node is monitored. A camera monitors its parent, itself, and its immediate children. Return the minimum number of cameras required.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n level-order tokens, using null for missing children"
+    ],
+    "outputFormat": "Print the minimum number of cameras.",
+    "constraints": [
+      "1 <= number of nodes <= 1000",
+      "Every node value is 0"
+    ],
+    "examples": [
+      {
+        "input": "4\n0 0 null 0 0",
+        "output": "1",
+        "explanation": "One camera on the second node monitors every node."
+      },
+      {
+        "input": "5\n0 0 null 0 null 0 null",
+        "output": "2",
+        "explanation": "Two cameras are needed for this chain."
+      }
+    ],
+    "functionName": "minCameraCover",
+    "starterCode": {
+      "cpp": "int minCameraCover(TreeNode* root) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static int minCameraCover(TreeNode root) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def min_camera_cover(root):\n    # Write your code here\n    pass",
+      "javascript": "function minCameraCover(root) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n0 0 null 0 0",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "5\n0 0 null 0 null 0 null",
+        "expectedOutput": "2"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n0",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "3\n0 0 0",
+        "expectedOutput": "1"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true,
+    "acceptance": 47
+  }
+]

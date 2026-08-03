@@ -1,0 +1,681 @@
+[
+  {
+    "id": "last-stone-weight",
+    "title": "Last Stone Weight",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Easy",
+    "acceptance": 70,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "You are given an array of stone weights. Repeatedly choose the two heaviest stones and smash them together. If their weights are equal, both stones are destroyed. Otherwise, the lighter stone is destroyed and the heavier stone is replaced by the difference of their weights. Return the weight of the last remaining stone, or 0 if no stones remain.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated stone weights"
+    ],
+    "outputFormat": "Print the weight of the last remaining stone, or 0 if no stones remain.",
+    "constraints": [
+      "1 <= n <= 100000",
+      "1 <= stones[i] <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n2 7 4 1 8 1",
+        "output": "1",
+        "explanation": "After repeatedly smashing the two largest stones, one stone of weight 1 remains."
+      },
+      {
+        "input": "1\n5",
+        "output": "5",
+        "explanation": "Only one stone exists."
+      }
+    ],
+    "functionName": "lastStoneWeight",
+    "starterCode": {
+      "cpp": "int lastStoneWeight(vector<int>& stones) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static int lastStoneWeight(int[] stones) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def last_stone_weight(stones):\n    # Write your code here\n    pass",
+      "javascript": "function lastStoneWeight(stones) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n2 7 4 1 8 1",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "1\n5",
+        "expectedOutput": "5"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "2\n10 10",
+        "expectedOutput": "0"
+      },
+      {
+        "stdin": "4\n10 4 2 10",
+        "expectedOutput": "2"
+      },
+      {
+        "stdin": "5\n1 1 1 1 1",
+        "expectedOutput": "1"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "maximum-product-of-two-elements",
+    "title": "Maximum Product of Two Elements",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Easy",
+    "acceptance": 76,
+    "companies": [
+      "Amazon",
+      "Adobe",
+      "Microsoft"
+    ],
+    "description": "Given an integer array nums, select the two largest elements and return the value of (largest - 1) multiplied by (secondLargest - 1).",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated integers"
+    ],
+    "outputFormat": "Print the maximum product.",
+    "constraints": [
+      "2 <= n <= 100000",
+      "1 <= nums[i] <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "4\n3 4 5 2",
+        "output": "12",
+        "explanation": "The two largest values are 5 and 4, so the result is (5-1)*(4-1)=12."
+      },
+      {
+        "input": "5\n1 5 4 5 2",
+        "output": "16",
+        "explanation": "The two largest values are both 5."
+      }
+    ],
+    "functionName": "maxProduct",
+    "starterCode": {
+      "cpp": "long long maxProduct(vector<int>& nums) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static long maxProduct(int[] nums) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def max_product(nums):\n    # Write your code here\n    pass",
+      "javascript": "function maxProduct(nums) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n3 4 5 2",
+        "expectedOutput": "12"
+      },
+      {
+        "stdin": "5\n1 5 4 5 2",
+        "expectedOutput": "16"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "2\n2 3",
+        "expectedOutput": "2"
+      },
+      {
+        "stdin": "4\n10 2 8 7",
+        "expectedOutput": "63"
+      },
+      {
+        "stdin": "3\n1 1 1",
+        "expectedOutput": "0"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "k-weakest-rows",
+    "title": "K Weakest Rows in a Matrix",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Easy",
+    "acceptance": 74,
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Adobe"
+    ],
+    "description": "Each row of a binary matrix contains soldiers represented by 1 followed by civilians represented by 0. A row is weaker if it has fewer soldiers. If two rows have the same number of soldiers, the row with the smaller index is weaker. Return the indices of the k weakest rows.",
+    "inputFormat": [
+      "First line: integers rows, columns and k",
+      "Next rows lines: columns space-separated binary integers"
+    ],
+    "outputFormat": "Print the indices of the k weakest rows separated by spaces.",
+    "constraints": [
+      "1 <= rows, columns <= 1000",
+      "1 <= k <= rows",
+      "matrix[i][j] is either 0 or 1",
+      "All 1 values appear before all 0 values in each row"
+    ],
+    "examples": [
+      {
+        "input": "5 5 3\n1 1 0 0 0\n1 1 1 1 0\n1 0 0 0 0\n1 1 0 0 0\n1 1 1 1 1",
+        "output": "2 0 3",
+        "explanation": "Rows 2, 0 and 3 are the three weakest rows."
+      }
+    ],
+    "functionName": "kWeakestRows",
+    "starterCode": {
+      "cpp": "vector<int> kWeakestRows(vector<vector<int>>& matrix, int k) {\n    // Write your code here\n}",
+      "java": "static int[] kWeakestRows(int[][] matrix, int k) {\n    // Write your code here\n    return new int[0];\n}",
+      "python": "def k_weakest_rows(matrix, k):\n    # Write your code here\n    pass",
+      "javascript": "function kWeakestRows(matrix, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "5 5 3\n1 1 0 0 0\n1 1 1 1 0\n1 0 0 0 0\n1 1 0 0 0\n1 1 1 1 1",
+        "expectedOutput": "2 0 3"
+      },
+      {
+        "stdin": "4 4 2\n1 0 0 0\n1 1 1 1\n1 0 0 0\n1 0 0 0",
+        "expectedOutput": "0 2"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3 3 1\n1 1 1\n0 0 0\n1 0 0",
+        "expectedOutput": "1"
+      },
+      {
+        "stdin": "2 2 2\n1 1\n1 1",
+        "expectedOutput": "0 1"
+      },
+      {
+        "stdin": "4 3 3\n0 0 0\n1 1 0\n1 0 0\n1 1 1",
+        "expectedOutput": "0 2 1"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "kth-largest-element",
+    "title": "Kth Largest Element",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Medium",
+    "acceptance": 67,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given an unsorted integer array nums and an integer k, return the kth largest element in the array. The kth largest element is determined by sorted order, not by distinct values.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated integers",
+      "Third line: integer k"
+    ],
+    "outputFormat": "Print the kth largest element.",
+    "constraints": [
+      "1 <= k <= n <= 100000",
+      "-1000000000 <= nums[i] <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "6\n3 2 1 5 6 4\n2",
+        "output": "5",
+        "explanation": "The second largest value is 5."
+      },
+      {
+        "input": "9\n3 2 3 1 2 4 5 5 6\n4",
+        "output": "4",
+        "explanation": "The fourth largest value is 4."
+      }
+    ],
+    "functionName": "findKthLargest",
+    "starterCode": {
+      "cpp": "int findKthLargest(vector<int>& nums, int k) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static int findKthLargest(int[] nums, int k) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def find_kth_largest(nums, k):\n    # Write your code here\n    pass",
+      "javascript": "function findKthLargest(nums, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n3 2 1 5 6 4\n2",
+        "expectedOutput": "5"
+      },
+      {
+        "stdin": "9\n3 2 3 1 2 4 5 5 6\n4",
+        "expectedOutput": "4"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "5\n5 4 3 2 1\n1",
+        "expectedOutput": "5"
+      },
+      {
+        "stdin": "5\n2 1 2 1 2\n3",
+        "expectedOutput": "2"
+      },
+      {
+        "stdin": "4\n-1 -5 -3 -2\n2",
+        "expectedOutput": "-2"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "top-k-frequent-elements",
+    "title": "Top K Frequent Elements",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Medium",
+    "acceptance": 65,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Meta"
+    ],
+    "description": "Given an integer array nums and an integer k, return the k most frequent elements. Sort the result by decreasing frequency. If two elements have the same frequency, place the smaller value first.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated integers",
+      "Third line: integer k"
+    ],
+    "outputFormat": "Print the k most frequent elements separated by spaces.",
+    "constraints": [
+      "1 <= n <= 100000",
+      "-1000000000 <= nums[i] <= 1000000000",
+      "1 <= k <= number of distinct elements"
+    ],
+    "examples": [
+      {
+        "input": "6\n1 1 1 2 2 3\n2",
+        "output": "1 2",
+        "explanation": "1 appears three times and 2 appears twice."
+      },
+      {
+        "input": "8\n4 4 1 1 2 2 3 3\n3",
+        "output": "1 2 3",
+        "explanation": "All values have equal frequency, so smaller values come first."
+      }
+    ],
+    "functionName": "topKFrequent",
+    "starterCode": {
+      "cpp": "vector<int> topKFrequent(vector<int>& nums, int k) {\n    // Write your code here\n}",
+      "java": "static int[] topKFrequent(int[] nums, int k) {\n    // Write your code here\n    return new int[0];\n}",
+      "python": "def top_k_frequent(nums, k):\n    # Write your code here\n    pass",
+      "javascript": "function topKFrequent(nums, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "6\n1 1 1 2 2 3\n2",
+        "expectedOutput": "1 2"
+      },
+      {
+        "stdin": "8\n4 4 1 1 2 2 3 3\n3",
+        "expectedOutput": "1 2 3"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n7\n1",
+        "expectedOutput": "7"
+      },
+      {
+        "stdin": "7\n-1 -1 -1 2 2 3 3\n2",
+        "expectedOutput": "-1 2"
+      },
+      {
+        "stdin": "10\n5 5 5 4 4 4 3 3 2 1\n3",
+        "expectedOutput": "4 5 3"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "k-closest-points-to-origin",
+    "title": "K Closest Points to Origin",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Medium",
+    "acceptance": 66,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given a list of two-dimensional points and an integer k, return the k points closest to the origin. Distance is compared using x*x + y*y. Sort the selected points by increasing distance, then by x-coordinate, and then by y-coordinate.",
+    "inputFormat": [
+      "First line: integers n and k",
+      "Next n lines: integers x and y"
+    ],
+    "outputFormat": "Print one selected point per line as x y.",
+    "constraints": [
+      "1 <= k <= n <= 100000",
+      "-100000 <= x, y <= 100000"
+    ],
+    "examples": [
+      {
+        "input": "3 2\n1 3\n-2 2\n2 -2",
+        "output": "-2 2\n2 -2",
+        "explanation": "The two closest points have squared distance 8."
+      }
+    ],
+    "functionName": "kClosest",
+    "starterCode": {
+      "cpp": "vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {\n    // Write your code here\n}",
+      "java": "static int[][] kClosest(int[][] points, int k) {\n    // Write your code here\n    return new int[0][0];\n}",
+      "python": "def k_closest(points, k):\n    # Write your code here\n    pass",
+      "javascript": "function kClosest(points, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3 2\n1 3\n-2 2\n2 -2",
+        "expectedOutput": "-2 2\n2 -2"
+      },
+      {
+        "stdin": "2 1\n3 3\n5 -1",
+        "expectedOutput": "3 3"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "4 2\n1 0\n0 1\n2 2\n-1 0",
+        "expectedOutput": "-1 0\n0 1"
+      },
+      {
+        "stdin": "3 3\n0 0\n1 1\n-1 -1",
+        "expectedOutput": "0 0\n-1 -1\n1 1"
+      },
+      {
+        "stdin": "5 2\n10 10\n2 3\n1 1\n-2 -2\n5 0",
+        "expectedOutput": "1 1\n-2 -2"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "minimum-cost-to-connect-ropes",
+    "title": "Minimum Cost to Connect Ropes",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Medium",
+    "acceptance": 71,
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Adobe"
+    ],
+    "description": "You are given ropes of different lengths. Connecting two ropes costs the sum of their lengths. The connected rope can be used again. Find the minimum total cost required to connect all ropes into one rope.",
+    "inputFormat": [
+      "First line: integer n",
+      "Second line: n space-separated rope lengths"
+    ],
+    "outputFormat": "Print the minimum total connection cost.",
+    "constraints": [
+      "1 <= n <= 100000",
+      "1 <= ropes[i] <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "4\n4 3 2 6",
+        "output": "29",
+        "explanation": "Connect 2 and 3, then 4 and 5, and finally 6 and 9."
+      },
+      {
+        "input": "3\n1 2 3",
+        "output": "9",
+        "explanation": "Connect 1 and 2, then connect 3 and 3."
+      }
+    ],
+    "functionName": "minimumCost",
+    "starterCode": {
+      "cpp": "long long minimumCost(vector<long long>& ropes) {\n    // Write your code here\n    return 0;\n}",
+      "java": "static long minimumCost(long[] ropes) {\n    // Write your code here\n    return 0;\n}",
+      "python": "def minimum_cost(ropes):\n    # Write your code here\n    pass",
+      "javascript": "function minimumCost(ropes) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "4\n4 3 2 6",
+        "expectedOutput": "29"
+      },
+      {
+        "stdin": "3\n1 2 3",
+        "expectedOutput": "9"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n10",
+        "expectedOutput": "0"
+      },
+      {
+        "stdin": "5\n1 1 1 1 1",
+        "expectedOutput": "12"
+      },
+      {
+        "stdin": "4\n10 20 30 40",
+        "expectedOutput": "190"
+      }
+    ],
+    "timeLimitMs": 1000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "merge-k-sorted-arrays",
+    "title": "Merge K Sorted Arrays",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Hard",
+    "acceptance": 58,
+    "companies": [
+      "Amazon",
+      "Google",
+      "Microsoft"
+    ],
+    "description": "Given k individually sorted arrays, merge them into one sorted array.",
+    "inputFormat": [
+      "First line: integer k",
+      "For each array: first an integer size followed by size sorted integers on the same line"
+    ],
+    "outputFormat": "Print all merged elements in sorted order separated by spaces.",
+    "constraints": [
+      "1 <= k <= 10000",
+      "0 <= size of each array",
+      "Total number of elements <= 200000",
+      "-1000000000 <= value <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "3\n3 1 4 7\n4 2 5 8 10\n2 3 6",
+        "output": "1 2 3 4 5 6 7 8 10",
+        "explanation": "All values from the three sorted arrays are merged."
+      }
+    ],
+    "functionName": "mergeKArrays",
+    "starterCode": {
+      "cpp": "vector<int> mergeKArrays(vector<vector<int>>& arrays) {\n    // Write your code here\n}",
+      "java": "static int[] mergeKArrays(int[][] arrays) {\n    // Write your code here\n    return new int[0];\n}",
+      "python": "def merge_k_arrays(arrays):\n    # Write your code here\n    pass",
+      "javascript": "function mergeKArrays(arrays) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n3 1 4 7\n4 2 5 8 10\n2 3 6",
+        "expectedOutput": "1 2 3 4 5 6 7 8 10"
+      },
+      {
+        "stdin": "2\n3 1 2 3\n3 4 5 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "1\n4 -2 0 3 9",
+        "expectedOutput": "-2 0 3 9"
+      },
+      {
+        "stdin": "3\n2 1 1\n2 1 1\n2 1 1",
+        "expectedOutput": "1 1 1 1 1 1"
+      },
+      {
+        "stdin": "4\n0\n2 -5 5\n1 0\n3 -2 2 10",
+        "expectedOutput": "-5 -2 0 2 5 10"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "smallest-range-covering-k-lists",
+    "title": "Smallest Range Covering Elements from K Lists",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Hard",
+    "acceptance": 53,
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "You are given k sorted integer lists. Find the smallest inclusive range [left, right] that contains at least one number from every list. If multiple ranges have the same length, return the one with the smaller left value.",
+    "inputFormat": [
+      "First line: integer k",
+      "For each list: first an integer size followed by size sorted integers on the same line"
+    ],
+    "outputFormat": "Print left and right separated by a space.",
+    "constraints": [
+      "1 <= k <= 10000",
+      "1 <= size of each list",
+      "Total number of elements <= 200000",
+      "-1000000000 <= value <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "3\n5 4 10 15 24 26\n4 0 9 12 20\n4 5 18 22 30",
+        "output": "20 24",
+        "explanation": "The range [20,24] contains 24 from the first list, 20 from the second and 22 from the third."
+      }
+    ],
+    "functionName": "smallestRange",
+    "starterCode": {
+      "cpp": "vector<int> smallestRange(vector<vector<int>>& nums) {\n    // Write your code here\n}",
+      "java": "static int[] smallestRange(int[][] nums) {\n    // Write your code here\n    return new int[0];\n}",
+      "python": "def smallest_range(nums):\n    # Write your code here\n    pass",
+      "javascript": "function smallestRange(nums) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "3\n5 4 10 15 24 26\n4 0 9 12 20\n4 5 18 22 30",
+        "expectedOutput": "20 24"
+      },
+      {
+        "stdin": "3\n3 1 2 3\n3 1 2 3\n3 1 2 3",
+        "expectedOutput": "1 1"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "2\n2 1 5\n2 2 6",
+        "expectedOutput": "1 2"
+      },
+      {
+        "stdin": "3\n1 10\n1 20\n1 30",
+        "expectedOutput": "10 30"
+      },
+      {
+        "stdin": "4\n3 -10 -5 0\n3 -6 -2 5\n2 -7 4\n3 -8 1 8",
+        "expectedOutput": "-8 -5"
+      }
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  },
+  {
+    "id": "sliding-window-median",
+    "title": "Sliding Window Median",
+    "topic": "heap",
+    "topicName": "Heap",
+    "difficulty": "Hard",
+    "acceptance": 42,
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ],
+    "description": "Given an integer array nums and a window size k, return the median of every contiguous window. Print every median with exactly five digits after the decimal point.",
+    "inputFormat": [
+      "First line: integers n and k",
+      "Second line: n space-separated integers"
+    ],
+    "outputFormat": "Print the median of every window separated by spaces, with exactly five digits after the decimal point.",
+    "constraints": [
+      "1 <= k <= n <= 100000",
+      "-1000000000 <= nums[i] <= 1000000000"
+    ],
+    "examples": [
+      {
+        "input": "8 3\n1 3 -1 -3 5 3 6 7",
+        "output": "1.00000 -1.00000 -1.00000 3.00000 5.00000 6.00000",
+        "explanation": "The median is calculated independently for every window of size 3."
+      },
+      {
+        "input": "4 2\n1 2 3 4",
+        "output": "1.50000 2.50000 3.50000",
+        "explanation": "For an even window size, the median is the average of the two middle elements."
+      }
+    ],
+    "functionName": "medianSlidingWindow",
+    "starterCode": {
+      "cpp": "vector<double> medianSlidingWindow(vector<int>& nums, int k) {\n    // Write your code here\n}",
+      "java": "static double[] medianSlidingWindow(int[] nums, int k) {\n    // Write your code here\n    return new double[0];\n}",
+      "python": "def median_sliding_window(nums, k):\n    # Write your code here\n    pass",
+      "javascript": "function medianSlidingWindow(nums, k) {\n  // Write your code here\n}"
+    },
+    "publicTestCases": [
+      {
+        "stdin": "8 3\n1 3 -1 -3 5 3 6 7",
+        "expectedOutput": "1.00000 -1.00000 -1.00000 3.00000 5.00000 6.00000"
+      },
+      {
+        "stdin": "4 2\n1 2 3 4",
+        "expectedOutput": "1.50000 2.50000 3.50000"
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "stdin": "3 1\n5 -2 8",
+        "expectedOutput": "5.00000 -2.00000 8.00000"
+      },
+      {
+        "stdin": "5 5\n1 4 2 3 5",
+        "expectedOutput": "3.00000"
+      },
+      {
+        "stdin": "6 4\n1 1 1 1 1 1",
+        "expectedOutput": "1.00000 1.00000 1.00000"
+      }
+    ],
+    "timeLimitMs": 2500,
+    "memoryLimitMb": 256,
+    "submissionEnabled": true
+  }
+]

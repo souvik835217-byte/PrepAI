@@ -1,0 +1,92 @@
+[
+  {
+    "id": "count-primes", "title": "Count Primes", "topic": "math", "topicName": "Math", "difficulty": "Medium", "acceptance": 55,
+    "companies": ["Amazon", "Microsoft"], "description": "Return the number of prime numbers strictly less than n.",
+    "inputFormat": ["One integer n"], "outputFormat": "Print the number of primes less than n.", "constraints": ["0 <= n <= 5000000"],
+    "examples": [{"input": "10", "output": "4", "explanation": "The primes below 10 are 2, 3, 5, and 7."}], "functionName": "countPrimes",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int countPrimes(int n) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "10", "expectedOutput": "4"}], "hiddenTestCases": [{"stdin": "100", "expectedOutput": "25"}],
+    "timeLimitMs": 1500, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "palindrome-number", "title": "Palindrome Number", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 58,
+    "companies": ["Amazon", "Adobe"], "description": "Determine whether an integer reads the same forward and backward without converting it to a string.",
+    "inputFormat": ["One signed integer x"], "outputFormat": "Print true or false.", "constraints": ["-2147483648 <= x <= 2147483647"],
+    "examples": [{"input": "121", "output": "true", "explanation": "121 reads the same in both directions."}], "functionName": "isPalindrome",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    bool isPalindrome(int x) {\n        // Write your solution here\n        return false;\n    }\n};"},
+    "publicTestCases": [{"stdin": "121", "expectedOutput": "true"}], "hiddenTestCases": [{"stdin": "-121", "expectedOutput": "false"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "gcd-of-two-numbers", "title": "Greatest Common Divisor", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 84,
+    "companies": ["Google", "Microsoft"], "description": "Return the greatest common divisor of two non-negative integers.",
+    "inputFormat": ["Two space-separated integers a and b"], "outputFormat": "Print their greatest common divisor.", "constraints": ["0 <= a, b <= 1000000000", "a + b > 0"],
+    "examples": [{"input": "48 18", "output": "6", "explanation": "6 is the largest integer dividing both values."}], "functionName": "gcd",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int gcd(int a, int b) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "48 18", "expectedOutput": "6"}], "hiddenTestCases": [{"stdin": "17 13", "expectedOutput": "1"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "sqrt-x", "title": "Sqrt(x)", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 40,
+    "companies": ["Amazon", "Apple"], "description": "Return the integer square root of x, rounded down.",
+    "inputFormat": ["One non-negative integer x"], "outputFormat": "Print floor(sqrt(x)).", "constraints": ["0 <= x <= 2147483647"],
+    "examples": [{"input": "8", "output": "2", "explanation": "The square root is between 2 and 3, so return 2."}], "functionName": "mySqrt",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int mySqrt(int x) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "8", "expectedOutput": "2"}], "hiddenTestCases": [{"stdin": "2147395599", "expectedOutput": "46339"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "happy-number", "title": "Happy Number", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 58,
+    "companies": ["Google", "Amazon"], "description": "Repeatedly replace n with the sum of the squares of its digits. Return whether the process reaches 1.",
+    "inputFormat": ["One positive integer n"], "outputFormat": "Print true or false.", "constraints": ["1 <= n <= 2147483647"],
+    "examples": [{"input": "19", "output": "true", "explanation": "The digit-square sequence eventually reaches 1."}], "functionName": "isHappy",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    bool isHappy(int n) {\n        // Write your solution here\n        return false;\n    }\n};"},
+    "publicTestCases": [{"stdin": "19", "expectedOutput": "true"}], "hiddenTestCases": [{"stdin": "2", "expectedOutput": "false"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "power-x-n", "title": "Pow(x, n)", "topic": "math", "topicName": "Math", "difficulty": "Medium", "acceptance": 37,
+    "companies": ["Meta", "Google"], "description": "Calculate x raised to the integer power n using fast exponentiation.",
+    "inputFormat": ["A floating-point value x and integer n"], "outputFormat": "Print the result rounded to five decimal places.", "constraints": ["-100.0 < x < 100.0", "-2147483648 <= n <= 2147483647"],
+    "examples": [{"input": "2.0 10", "output": "1024.00000", "explanation": "Two raised to ten equals 1024."}], "functionName": "myPow",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    double myPow(double x, int n) {\n        // Write your solution here\n        return 0.0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "2.0 10", "expectedOutput": "1024.00000"}], "hiddenTestCases": [{"stdin": "2.0 -2", "expectedOutput": "0.25000"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "factorial-trailing-zeroes", "title": "Factorial Trailing Zeroes", "topic": "math", "topicName": "Math", "difficulty": "Medium", "acceptance": 45,
+    "companies": ["Microsoft", "Amazon"], "description": "Return the number of trailing zeroes in n factorial.",
+    "inputFormat": ["One non-negative integer n"], "outputFormat": "Print the number of trailing zeroes.", "constraints": ["0 <= n <= 1000000000"],
+    "examples": [{"input": "25", "output": "6", "explanation": "25 factorial contains six factors of 10."}], "functionName": "trailingZeroes",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int trailingZeroes(int n) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "25", "expectedOutput": "6"}], "hiddenTestCases": [{"stdin": "5", "expectedOutput": "1"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "roman-to-integer", "title": "Roman to Integer", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 63,
+    "companies": ["Amazon", "Microsoft"], "description": "Convert a valid Roman numeral to its integer value.",
+    "inputFormat": ["One Roman numeral string"], "outputFormat": "Print its integer value.", "constraints": ["1 <= s.length <= 15", "1 <= value <= 3999"],
+    "examples": [{"input": "MCMXCIV", "output": "1994", "explanation": "M + CM + XC + IV equals 1994."}], "functionName": "romanToInt",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int romanToInt(string s) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "MCMXCIV", "expectedOutput": "1994"}], "hiddenTestCases": [{"stdin": "III", "expectedOutput": "3"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "integer-to-roman", "title": "Integer to Roman", "topic": "math", "topicName": "Math", "difficulty": "Medium", "acceptance": 67,
+    "companies": ["Amazon", "Apple"], "description": "Convert an integer to its standard Roman numeral representation.",
+    "inputFormat": ["One integer num"], "outputFormat": "Print its Roman numeral.", "constraints": ["1 <= num <= 3999"],
+    "examples": [{"input": "58", "output": "LVIII", "explanation": "L + V + III equals 58."}], "functionName": "intToRoman",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    string intToRoman(int num) {\n        // Write your solution here\n        return \"\";\n    }\n};"},
+    "publicTestCases": [{"stdin": "58", "expectedOutput": "LVIII"}], "hiddenTestCases": [{"stdin": "1994", "expectedOutput": "MCMXCIV"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  },
+  {
+    "id": "excel-column-number", "title": "Excel Sheet Column Number", "topic": "math", "topicName": "Math", "difficulty": "Easy", "acceptance": 65,
+    "companies": ["Microsoft", "Amazon"], "description": "Convert an Excel-style uppercase column title to its positive column number.",
+    "inputFormat": ["One uppercase column title"], "outputFormat": "Print its column number.", "constraints": ["1 <= columnTitle.length <= 7"],
+    "examples": [{"input": "AB", "output": "28", "explanation": "AB represents 1 times 26 plus 2."}], "functionName": "titleToNumber",
+    "starterCode": {"cpp": "#include <bits/stdc++.h>\nusing namespace std;\nclass Solution { public:\n    int titleToNumber(string columnTitle) {\n        // Write your solution here\n        return 0;\n    }\n};"},
+    "publicTestCases": [{"stdin": "AB", "expectedOutput": "28"}], "hiddenTestCases": [{"stdin": "ZY", "expectedOutput": "701"}],
+    "timeLimitMs": 1000, "memoryLimitMb": 256, "submissionEnabled": true
+  }
+]

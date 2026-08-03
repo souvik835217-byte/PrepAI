@@ -18,6 +18,7 @@ import {
 import { FaRobot } from "react-icons/fa";
 import {
   Link,
+  useLocation,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
@@ -57,6 +58,7 @@ const getAuthErrorMessage = (error) => {
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchParams] = useSearchParams();
   const { setUser } = useAuth();
   const isSignUp = searchParams.get("mode") === "signup";
@@ -73,7 +75,12 @@ const Login = () => {
 
   const completeAuthentication = (firebaseUser, message) => {
     setUser(firebaseUser);
-    navigate("/", {
+    const destination =
+      typeof location.state?.from === "string"
+        ? location.state.from
+        : "/";
+
+    navigate(destination, {
       replace: true,
       state: {
         authMessage: message,
@@ -241,8 +248,8 @@ const Login = () => {
 
         <p className="mb-7 mt-3 text-sm leading-6 text-gray-400">
           {isSignUp
-            ? "Join PrepAI and start practicing for free."
-            : "Sign in to continue your interview preparation."}
+            ? "Join PrepAI and start practicing DSA and interviews for free."
+            : "Sign in to continue your DSA and interview preparation."}
         </p>
 
         <form

@@ -11,36 +11,58 @@ import interviewRoutes from "./routes/interview.routes.js";
 import interviewResultRoutes from "./routes/interviewResult.routes.js";
 import interviewHistoryRoutes from "./routes/interviewHistory.routes.js";
 import dashboardAnalyticsRoutes from "./routes/dashboardAnalytics.routes.js";
+import codeExecutionRoutes from "./routes/codeExecution.routes.js";
+import submissionHistoryRoutes from "./routes/submissionHistory.routes.js";
+import codeHintRoutes from "./dsa/routes/codeHint.routes.js";
+import aiCodeReviewRoutes from "./dsa/routes/aiCodeReview.routes.js";
+import learningRoadmapRoutes from "./dsa/routes/learningRoadmap.routes.js";
+import contestRoutes from "./dsa/routes/contest.routes.js";
+import dsaQuestionRoutes from "./dsa/routes/question.routes.js";
+import contestHistoryRoutes from "./dsa/routes/contestHistory.routes.js";
+import leaderboardRoutes from "./dsa/routes/leaderboard.routes.js";
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5000;
+
+const PORT =
+  Number(process.env.PORT) || 5000;
+
+const MONGODB_RETRY_DELAY_MS =
+  Number(process.env.MONGODB_RETRY_DELAY_MS) || 10000;
+
+let mongoRetryTimer = null;
+let isMongoConnecting = false;
 
 /* =========================================================
    CORS
 ========================================================= */
 
 const allowedOrigins = [
-  // Local development
   "http://localhost:5173",
   "http://localhost:5174",
+  "http://localhost:5175",
   "http://localhost:5178",
+
   "http://127.0.0.1:5173",
   "http://127.0.0.1:5174",
+  "http://127.0.0.1:5175",
   "http://127.0.0.1:5178",
 
-  // Vercel production and current deployment domains
   "https://prep-ai-souvik9.vercel.app",
   "https://prep-ai-umber-three.vercel.app",
   "https://prep-ipavvzp3a-souvik9.vercel.app",
 ];
 
-const isAllowedVercelPreview = (origin) => {
+const isAllowedVercelPreview = (
+  origin
+) => {
   try {
     const url = new URL(origin);
 
     return (
       url.protocol === "https:" &&
-      url.hostname.endsWith("-souvik9.vercel.app")
+      url.hostname.endsWith(
+        "-souvik9.vercel.app"
+      )
     );
   } catch {
     return false;
@@ -49,7 +71,6 @@ const isAllowedVercelPreview = (origin) => {
 
 const corsOptions = {
   origin(origin, callback) {
-    // Allows requests from Postman, Render health checks, and server-to-server calls
     if (!origin) {
       return callback(null, true);
     }
@@ -61,10 +82,14 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    console.warn(`⚠️ CORS blocked origin: ${origin}`);
+    console.warn(
+      `⚠️ CORS blocked origin: ${origin}`
+    );
 
     return callback(
-      new Error(`Origin ${origin} is not allowed by CORS`)
+      new Error(
+        `Origin ${origin} is not allowed by CORS`
+      )
     );
   },
 
@@ -93,7 +118,11 @@ app.use(cors(corsOptions));
    Body parsing
 ========================================================= */
 
-app.use(express.json({ limit: "10mb" }));
+app.use(
+  express.json({
+    limit: "10mb",
+  })
+);
 
 app.use(
   express.urlencoded({
@@ -106,7 +135,8 @@ app.use(
    Upload folder
 ========================================================= */
 
-const uploadsPath = path.resolve("uploads");
+const uploadsPath =
+  path.resolve("uploads");
 
 if (!fs.existsSync(uploadsPath)) {
   fs.mkdirSync(uploadsPath, {
@@ -121,20 +151,28 @@ if (!fs.existsSync(uploadsPath)) {
 app.get("/", (req, res) => {
   return res.status(200).json({
     success: true,
-    message: "PrepAI backend is running",
-    environment: process.env.NODE_ENV || "development",
+    message:
+      "PrepAI backend is running",
+
+    environment:
+      process.env.NODE_ENV ||
+      "development",
   });
 });
 
 app.get("/api/health", (req, res) => {
   return res.status(200).json({
     success: true,
-    message: "PrepAI API is healthy",
+    message:
+      "PrepAI API is healthy",
+
     database:
       mongoose.connection.readyState === 1
         ? "connected"
         : "disconnected",
-    timestamp: new Date().toISOString(),
+
+    timestamp:
+      new Date().toISOString(),
   });
 });
 
@@ -142,9 +180,15 @@ app.get("/api/health", (req, res) => {
    API routes
 ========================================================= */
 
-app.use("/api/resume", resumeRoutes);
+app.use(
+  "/api/resume",
+  resumeRoutes
+);
 
-app.use("/api/interview", interviewRoutes);
+app.use(
+  "/api/interview",
+  interviewRoutes
+);
 
 app.use(
   "/api/interview-results",
@@ -159,6 +203,36 @@ app.use(
 app.use(
   "/api/dashboard-analytics",
   dashboardAnalyticsRoutes
+);
+
+app.use(
+  "/api/code",
+  codeExecutionRoutes
+);
+
+app.use(
+  "/api/submissions",
+  submissionHistoryRoutes
+);
+
+app.use("/api/code-hint", codeHintRoutes);
+
+app.use("/api/ai-code-review", aiCodeReviewRoutes);
+
+app.use(
+  "/api/learning-roadmap",
+  learningRoadmapRoutes
+);
+
+app.use("/api/dsa", contestRoutes);
+
+app.use("/api/dsa", dsaQuestionRoutes);
+
+app.use("/api/contest-history", contestHistoryRoutes);
+
+app.use(
+  "/api/leaderboard",
+  leaderboardRoutes
 );
 
 /* =========================================================
@@ -177,29 +251,43 @@ app.use((req, res) => {
 ========================================================= */
 
 // eslint-disable-next-line no-unused-vars
-app.use((error, req, res, next) => {
-  console.error("Server error:", error);
+app.use(
+  (error, req, res, next) => {
+    console.error(
+      "Server error:",
+      error
+    );
 
-  if (error.message?.includes("not allowed by CORS")) {
-    return res.status(403).json({
-      success: false,
-      message: error.message,
-    });
+    if (
+      error.message?.includes(
+        "not allowed by CORS"
+      )
+    ) {
+      return res.status(403).json({
+        success: false,
+        message: error.message,
+      });
+    }
+
+    if (
+      error.name === "MulterError"
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+
+    return res
+      .status(error.status || 500)
+      .json({
+        success: false,
+        message:
+          error.message ||
+          "Internal server error",
+      });
   }
-
-  if (error.name === "MulterError") {
-    return res.status(400).json({
-      success: false,
-      message: error.message,
-    });
-  }
-
-  return res.status(error.status || 500).json({
-    success: false,
-    message:
-      error.message || "Internal server error",
-  });
-});
+);
 
 /* =========================================================
    Start application
@@ -213,7 +301,9 @@ const startServer = async () => {
       );
     }
 
-    if (!process.env.GEMINI_API_KEY) {
+    if (
+      !process.env.GEMINI_API_KEY
+    ) {
       console.warn(
         "⚠️ GEMINI_API_KEY environment variable is missing"
       );
@@ -223,28 +313,45 @@ const startServer = async () => {
       process.env.MONGODB_URI
     );
 
-    console.log("✅ MongoDB Connected");
+    console.log(
+      "✅ MongoDB Connected"
+    );
 
-    const server = app.listen(PORT, "0.0.0.0", () => {
-      console.log(
-        `🚀 PrepAI server running on port ${PORT}`
-      );
+    const server = app.listen(
+      PORT,
+      "0.0.0.0",
+      () => {
+        console.log(
+          `🚀 PrepAI server running on port ${PORT}`
+        );
 
-      console.log(
-        `✅ Health check: /api/health`
-      );
+        console.log(
+          "✅ Health check: /api/health"
+        );
 
-      console.log(
-        `✅ History API: /api/interview-history`
-      );
-    });
+        console.log(
+          "✅ History API: /api/interview-history"
+        );
 
-    server.on("error", (error) => {
-      console.error(
-        "❌ Express server error:",
-        error
-      );
-    });
+        console.log(
+          "✅ Code API: /api/code"
+        );
+
+        console.log(
+          "✅ DSA submissions API: /api/submissions"
+        );
+      }
+    );
+
+    server.on(
+      "error",
+      (error) => {
+        console.error(
+          "❌ Express server error:",
+          error
+        );
+      }
+    );
   } catch (error) {
     console.error(
       "❌ Failed to start PrepAI server:"
@@ -256,4 +363,73 @@ const startServer = async () => {
   }
 };
 
-startServer();
+const startResilientServer = () => {
+  if (!process.env.GEMINI_API_KEY) {
+    console.warn(
+      "GEMINI_API_KEY is missing; AI features are disabled"
+    );
+  }
+
+  const server = app.listen(PORT, "0.0.0.0", () => {
+    console.log(`PrepAI server running on port ${PORT}`);
+    console.log("Health check: /api/health");
+    console.log("DSA API: /api/dsa");
+  });
+
+  server.on("error", (error) => {
+    console.error("Express server error:", error);
+  });
+
+  const scheduleMongoRetry = () => {
+    if (mongoRetryTimer) return;
+
+    mongoRetryTimer = setTimeout(() => {
+      mongoRetryTimer = null;
+      connectMongoDB();
+    }, MONGODB_RETRY_DELAY_MS);
+  };
+
+  const connectMongoDB = async () => {
+    if (
+      isMongoConnecting ||
+      mongoose.connection.readyState === 1
+    ) {
+      return;
+    }
+
+    if (!process.env.MONGODB_URI) {
+      console.warn(
+        "MONGODB_URI is missing; database-backed features are disabled"
+      );
+      return;
+    }
+
+    isMongoConnecting = true;
+
+    try {
+      await mongoose.connect(process.env.MONGODB_URI, {
+        serverSelectionTimeoutMS: 5000,
+      });
+      console.log("MongoDB connected");
+    } catch (error) {
+      console.error(
+        `MongoDB connection failed: ${error.message}`
+      );
+      console.log(
+        `Retrying MongoDB in ${MONGODB_RETRY_DELAY_MS / 1000} seconds`
+      );
+      scheduleMongoRetry();
+    } finally {
+      isMongoConnecting = false;
+    }
+  };
+
+  mongoose.connection.on("disconnected", () => {
+    console.warn("MongoDB disconnected");
+    scheduleMongoRetry();
+  });
+
+  connectMongoDB();
+};
+
+startResilientServer();
