@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prep-ai-souvik9.vercel.app/sitemap.xml
+Sitemap: https://prep-ai-umber-three.vercel.app/sitemap.xml
