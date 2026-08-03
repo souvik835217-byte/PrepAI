@@ -862,9 +862,15 @@ const Interview = () => {
       return;
     }
 
-    if (trimmedAnswer.length < 15) {
+    const answerWords =
+      trimmedAnswer.match(/[A-Za-z0-9]+/g) || [];
+
+    if (
+      trimmedAnswer.length < 30 ||
+      answerWords.length < 6
+    ) {
       setAnswerWarning(
-        "Your answer is too short. Add a little more detail before continuing."
+        "Your answer needs more substance. Directly answer the question and include reasoning, experience, or a specific example."
       );
       setValidationScore(null);
       setIsRewriteMode(true);
@@ -982,7 +988,7 @@ const Interview = () => {
         typeof relevantValue === "boolean"
           ? relevantValue
           : normalizedScore !== null
-          ? normalizedScore >= 45
+          ? normalizedScore >= 65
           : true;
 
       const feedback =
@@ -1022,12 +1028,12 @@ const Interview = () => {
         setIsCheckingAnswer(false);
         setIsPaused(true);
         setIsRewriteMode(true);
-        setCanContinueAnyway(true);
+        setCanContinueAnyway(false);
         setStatusMessage("");
 
         setAnswerWarning(
           feedback ||
-            "Your answer does not appear to directly address the question. You can rewrite it or continue with the current response."
+            "Your answer does not directly address the question with enough relevant detail. Please rewrite it before continuing."
         );
 
         return;

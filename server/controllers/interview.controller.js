@@ -526,8 +526,13 @@ Do not evaluate grammar, accent, spelling or speaking style.
 
 Do not reject an answer only because it is informal or imperfect.
 
-Accept the answer when it makes a genuine and relevant attempt to answer
-the question.
+Accept the answer only when it directly answers the main question with
+enough relevant explanation, reasoning, experience, or an example to
+demonstrate genuine understanding.
+
+Do not accept an answer merely because it repeats words from the question,
+mentions one expected keyword, gives generic interview advice, or contains
+fluent but unrelated content.
 
 Reject the answer when it is:
 
@@ -538,6 +543,9 @@ Reject the answer when it is:
 - an attempt to avoid the question
 - about a completely different topic
 - too vague to address what was asked
+- a restatement of the question without an answer
+- generic filler that could be used for almost any interview question
+- keyword stuffing without a coherent explanation
 
 Interview details:
 
@@ -572,14 +580,15 @@ ${answer}
 
 Scoring rules:
 
-- 0 to 20: completely irrelevant or meaningless
-- 21 to 40: mostly unrelated
-- 41 to 54: weak attempt but does not answer the main question
-- 55 to 70: relevant basic answer
-- 71 to 85: relevant and reasonably detailed
-- 86 to 100: highly relevant and clear
+- 0 to 24: completely irrelevant, meaningless or copied filler
+- 25 to 44: mostly unrelated or only repeats the question
+- 45 to 64: partially related but too vague or incomplete to accept
+- 65 to 79: directly relevant with a clear basic explanation
+- 80 to 89: relevant, specific and reasonably detailed
+- 90 to 100: highly relevant, specific and clear
 
-Set relevant to true only when the score is 55 or higher.
+Set relevant to true only when the score is 65 or higher and the answer
+directly addresses the main request in the question.
 
 If the answer is irrelevant:
 
@@ -942,13 +951,33 @@ export const checkInterviewAnswer = async (
       .replace(/\s+/g, " ")
       .trim();
 
-    if (cleanedAnswer.length < 15) {
+    const answerWords = cleanedAnswer
+      .toLowerCase()
+      .match(/[a-z0-9]+/g) || [];
+    const uniqueAnswerWords = new Set(answerWords);
+    const normalizedAnswer = answerWords.join(" ");
+    const lowInformationAnswers = new Set([
+      "i dont know",
+      "i do not know",
+      "no idea",
+      "not sure",
+      "skip",
+      "i cannot answer",
+      "i cant answer",
+    ]);
+
+    if (
+      cleanedAnswer.length < 30 ||
+      answerWords.length < 6 ||
+      uniqueAnswerWords.size < 4 ||
+      lowInformationAnswers.has(normalizedAnswer)
+    ) {
       return res.status(200).json({
         success: true,
         relevant: false,
         score: 10,
         feedback:
-          "Your answer is too short to address the question. Add your approach, experience or reasoning before continuing.",
+          "Your answer does not contain enough relevant information. Directly answer the question and add your reasoning, experience, or a specific example.",
         missingPoints: [
           "More explanation",
           "A direct response to the question",
@@ -1024,7 +1053,9 @@ export const checkInterviewAnswer = async (
         )
       : 0;
 
-    const relevant = score >= 55;
+    const relevant =
+      score >= 65 &&
+      validationResult.relevant === true;
 
     const feedback =
       typeof validationResult.feedback ===
