@@ -156,32 +156,32 @@ const CompanySelection = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#eef2f7] text-slate-900">
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[430px] w-[430px] rounded-full bg-blue-200/40 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <div className="pointer-events-none absolute -left-40 -top-40 h-[430px] w-[430px] rounded-full bg-indigo-600/20 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-indigo-200/35 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-purple-600/15 blur-3xl" />
 
-      <header className="relative z-20 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
+      <header className="relative z-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             type="button"
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 font-bold text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-950/40">
               P
             </div>
 
             <div className="text-left">
               <p className="font-bold">PrepAI</p>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 Interview configuration
               </p>
             </div>
           </button>
 
-          <div className="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-500 sm:block">
+          <div className="hidden rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs font-semibold text-slate-300 sm:block">
             Step 1 of 2
           </div>
         </div>
@@ -191,14 +191,14 @@ const CompanySelection = () => {
         <button
           type="button"
           onClick={() => navigate("/dashboard")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-white"
         >
           <FiArrowLeft />
           Back to dashboard
         </button>
 
         <div className="mt-8 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-blue-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-indigo-400">
             Interview preference
           </p>
 
@@ -206,7 +206,7 @@ const CompanySelection = () => {
             Configure your interview
           </h1>
 
-          <p className="mt-4 text-sm leading-7 text-slate-500 sm:text-base">
+          <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
             Select your target company, role and interview
             difficulty. PrepAI will combine these preferences
             with your resume to generate personalized questions.
@@ -214,7 +214,7 @@ const CompanySelection = () => {
         </div>
 
         {error && (
-          <div className="mt-7 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm font-medium text-red-700">
+          <div className="mt-7 rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm font-medium text-red-300">
             {error}
           </div>
         )}
@@ -240,14 +240,14 @@ const CompanySelection = () => {
                         setSelectedCompany(company.name);
                         setError("");
                       }}
-                      className={`relative rounded-[22px] border p-5 text-left shadow-lg transition ${
+                      className={`relative rounded-[22px] border p-5 text-left shadow-lg transition duration-200 ${
                         isSelected
-                          ? "border-blue-500 bg-blue-50 shadow-blue-200/30"
-                          : "border-white/80 bg-white/90 shadow-slate-300/20 hover:-translate-y-1 hover:border-blue-200"
+                          ? "border-indigo-500 bg-indigo-500/15 shadow-indigo-950/40"
+                          : "border-slate-700/80 bg-slate-950/60 shadow-black/20 hover:-translate-y-1 hover:border-indigo-500/60 hover:bg-slate-800/80"
                       }`}
                     >
                       {isSelected && (
-                        <div className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-white">
+                        <div className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-indigo-500 text-white shadow-lg shadow-indigo-950/50">
                           <FiCheck />
                         </div>
                       )}
@@ -255,8 +255,8 @@ const CompanySelection = () => {
                       <div
                         className={`flex h-12 w-12 items-center justify-center rounded-xl text-xl ${
                           isSelected
-                            ? "bg-blue-600 text-white"
-                            : "bg-slate-100 text-slate-700"
+                            ? "bg-indigo-500 text-white"
+                            : "bg-slate-800 text-slate-300"
                         }`}
                       >
                         <FiBriefcase />
@@ -266,7 +266,7 @@ const CompanySelection = () => {
                         {company.name}
                       </h2>
 
-                      <p className="mt-2 text-sm leading-6 text-slate-500">
+                      <p className="mt-2 text-sm leading-6 text-slate-400">
                         {company.description}
                       </p>
                     </button>
@@ -316,12 +316,12 @@ const CompanySelection = () => {
                       }
                       className={`relative rounded-2xl border p-5 text-left transition ${
                         isSelected
-                          ? "border-blue-500 bg-blue-50"
-                          : "border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50/40"
+                          ? "border-indigo-500 bg-indigo-500/15"
+                          : "border-slate-700 bg-slate-950/60 hover:border-indigo-500/60 hover:bg-slate-800"
                       }`}
                     >
                       {isSelected && (
-                        <div className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-sm text-white">
+                        <div className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500 text-sm text-white">
                           <FiCheck />
                         </div>
                       )}
@@ -330,7 +330,7 @@ const CompanySelection = () => {
                         {level.name}
                       </p>
 
-                      <p className="mt-2 pr-5 text-sm leading-6 text-slate-500">
+                      <p className="mt-2 pr-5 text-sm leading-6 text-slate-400">
                         {level.description}
                       </p>
                     </button>
@@ -382,12 +382,12 @@ const CompanySelection = () => {
 
           {/* Summary */}
           <aside>
-            <div className="rounded-[26px] border border-white/80 bg-white/95 p-6 shadow-xl shadow-slate-300/20 xl:sticky xl:top-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-xl text-white">
+            <div className="rounded-[26px] border border-slate-700/80 bg-slate-900/90 p-6 shadow-2xl shadow-black/30 backdrop-blur xl:sticky xl:top-8">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-xl text-white shadow-lg shadow-indigo-950/40">
                 <FiBriefcase />
               </div>
 
-              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-indigo-400">
                 Interview summary
               </p>
 
@@ -395,7 +395,7 @@ const CompanySelection = () => {
                 Your configuration
               </h2>
 
-              <div className="mt-6 divide-y divide-slate-100">
+              <div className="mt-6 divide-y divide-slate-800">
                 <SummaryRow
                   label="Company"
                   value={selectedCompany}
@@ -422,12 +422,12 @@ const CompanySelection = () => {
                 />
               </div>
 
-              <div className="mt-6 rounded-2xl bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-700">
+              <div className="mt-6 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-4">
+                <p className="text-sm font-semibold text-indigo-200">
                   Personalized interview
                 </p>
 
-                <p className="mt-2 text-xs leading-5 text-slate-500">
+                <p className="mt-2 text-xs leading-5 text-slate-400">
                   Your resume and selected preferences will be
                   used to generate relevant interview questions.
                 </p>
@@ -436,7 +436,7 @@ const CompanySelection = () => {
               <button
                 type="button"
                 onClick={continueToResume}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-950/40 transition hover:from-indigo-500 hover:to-purple-500"
               >
                 Continue to resume
                 <FiArrowRight />
@@ -456,9 +456,9 @@ const SelectionSection = ({
   children,
 }) => {
   return (
-    <section className="rounded-[26px] border border-white/80 bg-white/90 p-5 shadow-xl shadow-slate-300/20 sm:p-7">
+    <section className="rounded-[26px] border border-slate-700/80 bg-slate-900/80 p-5 shadow-2xl shadow-black/20 backdrop-blur sm:p-7">
       <div className="mb-6 flex items-start gap-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-lg text-slate-700">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/15 text-lg text-indigo-300">
           {icon}
         </div>
 
@@ -467,7 +467,7 @@ const SelectionSection = ({
             {title}
           </h2>
 
-          <p className="mt-1 text-sm leading-6 text-slate-500">
+          <p className="mt-1 text-sm leading-6 text-slate-400">
             {description}
           </p>
         </div>
@@ -489,8 +489,8 @@ const OptionButton = ({
       onClick={onClick}
       className={`relative rounded-xl border px-4 py-3 text-sm font-semibold transition ${
         active
-          ? "border-slate-900 bg-slate-900 text-white shadow-md"
-          : "border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:bg-blue-50"
+          ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-950/40"
+          : "border-slate-700 bg-slate-950/60 text-slate-300 hover:border-indigo-500/60 hover:bg-slate-800 hover:text-white"
       }`}
     >
       <span className="flex items-center justify-center gap-2">
@@ -504,11 +504,11 @@ const OptionButton = ({
 const SummaryRow = ({ label, value }) => {
   return (
     <div className="flex items-start justify-between gap-5 py-4 first:pt-0">
-      <span className="text-sm text-slate-500">
+      <span className="text-sm text-slate-400">
         {label}
       </span>
 
-      <span className="max-w-[170px] text-right text-sm font-semibold text-slate-900">
+      <span className="max-w-[170px] text-right text-sm font-semibold text-white">
         {value}
       </span>
     </div>
