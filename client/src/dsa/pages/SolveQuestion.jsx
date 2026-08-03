@@ -13,6 +13,8 @@ import Editor from "@monaco-editor/react";
 import {
   FiArrowLeft,
   FiCheckCircle,
+  FiChevronLeft,
+  FiChevronRight,
   FiClock,
   FiCode,
   FiPlay,
@@ -22,6 +24,7 @@ import {
 } from "react-icons/fi";
 
 import { AuthContext } from "../../context/authContextStore";
+import questionData from "../data/questionData";
 
 const languageLabels = {
   cpp: "C++",
@@ -183,6 +186,7 @@ const SolveQuestion = () => {
   const [apiQuestion, setApiQuestion] = useState(null);
   const [questionLoading, setQuestionLoading] = useState(true);
   const [questionError, setQuestionError] = useState("");
+  const [navigationQuestions, setNavigationQuestions] = useState([]);
 
   const question = useMemo(() => {
     const selectedQuestion = apiQuestion;
@@ -264,6 +268,77 @@ const SolveQuestion = () => {
       controller.abort();
     };
   }, [questionId]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadNavigationQuestions = async () => {
+      if (companyId) {
+        const questions = Object.values(questionData).filter(
+          (item) =>
+            Array.isArray(item.companies) &&
+            item.companies.includes(companyId)
+        );
+        setNavigationQuestions(questions);
+        return;
+      }
+
+      if (!topicId) {
+        setNavigationQuestions([]);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `${API_BASE_URL}/api/dsa/questions/topic/${topicId}`,
+          { signal: controller.signal }
+        );
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Unable to load question list");
+        }
+
+        setNavigationQuestions(
+          Array.isArray(data.questions) ? data.questions : []
+        );
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Question navigation error:", error);
+          setNavigationQuestions([]);
+        }
+      }
+    };
+
+    loadNavigationQuestions();
+
+    return () => controller.abort();
+  }, [companyId, topicId]);
+
+  const currentQuestionIndex = navigationQuestions.findIndex(
+    (item) => item.id === questionId
+  );
+
+  const previousQuestion =
+    currentQuestionIndex > 0
+      ? navigationQuestions[currentQuestionIndex - 1]
+      : null;
+
+  const nextQuestion =
+    currentQuestionIndex >= 0 &&
+    currentQuestionIndex < navigationQuestions.length - 1
+      ? navigationQuestions[currentQuestionIndex + 1]
+      : null;
+
+  const navigateToQuestion = (targetQuestion) => {
+    if (!targetQuestion?.id) return;
+
+    const targetPath = companyId
+      ? `/dsa/companies/${companyId}/questions/${targetQuestion.id}`
+      : `/dsa/topics/${topicId}/questions/${targetQuestion.id}`;
+
+    navigate(targetPath);
+  };
 
   const availableLanguages = useMemo(() => {
     const configuredLanguages = Object.keys(
@@ -664,6 +739,38 @@ const SolveQuestion = () => {
                 Login
               </button>
             )}
+
+            <div className="flex items-center overflow-hidden rounded-lg border border-slate-700">
+              <button
+                type="button"
+                onClick={() => navigateToQuestion(previousQuestion)}
+                disabled={!previousQuestion}
+                title={
+                  previousQuestion
+                    ? `Previous: ${previousQuestion.title}`
+                    : "This is the first question"
+                }
+                className="flex items-center gap-1.5 border-r border-slate-700 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <FiChevronLeft />
+                <span className="hidden md:inline">Previous</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigateToQuestion(nextQuestion)}
+                disabled={!nextQuestion}
+                title={
+                  nextQuestion
+                    ? `Next: ${nextQuestion.title}`
+                    : "This is the last question"
+                }
+                className="flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <span className="hidden md:inline">Next</span>
+                <FiChevronRight />
+              </button>
+            </div>
 
             <button
               type="button"
