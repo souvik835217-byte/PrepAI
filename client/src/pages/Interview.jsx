@@ -208,6 +208,11 @@ const Interview = () => {
     );
   }, [interviewData]);
 
+  const isGeneralInterview = selectedCompany === "General";
+  const interviewStyleLabel = isGeneralInterview
+    ? "General practice"
+    : selectedCompany;
+
   const questions = useMemo(() => {
     return Array.isArray(interviewData?.questions)
       ? interviewData.questions
@@ -1798,7 +1803,7 @@ const Interview = () => {
                 </p>
 
                 <p className="text-xs text-slate-500">
-                  {selectedCompany} · {interviewData.targetRole}
+                  {interviewStyleLabel} · {interviewData.targetRole}
                 </p>
               </div>
             </div>
@@ -1835,7 +1840,7 @@ const Interview = () => {
                   {interviewData.interviewerRole ||
                     interviewData.interviewer?.role ||
                     "Technical Interviewer"}{" "}
-                  · {selectedCompany}
+                  {!isGeneralInterview && ` · ${selectedCompany}`}
                 </p>
 
                 <div className="mt-1 flex items-center gap-2 text-xs text-emerald-300">
@@ -1918,7 +1923,9 @@ const Interview = () => {
               </p>
 
               <p className="mt-2 text-xs font-medium text-blue-300">
-                Target company: {selectedCompany}
+                {isGeneralInterview
+                  ? "Interview mode: General practice"
+                  : `Target company: ${selectedCompany}`}
               </p>
             </div>
           </section>

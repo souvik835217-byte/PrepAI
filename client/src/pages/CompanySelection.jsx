@@ -15,7 +15,8 @@ import {
 const companies = [
   {
     name: "General",
-    description: "Balanced interview for software roles.",
+    label: "General Practice",
+    description: "A balanced, company-neutral interview for software roles.",
   },
   {
     name: "Google",
@@ -119,7 +120,7 @@ const CompanySelection = () => {
 
   const continueToResume = () => {
     if (!selectedCompany) {
-      setError("Please select a company.");
+      setError("Please select an interview style.");
       return;
     }
 
@@ -207,8 +208,8 @@ const CompanySelection = () => {
           </h1>
 
           <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
-            Select your target company, role and interview
-            difficulty. PrepAI will combine these preferences
+            Select an interview style, target role and difficulty.
+            PrepAI will combine these preferences
             with your resume to generate personalized questions.
           </p>
         </div>
@@ -224,8 +225,8 @@ const CompanySelection = () => {
             {/* Company selection */}
             <SelectionSection
               icon={<FiBriefcase />}
-              title="Choose your target company"
-              description="The interview style and evaluation will be adapted to the selected company."
+              title="Choose your interview style"
+              description="Select general practice or prepare for a specific company."
             >
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {companies.map((company) => {
@@ -263,7 +264,7 @@ const CompanySelection = () => {
                       </div>
 
                       <h2 className="mt-5 text-lg font-semibold">
-                        {company.name}
+                        {company.label || company.name}
                       </h2>
 
                       <p className="mt-2 text-sm leading-6 text-slate-400">
@@ -397,8 +398,16 @@ const CompanySelection = () => {
 
               <div className="mt-6 divide-y divide-slate-800">
                 <SummaryRow
-                  label="Company"
-                  value={selectedCompany}
+                  label={
+                    selectedCompany === "General"
+                      ? "Interview mode"
+                      : "Target company"
+                  }
+                  value={
+                    selectedCompany === "General"
+                      ? "General practice"
+                      : selectedCompany
+                  }
                 />
 
                 <SummaryRow
