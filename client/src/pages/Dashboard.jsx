@@ -273,15 +273,15 @@ const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f4f7fb] flex items-center justify-center px-6">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center px-6 text-white">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-full border-4 border-slate-200 border-t-slate-900 animate-spin mx-auto" />
+          <div className="w-12 h-12 rounded-full border-4 border-slate-800 border-t-indigo-500 animate-spin mx-auto" />
 
-          <h2 className="mt-5 text-xl font-semibold text-slate-900">
+          <h2 className="mt-5 text-xl font-semibold text-white">
             Preparing your dashboard
           </h2>
 
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-400">
             Loading your interview performance and progress.
           </p>
         </div>
@@ -290,8 +290,10 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f4f7fb] text-slate-900">
-      <header className="border-b border-slate-200 bg-white">
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <div className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-indigo-600/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-purple-600/10 blur-3xl" />
+      <header className="relative z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
           <button
             type="button"
@@ -299,7 +301,7 @@ const Dashboard = () => {
             aria-label="Go to dashboard"
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-xl bg-slate-950 text-white flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold shadow-lg shadow-indigo-950/40">
               P
             </div>
 
@@ -308,7 +310,7 @@ const Dashboard = () => {
                 PrepAI
               </h1>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 Interview intelligence
               </p>
             </div>
@@ -320,7 +322,7 @@ const Dashboard = () => {
               onClick={() => navigate("/")}
               aria-label="Go to landing page"
               title="Home"
-              className="flex h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold transition hover:bg-slate-50"
+              className="flex h-10 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-3 text-sm font-semibold text-slate-300 transition hover:border-indigo-500/60 hover:text-white"
             >
               <FaHome />
               <span className="hidden md:inline">
@@ -331,7 +333,7 @@ const Dashboard = () => {
             <button
               type="button"
               onClick={() => navigate("/history")}
-              className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-50 transition"
+              className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-sm font-semibold text-slate-300 hover:border-indigo-500/60 hover:text-white transition"
             >
               <FaHistory />
               History
@@ -350,7 +352,7 @@ const Dashboard = () => {
                 aria-haspopup="menu"
                 aria-expanded={isProfileMenuOpen}
                 title="Profile"
-                className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 transition hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-100 disabled:cursor-wait disabled:opacity-60"
+                className="w-10 h-10 rounded-full border border-slate-700 bg-slate-900 flex items-center justify-center text-slate-300 transition hover:border-indigo-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-indigo-500/10 disabled:cursor-wait disabled:opacity-60"
               >
                 <FaUser />
               </button>
@@ -358,14 +360,14 @@ const Dashboard = () => {
               {isProfileMenuOpen && (
                 <div
                   role="menu"
-                  className="absolute right-0 top-12 z-50 w-64 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-300/30"
+                  className="absolute right-0 top-12 z-50 w-64 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900 shadow-2xl shadow-black/40"
                 >
-                  <div className="border-b border-slate-100 px-4 py-3">
-                    <p className="truncate text-sm font-semibold text-slate-900">
+                  <div className="border-b border-slate-800 px-4 py-3">
+                    <p className="truncate text-sm font-semibold text-white">
                       {auth.currentUser?.displayName ||
                         userName}
                     </p>
-                    <p className="mt-0.5 truncate text-xs text-slate-500">
+                    <p className="mt-0.5 truncate text-xs text-slate-400">
                       {auth.currentUser?.email ||
                         "Signed-in account"}
                     </p>
@@ -377,7 +379,7 @@ const Dashboard = () => {
                       role="menuitem"
                       onClick={handleLogout}
                       disabled={isLoggingOut}
-                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:cursor-wait disabled:opacity-60"
+                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-red-400 transition hover:bg-red-500/10 disabled:cursor-wait disabled:opacity-60"
                     >
                       <FaSignOutAlt />
                       {isLoggingOut
@@ -392,9 +394,9 @@ const Dashboard = () => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-10">
+      <main className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-10">
         {error && (
-          <div className="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-red-700">
+          <div className="mb-6 rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-red-300">
             <p className="font-semibold">
               Analytics could not be loaded
             </p>
@@ -403,7 +405,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        <section className="rounded-[28px] bg-slate-950 text-white px-6 py-8 md:px-10 md:py-10 overflow-hidden relative">
+        <section className="rounded-[28px] border border-slate-700/80 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white px-6 py-8 md:px-10 md:py-10 overflow-hidden relative shadow-2xl shadow-black/30">
           <div className="absolute w-72 h-72 rounded-full bg-blue-500/20 blur-3xl -top-28 -right-20" />
 
           <div className="absolute w-56 h-56 rounded-full bg-violet-500/20 blur-3xl -bottom-24 left-1/3" />
@@ -485,19 +487,19 @@ const Dashboard = () => {
             return (
               <div
                 key={card.title}
-                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                className="rounded-2xl border border-slate-700/80 bg-slate-900/80 p-5 shadow-xl shadow-black/20 transition hover:-translate-y-0.5 hover:border-indigo-500/50"
               >
                 <div className="flex items-start justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700">
+                  <div className="w-11 h-11 rounded-xl bg-indigo-500/15 flex items-center justify-center text-indigo-300">
                     <Icon />
                   </div>
 
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 rounded-full px-2.5 py-1">
+                  <span className="text-xs font-semibold text-emerald-300 bg-emerald-500/10 rounded-full px-2.5 py-1">
                     Updated
                   </span>
                 </div>
 
-                <p className="mt-5 text-sm text-slate-500">
+                <p className="mt-5 text-sm text-slate-400">
                   {card.title}
                 </p>
 
@@ -506,7 +508,7 @@ const Dashboard = () => {
                   {card.suffix}
                 </p>
 
-                <p className="mt-2 text-xs text-slate-400">
+                <p className="mt-2 text-xs text-slate-500">
                   {card.description}
                 </p>
               </div>
@@ -515,7 +517,7 @@ const Dashboard = () => {
         </section>
 
         <section className="grid lg:grid-cols-[1.45fr_1fr] gap-6 mt-6">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
+          <div className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-5 md:p-7 shadow-xl shadow-black/20">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-blue-600">
@@ -527,7 +529,7 @@ const Dashboard = () => {
                 </h3>
               </div>
 
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center">
                 <FaChartLine />
               </div>
             </div>
@@ -572,19 +574,19 @@ const Dashboard = () => {
                     <CartesianGrid
                       strokeDasharray="4 4"
                       vertical={false}
-                      stroke="#e2e8f0"
+                      stroke="#334155"
                     />
 
                     <XAxis
                       dataKey="label"
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 12, fill: "#94a3b8" }}
                       axisLine={false}
                       tickLine={false}
                     />
 
                     <YAxis
                       domain={[0, 100]}
-                      tick={{ fontSize: 12 }}
+                      tick={{ fontSize: 12, fill: "#94a3b8" }}
                       axisLine={false}
                       tickLine={false}
                     />
@@ -596,7 +598,9 @@ const Dashboard = () => {
                       ]}
                       contentStyle={{
                         borderRadius: "12px",
-                        border: "1px solid #e2e8f0",
+                        border: "1px solid #475569",
+                        backgroundColor: "#0f172a",
+                        color: "#f8fafc",
                       }}
                     />
 
@@ -618,7 +622,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
+          <div className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-5 md:p-7 shadow-xl shadow-black/20">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-violet-600">
@@ -630,7 +634,7 @@ const Dashboard = () => {
                 </h3>
               </div>
 
-              <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-300 flex items-center justify-center">
                 <FaStar />
               </div>
             </div>
@@ -653,7 +657,7 @@ const Dashboard = () => {
                   <CartesianGrid
                     strokeDasharray="4 4"
                     horizontal={false}
-                    stroke="#e2e8f0"
+                    stroke="#334155"
                   />
 
                   <XAxis
@@ -668,7 +672,7 @@ const Dashboard = () => {
                     width={105}
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12 }}
+                    tick={{ fontSize: 12, fill: "#94a3b8" }}
                   />
 
                   <Tooltip
@@ -678,7 +682,9 @@ const Dashboard = () => {
                     ]}
                     contentStyle={{
                       borderRadius: "12px",
-                      border: "1px solid #e2e8f0",
+                      border: "1px solid #475569",
+                      backgroundColor: "#0f172a",
+                      color: "#f8fafc",
                     }}
                   />
 
@@ -713,10 +719,10 @@ const Dashboard = () => {
         </section>
 
         <section className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6 mt-6">
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 md:p-7 shadow-sm">
+          <div className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-5 md:p-7 shadow-xl shadow-black/20">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-slate-500">
+                <p className="text-sm font-semibold text-slate-400">
                   Recent activity
                 </p>
 
@@ -745,11 +751,11 @@ const Dashboard = () => {
                       onClick={() =>
                         openHistoryReport(interview)
                       }
-                      className="w-full rounded-2xl border border-slate-200 px-4 py-4 flex items-center justify-between gap-4 text-left hover:bg-slate-50 transition"
+                      className="w-full rounded-2xl border border-slate-700 bg-slate-950/50 px-4 py-4 flex items-center justify-between gap-4 text-left hover:border-indigo-500/50 hover:bg-slate-800 transition"
                     >
                       <div className="flex items-center gap-4 min-w-0">
-                        <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center shrink-0">
-                          <FaBriefcase className="text-slate-600" />
+                        <div className="w-11 h-11 rounded-xl bg-indigo-500/15 flex items-center justify-center shrink-0">
+                          <FaBriefcase className="text-indigo-300" />
                         </div>
 
                         <div className="min-w-0">
@@ -758,7 +764,7 @@ const Dashboard = () => {
                               "Software Developer"}
                           </p>
 
-                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+                          <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
                             <span>
                               {interview.candidateName ||
                                 "Candidate"}
@@ -779,7 +785,7 @@ const Dashboard = () => {
                             {interview.overallScore || 0}%
                           </p>
 
-                          <p className="text-xs text-slate-500">
+                          <p className="text-xs text-slate-400">
                             {interview.recommendationTitle ||
                               "Completed"}
                           </p>
@@ -791,12 +797,12 @@ const Dashboard = () => {
                   )
                 )
               ) : (
-                <div className="rounded-2xl border border-dashed border-slate-300 p-8 text-center">
+                <div className="rounded-2xl border border-dashed border-slate-700 p-8 text-center">
                   <p className="font-semibold">
                     No interviews completed yet
                   </p>
 
-                  <p className="mt-2 text-sm text-slate-500">
+                  <p className="mt-2 text-sm text-slate-400">
                     Start your first interview to generate
                     analytics.
                   </p>
@@ -805,7 +811,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-6 md:p-7 shadow-sm">
+          <div className="rounded-3xl border border-indigo-400/20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white p-6 md:p-7 shadow-xl shadow-indigo-950/30">
             <p className="text-blue-100 text-sm font-semibold">
               Continue preparing
             </p>
@@ -868,14 +874,14 @@ const PerformanceCard = ({
   );
 
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-3xl border border-slate-700/80 bg-slate-900/80 p-6 shadow-xl shadow-black/20">
       <div className="flex items-start gap-4">
-        <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-700 shrink-0">
+        <div className="w-12 h-12 rounded-2xl bg-indigo-500/15 flex items-center justify-center text-indigo-300 shrink-0">
           {icon}
         </div>
 
         <div className="flex-1">
-          <p className="text-sm text-slate-500">{label}</p>
+          <p className="text-sm text-slate-400">{label}</p>
 
           <div className="mt-1 flex items-end justify-between gap-4">
             <h3 className="text-xl font-bold">{title}</h3>
@@ -885,16 +891,16 @@ const PerformanceCard = ({
             </p>
           </div>
 
-          <div className="mt-4 h-2.5 rounded-full bg-slate-100 overflow-hidden">
+          <div className="mt-4 h-2.5 rounded-full bg-slate-800 overflow-hidden">
             <div
-              className="h-full rounded-full bg-slate-900 transition-all duration-500"
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-500"
               style={{
                 width: `${safeScore}%`,
               }}
             />
           </div>
 
-          <p className="mt-3 text-sm text-slate-500 leading-6">
+          <p className="mt-3 text-sm text-slate-400 leading-6">
             {description}
           </p>
         </div>
@@ -905,13 +911,13 @@ const PerformanceCard = ({
 
 const EmptyChart = ({ title, description }) => {
   return (
-    <div className="h-full rounded-2xl border border-dashed border-slate-300 flex items-center justify-center text-center px-6">
+    <div className="h-full rounded-2xl border border-dashed border-slate-700 flex items-center justify-center text-center px-6">
       <div>
         <FaChartLine className="mx-auto text-2xl text-slate-400" />
 
         <p className="mt-3 font-semibold">{title}</p>
 
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-slate-400">
           {description}
         </p>
       </div>
