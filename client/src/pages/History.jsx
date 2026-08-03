@@ -296,7 +296,7 @@ const History = () => {
       return {
         label: "Excellent",
         badge:
-          "border-emerald-200 bg-emerald-50 text-emerald-700",
+          "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
         bar: "bg-emerald-500",
       };
     }
@@ -305,7 +305,7 @@ const History = () => {
       return {
         label: "Good",
         badge:
-          "border-blue-200 bg-blue-50 text-blue-700",
+          "border-blue-400/25 bg-blue-400/10 text-blue-300",
         bar: "bg-blue-500",
       };
     }
@@ -314,7 +314,7 @@ const History = () => {
       return {
         label: "Improving",
         badge:
-          "border-amber-200 bg-amber-50 text-amber-700",
+          "border-amber-400/25 bg-amber-400/10 text-amber-300",
         bar: "bg-amber-500",
       };
     }
@@ -322,7 +322,7 @@ const History = () => {
     return {
       label: "Needs work",
       badge:
-        "border-red-200 bg-red-50 text-red-700",
+        "border-red-400/25 bg-red-400/10 text-red-300",
       bar: "bg-red-500",
     };
   }, []);
@@ -613,27 +613,27 @@ const History = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#eef2f7] text-slate-900">
+    <div className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
       {/* Background */}
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[430px] w-[430px] rounded-full bg-blue-200/40 blur-3xl" />
+      <div className="pointer-events-none absolute -left-40 -top-40 h-[430px] w-[430px] rounded-full bg-indigo-600/15 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-indigo-200/35 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-purple-600/15 blur-3xl" />
 
       {/* Navbar */}
-      <header className="relative z-20 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl">
+      <header className="relative z-20 border-b border-slate-800/80 bg-slate-950/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 font-bold text-white">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-950/40">
               P
             </div>
 
             <div className="text-left">
               <p className="font-bold">PrepAI</p>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 Interview history
               </p>
             </div>
@@ -642,7 +642,7 @@ const History = () => {
           <button
             onClick={fetchHistory}
             disabled={isLoading}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2.5 text-sm font-semibold text-slate-300 shadow-sm transition hover:border-indigo-500 hover:bg-indigo-500/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
           >
             <FiRefreshCw
               className={
@@ -660,7 +660,7 @@ const History = () => {
       <main className="relative z-10 mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:py-12">
         <button
           onClick={() => navigate("/dashboard")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-white"
         >
           <FiArrowLeft />
           Back to dashboard
@@ -669,7 +669,7 @@ const History = () => {
         {/* Hero */}
         <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-blue-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.17em] text-indigo-400">
               Your progress
             </p>
 
@@ -677,7 +677,7 @@ const History = () => {
               Interview history
             </h1>
 
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base">
               Review previous attempts, compare your
               performance and open complete interview
               reports. Your newest attempt appears first.
@@ -688,7 +688,7 @@ const History = () => {
             onClick={() =>
               navigate("/company-selection")
             }
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-950/40 transition hover:from-indigo-400 hover:to-purple-500"
           >
             Start new interview
             <FiArrowRight />
@@ -734,13 +734,13 @@ const History = () => {
                 key={item.label}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-white/80 bg-white/90 p-5 shadow-lg shadow-slate-300/20 backdrop-blur-xl"
+                className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg shadow-black/20 backdrop-blur-xl"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-300">
                   <Icon />
                 </div>
 
-                <p className="mt-5 text-sm text-slate-500">
+                <p className="mt-5 text-sm text-slate-400">
                   {item.label}
                 </p>
 
@@ -754,7 +754,7 @@ const History = () => {
 
         {/* Error */}
         {errorMessage && (
-          <div className="mt-7 flex items-start justify-between gap-4 rounded-2xl border border-red-200 bg-red-50 p-5 text-red-700">
+          <div className="mt-7 flex items-start justify-between gap-4 rounded-2xl border border-red-400/20 bg-red-500/10 p-5 text-red-300">
             <div className="flex items-start gap-3">
               <FiAlertCircle className="mt-0.5 shrink-0" />
 
@@ -771,7 +771,7 @@ const History = () => {
 
             <button
               onClick={() => setErrorMessage("")}
-              className="shrink-0 text-red-500 transition hover:text-red-700"
+              className="shrink-0 text-red-400 transition hover:text-red-200"
             >
               <FiX />
             </button>
@@ -780,7 +780,7 @@ const History = () => {
 
         {/* Search and filters */}
         {!isLoading && interviews.length > 0 && (
-          <section className="mt-8 rounded-[24px] border border-white/80 bg-white/90 p-5 shadow-lg shadow-slate-300/20 backdrop-blur-xl">
+          <section className="mt-8 rounded-[24px] border border-slate-800 bg-slate-900/80 p-5 shadow-lg shadow-black/20 backdrop-blur-xl">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <div className="relative flex-1">
                 <FiSearch className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -792,7 +792,7 @@ const History = () => {
                     setSearchTerm(event.target.value)
                   }
                   placeholder="Search company, role or candidate..."
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                  className="w-full rounded-xl border border-slate-700 bg-slate-950/70 py-3 pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10"
                 />
               </div>
 
@@ -804,7 +804,7 @@ const History = () => {
                   onChange={(event) =>
                     setScoreFilter(event.target.value)
                   }
-                  className="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm font-medium outline-none transition focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                  className="w-full appearance-none rounded-xl border border-slate-700 bg-slate-950/70 py-3 pl-11 pr-4 text-sm font-medium text-white outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 [&>option]:bg-slate-900"
                 >
                   <option value="all">
                     All scores
@@ -832,7 +832,7 @@ const History = () => {
                 scoreFilter !== "all") && (
                 <button
                   onClick={clearFilters}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-indigo-500 hover:bg-indigo-500/10 hover:text-white"
                 >
                   <FiX />
                   Clear
@@ -840,7 +840,7 @@ const History = () => {
               )}
             </div>
 
-            <p className="mt-4 text-xs text-slate-500">
+            <p className="mt-4 text-xs text-slate-400">
               Showing {filteredInterviews.length} of{" "}
               {interviews.length} interviews
             </p>
@@ -849,23 +849,23 @@ const History = () => {
 
         {/* Loading */}
         {isLoading ? (
-          <div className="mt-8 flex min-h-[320px] items-center justify-center rounded-[28px] border border-white/80 bg-white/85 shadow-xl shadow-slate-300/20">
+          <div className="mt-8 flex min-h-[320px] items-center justify-center rounded-[28px] border border-slate-800 bg-slate-900/80 shadow-xl shadow-black/20">
             <div className="text-center">
-              <FiLoader className="mx-auto animate-spin text-3xl text-blue-600" />
+              <FiLoader className="mx-auto animate-spin text-3xl text-indigo-400" />
 
               <p className="mt-4 font-semibold">
                 Loading interview history...
               </p>
 
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-slate-400">
                 Retrieving your previous reports.
               </p>
             </div>
           </div>
         ) : interviews.length === 0 ? (
           /* Empty state */
-          <div className="mt-8 rounded-[28px] border border-white/80 bg-white/90 p-10 text-center shadow-xl shadow-slate-300/20">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-2xl text-blue-700">
+          <div className="mt-8 rounded-[28px] border border-slate-800 bg-slate-900/80 p-10 text-center shadow-xl shadow-black/20">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-500/15 text-2xl text-indigo-300">
               <FiBriefcase />
             </div>
 
@@ -873,7 +873,7 @@ const History = () => {
               No interview history yet
             </h2>
 
-            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500">
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-400">
               Complete your first interview and its
               performance report will appear here
               automatically.
@@ -883,7 +883,7 @@ const History = () => {
               onClick={() =>
                 navigate("/company-selection")
               }
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:from-indigo-400 hover:to-purple-500"
             >
               Start interview
               <FiArrowRight />
@@ -891,8 +891,8 @@ const History = () => {
           </div>
         ) : filteredInterviews.length === 0 ? (
           /* No filtered results */
-          <div className="mt-8 rounded-[28px] border border-white/80 bg-white/90 p-10 text-center shadow-xl shadow-slate-300/20">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 text-2xl text-slate-600">
+          <div className="mt-8 rounded-[28px] border border-slate-800 bg-slate-900/80 p-10 text-center shadow-xl shadow-black/20">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-800 text-2xl text-slate-300">
               <FiSearch />
             </div>
 
@@ -900,14 +900,14 @@ const History = () => {
               No matching interviews
             </h2>
 
-            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-500">
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-400">
               Try another search term or remove the
               current score filter.
             </p>
 
             <button
               onClick={clearFilters}
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:from-indigo-400 hover:to-purple-500"
             >
               Clear filters
             </button>
@@ -930,6 +930,11 @@ const History = () => {
                   interview.company ||
                   interview.selectedCompany ||
                   "General";
+
+                const companyLabel =
+                  company.toLowerCase() === "general"
+                    ? "General practice"
+                    : company;
 
                 const role =
                   interview.targetRole ||
@@ -966,7 +971,7 @@ const History = () => {
                     transition={{
                       delay: Math.min(index * 0.04, 0.3),
                     }}
-                    className="group overflow-hidden rounded-[24px] border border-white/80 bg-white/90 shadow-lg shadow-slate-300/20 backdrop-blur-xl transition hover:-translate-y-0.5 hover:shadow-xl"
+                    className="group overflow-hidden rounded-[24px] border border-slate-800 bg-slate-900/80 shadow-lg shadow-black/20 backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-950/20"
                   >
                     <div className="p-5 sm:p-6">
                       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
@@ -979,13 +984,13 @@ const History = () => {
                           }
                           className="flex flex-1 items-start gap-4 text-left"
                         >
-                          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-900 text-xl text-white shadow-sm">
+                          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-xl text-white shadow-lg shadow-indigo-950/40">
                             <FiBriefcase />
                           </div>
 
                           <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-3">
-                              <h2 className="text-lg font-semibold text-slate-900">
+                              <h2 className="text-lg font-semibold text-white">
                                 {role}
                               </h2>
 
@@ -996,13 +1001,13 @@ const History = () => {
                               </span>
                             </div>
 
-                            <p className="mt-1 text-sm text-slate-500">
-                              {company} ·{" "}
+                            <p className="mt-1 text-sm text-slate-400">
+                              {companyLabel} ·{" "}
                               {interview.candidateName ||
                                 "Candidate"}
                             </p>
 
-                            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-500">
+                            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-400">
                               <span className="inline-flex items-center gap-2">
                                 <FiCalendar />
 
@@ -1021,16 +1026,16 @@ const History = () => {
                             </div>
 
                             <div className="mt-4 flex flex-wrap gap-2">
-                              <span className="rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">
+                              <span className="rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300">
                                 {difficulty}
                               </span>
 
-                              <span className="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700">
+                              <span className="rounded-lg bg-blue-500/10 px-3 py-1.5 text-xs font-medium text-blue-300">
                                 {experienceLevel}
                               </span>
 
                               {interview.performanceLabel && (
-                                <span className="rounded-lg bg-indigo-50 px-3 py-1.5 text-xs font-medium text-indigo-700">
+                                <span className="rounded-lg bg-indigo-500/10 px-3 py-1.5 text-xs font-medium text-indigo-300">
                                   {
                                     interview.performanceLabel
                                   }
@@ -1040,13 +1045,13 @@ const History = () => {
                           </div>
                         </button>
 
-                        <div className="flex flex-col gap-4 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between lg:min-w-[310px] lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+                        <div className="flex flex-col gap-4 border-t border-slate-800 pt-5 sm:flex-row sm:items-center sm:justify-between lg:min-w-[310px] lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
                           <div className="min-w-[110px]">
-                            <p className="text-xs font-semibold uppercase tracking-[0.13em] text-slate-400">
+                            <p className="text-xs font-semibold uppercase tracking-[0.13em] text-slate-500">
                               Overall score
                             </p>
 
-                            <p className="mt-1 text-3xl font-semibold text-slate-900">
+                            <p className="mt-1 text-3xl font-semibold text-white">
                               {score}
                               <span className="text-base text-slate-400">
                                 /100
@@ -1062,7 +1067,7 @@ const History = () => {
                                   interview
                                 )
                               }
-                              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+                              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 px-4 py-3 text-sm font-semibold text-white transition hover:from-indigo-400 hover:to-purple-500"
                             >
                               <FiEye />
                               View report
@@ -1076,7 +1081,7 @@ const History = () => {
                                 )
                               }
                               disabled={!interviewId}
-                              className="flex h-11 w-11 items-center justify-center rounded-xl border border-red-100 bg-red-50 text-red-600 transition hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+                              className="flex h-11 w-11 items-center justify-center rounded-xl border border-red-400/20 bg-red-500/10 text-red-400 transition hover:bg-red-500/20 hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-50"
                               title="Delete interview"
                             >
                               <FiTrash2 />
@@ -1086,7 +1091,7 @@ const History = () => {
                       </div>
                     </div>
 
-                    <div className="h-1.5 bg-slate-100">
+                    <div className="h-1.5 bg-slate-800">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{
@@ -1140,25 +1145,25 @@ const History = () => {
               onClick={(event) =>
                 event.stopPropagation()
               }
-              className="w-full max-w-md rounded-[26px] border border-white/10 bg-white p-7 shadow-2xl"
+              className="w-full max-w-md rounded-[26px] border border-slate-700 bg-slate-900 p-7 text-white shadow-2xl shadow-black/50"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-50 text-2xl text-red-600">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10 text-2xl text-red-400">
                 <FiTrash2 />
               </div>
 
-              <h2 className="mt-6 text-2xl font-semibold text-slate-900">
+              <h2 className="mt-6 text-2xl font-semibold text-white">
                 Delete interview report?
               </h2>
 
-              <p className="mt-3 text-sm leading-6 text-slate-500">
+              <p className="mt-3 text-sm leading-6 text-slate-400">
                 This will permanently delete your{" "}
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold text-slate-200">
                   {deleteTarget.targetRole ||
                     deleteTarget.role ||
                     "interview"}
                 </span>{" "}
                 report for{" "}
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold text-slate-200">
                   {deleteTarget.company ||
                     deleteTarget.selectedCompany ||
                     "General"}
@@ -1173,7 +1178,7 @@ const History = () => {
                     setDeleteTarget(null)
                   }
                   disabled={Boolean(deletingId)}
-                  className="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:opacity-60"
+                  className="rounded-xl border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-white disabled:opacity-60"
                 >
                   Cancel
                 </button>
