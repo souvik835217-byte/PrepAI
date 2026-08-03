@@ -162,6 +162,14 @@ function Navbar() {
           ))}
 
           <Link
+            to={user ? "/dashboard" : "/login"}
+            className="flex items-center gap-2 transition hover:text-purple-600"
+          >
+            <FiGrid />
+            Dashboard
+          </Link>
+
+          <Link
             to="/dsa"
             className="rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700 transition hover:border-purple-300 hover:bg-purple-100"
           >
@@ -171,8 +179,17 @@ function Navbar() {
 
         <div
           ref={profileMenuRef}
-          className="relative"
+          className="relative flex items-center gap-2"
         >
+          <Link
+            to={user ? "/dashboard" : "/login"}
+            aria-label="Open dashboard"
+            title="Dashboard"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-lg text-gray-700 shadow-sm transition hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 md:hidden"
+          >
+            <FiGrid />
+          </Link>
+
           <button
             type="button"
             onClick={() => {
