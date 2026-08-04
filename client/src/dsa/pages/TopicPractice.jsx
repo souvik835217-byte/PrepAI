@@ -169,6 +169,19 @@ const topics = [
   },
 ];
 
+const bstQuestionIds = new Set([
+  "search-in-bst",
+  "insert-into-bst",
+  "minimum-in-bst",
+  "validate-binary-search-tree",
+  "lowest-common-ancestor-bst",
+  "kth-smallest-bst",
+  "delete-node-bst",
+  "bst-iterator",
+  "recover-binary-search-tree",
+  "largest-bst-subtree",
+]);
+
 const TopicPractice = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -225,21 +238,27 @@ const TopicPractice = () => {
       const topicQuestions = configuredQuestions.filter(
         (question) => question.topic === topic.id
       );
+      const isBstTopic = topic.id === "bst";
       const solvedQuestions = topicQuestions.filter((question) =>
         solvedQuestionIds.has(question.id)
+      ).length;
+      const bstSolvedQuestions = [...bstQuestionIds].filter((id) =>
+        solvedQuestionIds.has(id)
       ).length;
 
       return {
         ...topic,
-        totalQuestions: topicQuestions.length,
-        solvedQuestions,
-        easy: topicQuestions.filter(
+        totalQuestions: isBstTopic ? 10 : topicQuestions.length,
+        solvedQuestions: isBstTopic
+          ? bstSolvedQuestions
+          : solvedQuestions,
+        easy: isBstTopic ? 3 : topicQuestions.filter(
           (question) => question.difficulty === "Easy"
         ).length,
-        medium: topicQuestions.filter(
+        medium: isBstTopic ? 5 : topicQuestions.filter(
           (question) => question.difficulty === "Medium"
         ).length,
-        hard: topicQuestions.filter(
+        hard: isBstTopic ? 2 : topicQuestions.filter(
           (question) => question.difficulty === "Hard"
         ).length,
       };

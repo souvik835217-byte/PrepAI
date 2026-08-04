@@ -23,6 +23,7 @@ const TOPIC_FILES = {
   backtracking: "backtracking.json",
   math: "math.json",
   "binary-search": "binary-search.json",
+  bst: "bst.json",
 };
 
 const TOPIC_ALIASES = {
@@ -65,6 +66,7 @@ export const getAvailableTopics = () => {
 
 export const getQuestionsByTopic = (topicId) => {
   const requestedTopic = topicId.toLowerCase();
+
   const normalizedTopic =
     TOPIC_ALIASES[requestedTopic] || requestedTopic;
   const filename = TOPIC_FILES[normalizedTopic];

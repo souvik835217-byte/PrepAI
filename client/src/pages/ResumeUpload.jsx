@@ -190,6 +190,7 @@ const ResumeUpload = () => {
       );
       setMessageType("success");
       setAnalysisComplete(true);
+      navigate("/resume-analysis");
     } catch (error) {
       console.error("Resume analysis error:", error);
 

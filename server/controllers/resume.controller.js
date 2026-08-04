@@ -33,23 +33,21 @@ export const analyzeResume = async (req, res) => {
       data: pdfData,
     }).promise;
 
-    let resumeText = "";
+    const pageTexts = await Promise.all(
+      Array.from(
+        { length: pdfDocument.numPages },
+        async (_, index) => {
+          const page = await pdfDocument.getPage(index + 1);
+          const content = await page.getTextContent();
 
-    for (
-      let pageNumber = 1;
-      pageNumber <= pdfDocument.numPages;
-      pageNumber++
-    ) {
-      const page = await pdfDocument.getPage(pageNumber);
+          return content.items
+            .map((item) => item.str || "")
+            .join(" ");
+        }
+      )
+    );
 
-      const content = await page.getTextContent();
-
-      const pageText = content.items
-        .map((item) => item.str || "")
-        .join(" ");
-
-      resumeText += `${pageText}\n`;
-    }
+    const resumeText = pageTexts.join("\n");
 
     const cleanedText = resumeText
       .replace(/\s+/g, " ")

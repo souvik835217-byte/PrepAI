@@ -50,45 +50,10 @@ const PreparingInterview = () => {
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    const stepInterval = setInterval(() => {
-      setCompletedSteps((current) => {
-        if (current >= preparationSteps.length) {
-          clearInterval(stepInterval);
-          return current;
-        }
-
-        return current + 1;
-      });
-    }, 450);
-
-    return () => clearInterval(stepInterval);
-  }, []);
-
-  useEffect(() => {
-    if (completedSteps < preparationSteps.length) {
-      return;
-    }
-
-    const countdownInterval = setInterval(() => {
-      setCountdown((current) => {
-        if (current <= 1) {
-          clearInterval(countdownInterval);
-
-          setTimeout(() => {
-            navigate("/interview", {
-              replace: true,
-            });
-          }, 400);
-
-          return 0;
-        }
-
-        return current - 1;
-      });
-    }, 700);
-
-    return () => clearInterval(countdownInterval);
-  }, [completedSteps, navigate]);
+    setCompletedSteps(preparationSteps.length);
+    setCountdown(0);
+    navigate("/interview", { replace: true });
+  }, [navigate]);
 
   const progress =
     (completedSteps / preparationSteps.length) * 100;
