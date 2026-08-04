@@ -32,13 +32,14 @@ const BackToPrepAI = () => {
 
   return (
     <Link
-      to="/dashboard"
+      to="/"
       onClick={handleHomeClick}
-      aria-label="Go to dashboard home"
-      className="fixed right-4 top-4 z-[100] inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/95 px-4 py-2.5 text-sm font-semibold text-slate-200 shadow-lg shadow-slate-950/20 backdrop-blur transition hover:border-blue-500 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:right-6 sm:top-5"
+      aria-label="Go to PrepAI landing page"
+      title="PrepAI Home"
+      className="fixed bottom-4 left-4 z-[100] inline-flex items-center gap-2 rounded-xl border border-slate-700/90 bg-slate-950/95 px-3.5 py-3 text-sm font-semibold text-slate-200 shadow-xl shadow-slate-950/25 backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-500 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:bottom-auto sm:left-5 sm:top-1/2 sm:-translate-y-1/2 sm:hover:-translate-y-[calc(50%+2px)]"
     >
       <FiHome aria-hidden="true" />
-      <span>Home</span>
+      <span className="sm:hidden xl:inline">Home</span>
     </Link>
   );
 };
