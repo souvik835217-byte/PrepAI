@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Stats from "../components/Stats";
@@ -9,6 +12,34 @@ import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 
 function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.resetPrepAIHistory !== true) {
+      return undefined;
+    }
+
+    window.history.pushState(
+      { prepAIHomeBoundary: true },
+      "",
+      window.location.href
+    );
+
+    const keepUserAtHome = () => {
+      window.history.pushState(
+        { prepAIHomeBoundary: true },
+        "",
+        window.location.href
+      );
+    };
+
+    window.addEventListener("popstate", keepUserAtHome);
+
+    return () => {
+      window.removeEventListener("popstate", keepUserAtHome);
+    };
+  }, [location.state]);
+
   return (
     <>
       <Navbar />

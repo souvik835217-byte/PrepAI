@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
-  FiArrowLeft,
   FiBarChart2,
   FiBookOpen,
   FiBriefcase,
@@ -67,14 +66,6 @@ const DSANav = () => {
           DSA Hub
         </h2>
       </div>
-
-      <Link
-        to="/"
-        className="mb-4 flex items-center gap-3 rounded-xl border border-slate-800 px-4 py-3 text-sm font-semibold text-slate-300 transition hover:border-indigo-500/60 hover:bg-slate-900 hover:text-white"
-      >
-        <FiArrowLeft className="text-lg" />
-        <span>Back to PrepAI</span>
-      </Link>
 
       <nav className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
         {navItems.map(({ label, path, icon: Icon }) => (

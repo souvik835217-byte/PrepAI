@@ -319,7 +319,12 @@ const Dashboard = () => {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => navigate("/")}
+              onClick={() =>
+                navigate("/", {
+                  replace: true,
+                  state: { resetPrepAIHistory: true },
+                })
+              }
               aria-label="Go to landing page"
               title="Home"
               className="flex h-10 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-3 text-sm font-semibold text-slate-300 transition hover:border-indigo-500/60 hover:text-white"
