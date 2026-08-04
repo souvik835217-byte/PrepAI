@@ -154,9 +154,32 @@ export const saveInterviewHistory = async (
           sessionAnswers
       );
 
+    const reportId = safeText(
+      session.reportId || result.reportId,
+      ""
+    );
+
+    if (reportId) {
+      const existingHistory =
+        await InterviewHistory.findOne({
+          firebaseUid,
+          reportId,
+        });
+
+      if (existingHistory) {
+        return res.status(200).json({
+          success: true,
+          message: "Interview history already saved.",
+          history: existingHistory,
+          duplicate: true,
+        });
+      }
+    }
+
     const history =
       await InterviewHistory.create({
         firebaseUid,
+        reportId,
 
         candidateName: safeText(
           session.candidateName ||

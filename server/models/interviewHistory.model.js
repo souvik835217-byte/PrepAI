@@ -8,6 +8,12 @@ const interviewHistorySchema = new mongoose.Schema(
       index: true,
     },
 
+    reportId: {
+      type: String,
+      default: "",
+      index: true,
+    },
+
     candidateName: {
       type: String,
       default: "Candidate",
@@ -105,4 +111,14 @@ const interviewHistorySchema = new mongoose.Schema(
 export default mongoose.model(
   "InterviewHistory",
   interviewHistorySchema
+);
+
+interviewHistorySchema.index(
+  { firebaseUid: 1, reportId: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      reportId: { $type: "string", $gt: "" },
+    },
+  }
 );

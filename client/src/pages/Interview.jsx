@@ -176,6 +176,7 @@ const Interview = () => {
   const sessionFinalTranscriptRef = useRef("");
   const textareaRef = useRef(null);
   const isAdvancingRef = useRef(false);
+  const finalEvaluationStartedRef = useRef(false);
   const allowInterviewExitRef = useRef(false);
   const interviewGuardEntryRef = useRef(false);
   const validationResultsRef = useRef({});
@@ -366,10 +367,11 @@ const Interview = () => {
   );
 
   const finishInterview = useCallback(async () => {
-    if (isAdvancingRef.current === "evaluating") {
+    if (finalEvaluationStartedRef.current) {
       return;
     }
 
+    finalEvaluationStartedRef.current = true;
     isAdvancingRef.current = "evaluating";
 
     stopListening();
@@ -423,6 +425,12 @@ const Interview = () => {
     );
 
     const session = {
+      reportId:
+        typeof globalThis.crypto?.randomUUID === "function"
+          ? globalThis.crypto.randomUUID()
+          : `report-${Date.now()}-${Math.random()
+              .toString(36)
+              .slice(2)}`,
       candidateName:
         interviewData?.candidateName ||
         "Candidate",
@@ -731,7 +739,8 @@ const Interview = () => {
 
       setIsCheckingAnswer(false);
       setIsPaused(false);
-      isAdvancingRef.current = false;
+      // Keep the completion guard locked. Mobile browsers can dispatch a
+      // delayed timer or lifecycle callback while the next route is mounting.
     }
   }, [
     interviewData,
