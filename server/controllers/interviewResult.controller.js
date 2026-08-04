@@ -121,11 +121,18 @@ Rules:
       ai,
       {
         model:
-          process.env.GEMINI_MODEL ||
-          "gemini-3.5-flash",
+          process.env.GEMINI_INTERVIEW_MODEL ||
+          "gemini-3.5-flash-lite",
         contents: prompt,
+        config: {
+          thinkingConfig: {
+            thinkingLevel: "MINIMAL",
+          },
+          responseMimeType: "application/json",
+        },
       },
       {
+        maxAttempts: 1,
         fallbackModels: [
           process.env.GEMINI_FALLBACK_MODEL ||
             "gemini-3.1-flash-lite",

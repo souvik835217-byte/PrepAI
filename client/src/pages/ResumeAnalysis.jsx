@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -25,6 +25,16 @@ const ResumeAnalysis = () => {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState("");
+  const generationControllerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      generationControllerRef.current?.abort();
+      sessionStorage.removeItem(
+        "prepaiInterviewGenerationInProgress"
+      );
+    };
+  }, []);
 
   // Read uploaded resume information
   const resumeData = useMemo(() => {
@@ -134,6 +144,13 @@ const ResumeAnalysis = () => {
     try {
       setIsGenerating(true);
       setError("");
+      sessionStorage.setItem(
+        "prepaiInterviewGenerationInProgress",
+        "true"
+      );
+
+      const generationController = new AbortController();
+      generationControllerRef.current = generationController;
 
       const response = await fetch(
         `${API_URL}/api/interview/generate-questions`,
@@ -143,6 +160,8 @@ const ResumeAnalysis = () => {
           headers: {
             "Content-Type": "application/json",
           },
+
+          signal: generationController.signal,
 
           body: JSON.stringify({
             resumeText: resumeData.resumeText,
@@ -267,6 +286,10 @@ const ResumeAnalysis = () => {
 
       navigate("/interview");
     } catch (requestError) {
+      if (requestError?.name === "AbortError") {
+        return;
+      }
+
       console.error(
         "Interview generation failed:",
         requestError
@@ -283,6 +306,10 @@ const ResumeAnalysis = () => {
         );
       }
     } finally {
+      generationControllerRef.current = null;
+      sessionStorage.removeItem(
+        "prepaiInterviewGenerationInProgress"
+      );
       setIsGenerating(false);
     }
   };

@@ -22,7 +22,8 @@ const getGeminiClient = () => {
 };
 
 const GEMINI_MODEL =
-  process.env.GEMINI_MODEL || "gemini-3.5-flash";
+  process.env.GEMINI_INTERVIEW_MODEL ||
+  "gemini-3.5-flash-lite";
 
 const GEMINI_FALLBACK_MODEL =
   process.env.GEMINI_FALLBACK_MODEL ||
@@ -688,7 +689,9 @@ export const generateInterviewQuestions = async (
           }),
 
           config: {
-            temperature: 0.4,
+            thinkingConfig: {
+              thinkingLevel: "MINIMAL",
+            },
             responseMimeType: "application/json",
             responseSchema:
               buildQuestionResponseSchema(
@@ -697,6 +700,7 @@ export const generateInterviewQuestions = async (
           },
         },
         {
+          maxAttempts: 1,
           fallbackModels: [
             GEMINI_FALLBACK_MODEL,
           ],
@@ -1013,7 +1017,9 @@ export const checkInterviewAnswer = async (
             }),
 
           config: {
-            temperature: 0.1,
+            thinkingConfig: {
+              thinkingLevel: "MINIMAL",
+            },
             responseMimeType:
               "application/json",
             responseSchema:
@@ -1021,6 +1027,7 @@ export const checkInterviewAnswer = async (
           },
         },
         {
+          maxAttempts: 1,
           fallbackModels: [
             GEMINI_FALLBACK_MODEL,
           ],
