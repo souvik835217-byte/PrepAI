@@ -187,6 +187,61 @@ ${output}
 }`;
 };
 
+const buildTreeCodecCppSource = (sourceCode) => `#include <bits/stdc++.h>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+${sourceCode}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tokenCount;
+    if (!(cin >> tokenCount) || tokenCount < 0) return 0;
+
+    vector<string> tokens(tokenCount);
+    for (string& token : tokens) cin >> token;
+
+    TreeNode* root = nullptr;
+    if (!tokens.empty() && tokens[0] != "null") {
+        root = new TreeNode(stoi(tokens[0]));
+        queue<TreeNode*> pending;
+        pending.push(root);
+
+        size_t index = 1;
+        while (!pending.empty() && index < tokens.size()) {
+            TreeNode* node = pending.front();
+            pending.pop();
+
+            if (tokens[index] != "null") {
+                node->left = new TreeNode(stoi(tokens[index]));
+                pending.push(node->left);
+            }
+            index++;
+
+            if (index < tokens.size() && tokens[index] != "null") {
+                node->right = new TreeNode(stoi(tokens[index]));
+                pending.push(node->right);
+            }
+            index++;
+        }
+    }
+
+    Codec codec;
+    const string serialized = codec.serialize(root);
+    TreeNode* reconstructed = codec.deserialize(serialized);
+    cout << codec.serialize(reconstructed);
+    return 0;
+}`;
+
 export const prepareSourceCode = ({
   sourceCode,
   language,
@@ -315,6 +370,10 @@ int main() {
 
   if (/\bint\s+main\s*\(/.test(sourceCode)) {
     return sourceCode;
+  }
+
+  if (questionId === "serialize-deserialize-binary-tree") {
+    return buildTreeCodecCppSource(sourceCode);
   }
 
   const problem = getProblemById(questionId);
