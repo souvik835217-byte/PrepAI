@@ -242,6 +242,381 @@ int main() {
     return 0;
 }`;
 
+const cppListNodeDefinition = `struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int x) : val(x), next(nullptr) {}
+};
+
+ListNode* readList(int length) {
+    ListNode dummy(0);
+    ListNode* tail = &dummy;
+    for (int index = 0; index < length; index++) {
+        int value;
+        cin >> value;
+        tail->next = new ListNode(value);
+        tail = tail->next;
+    }
+    return dummy.next;
+}
+
+void printList(ListNode* head) {
+    if (!head) {
+        cout << "EMPTY";
+        return;
+    }
+    bool first = true;
+    unordered_set<ListNode*> visited;
+    while (head && !visited.count(head)) {
+        visited.insert(head);
+        if (!first) cout << " ";
+        cout << head->val;
+        first = false;
+        head = head->next;
+    }
+}`;
+
+const cppTreeNodeDefinition = `struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+TreeNode* readTree(int tokenCount) {
+    vector<string> tokens(tokenCount);
+    for (string& token : tokens) cin >> token;
+    if (tokens.empty() || tokens[0] == "null") return nullptr;
+
+    TreeNode* root = new TreeNode(stoi(tokens[0]));
+    queue<TreeNode*> pending;
+    pending.push(root);
+    size_t index = 1;
+    while (!pending.empty() && index < tokens.size()) {
+        TreeNode* node = pending.front();
+        pending.pop();
+        if (tokens[index] != "null") {
+            node->left = new TreeNode(stoi(tokens[index]));
+            pending.push(node->left);
+        }
+        index++;
+        if (index < tokens.size() && tokens[index] != "null") {
+            node->right = new TreeNode(stoi(tokens[index]));
+            pending.push(node->right);
+        }
+        index++;
+    }
+    return root;
+}
+
+TreeNode* findTreeNode(TreeNode* root, int value) {
+    if (!root) return nullptr;
+    queue<TreeNode*> pending;
+    pending.push(root);
+    while (!pending.empty()) {
+        TreeNode* node = pending.front();
+        pending.pop();
+        if (node->val == value) return node;
+        if (node->left) pending.push(node->left);
+        if (node->right) pending.push(node->right);
+    }
+    return nullptr;
+}`;
+
+const buildSolutionClassCppSource = (sourceCode, prelude, driver) => {
+  const solutionSource = /\bclass\s+Solution\b/.test(sourceCode)
+    ? sourceCode
+    : `class Solution {\npublic:\n${sourceCode}\n};`;
+
+  return `#include <bits/stdc++.h>
+using namespace std;
+
+${prelude}
+
+${solutionSource}
+
+${driver}`;
+};
+
+const linkedListCppDrivers = {
+  "reverse-linked-list-ii": `int main() {
+    int length, left, right;
+    cin >> length;
+    ListNode* head = readList(length);
+    cin >> left >> right;
+    Solution solution;
+    printList(solution.reverseBetween(head, left, right));
+    return 0;
+}`,
+  "remove-nth-node-from-end": `int main() {
+    int length, position;
+    cin >> length;
+    ListNode* head = readList(length);
+    cin >> position;
+    Solution solution;
+    printList(solution.removeNthFromEnd(head, position));
+    return 0;
+}`,
+  "add-two-numbers": `int main() {
+    int firstLength, secondLength;
+    cin >> firstLength;
+    ListNode* first = readList(firstLength);
+    cin >> secondLength;
+    ListNode* second = readList(secondLength);
+    Solution solution;
+    printList(solution.addTwoNumbers(first, second));
+    return 0;
+}`,
+  "reorder-list": `int main() {
+    int length;
+    cin >> length;
+    ListNode* head = readList(length);
+    Solution solution;
+    solution.reorderList(head);
+    printList(head);
+    return 0;
+}`,
+  "linked-list-cycle-ii": `int main() {
+    int length;
+    cin >> length;
+    vector<ListNode*> nodes;
+    for (int index = 0; index < length; index++) {
+        int value;
+        cin >> value;
+        nodes.push_back(new ListNode(value));
+        if (index > 0) nodes[index - 1]->next = nodes[index];
+    }
+    int position;
+    cin >> position;
+    if (!nodes.empty() && position >= 0 && position < length) nodes.back()->next = nodes[position];
+    Solution solution;
+    ListNode* entry = solution.detectCycle(nodes.empty() ? nullptr : nodes[0]);
+    int answer = -1;
+    for (int index = 0; index < length; index++) if (nodes[index] == entry) answer = index;
+    cout << answer;
+    return 0;
+}`,
+  "reverse-nodes-in-k-group": `int main() {
+    int length, groupSize;
+    cin >> length >> groupSize;
+    ListNode* head = readList(length);
+    Solution solution;
+    printList(solution.reverseKGroup(head, groupSize));
+    return 0;
+}`,
+  "merge-k-sorted-lists": `int main() {
+    int listCount;
+    cin >> listCount;
+    vector<ListNode*> lists(listCount);
+    for (int index = 0; index < listCount; index++) {
+        int length;
+        cin >> length;
+        lists[index] = readList(length);
+    }
+    Solution solution;
+    printList(solution.mergeKLists(lists));
+    return 0;
+}`,
+  "sort-list": `int main() {
+    int length;
+    cin >> length;
+    ListNode* head = readList(length);
+    Solution solution;
+    printList(solution.sortList(head));
+    return 0;
+}`,
+};
+
+const treeCppDrivers = {
+  "binary-tree-level-order-traversal": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    const auto levels = solution.levelOrder(root);
+    for (size_t row = 0; row < levels.size(); row++) {
+        if (row > 0) cout << "\\n";
+        for (size_t column = 0; column < levels[row].size(); column++) {
+            if (column > 0) cout << " ";
+            cout << levels[row][column];
+        }
+    }
+    return 0;
+}`,
+  "lowest-common-ancestor-bst": `int main() {
+    int tokenCount, firstValue, secondValue;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    cin >> firstValue >> secondValue;
+    Solution solution;
+    TreeNode* ancestor = solution.lowestCommonAncestor(
+        root,
+        findTreeNode(root, firstValue),
+        findTreeNode(root, secondValue)
+    );
+    if (ancestor) cout << ancestor->val;
+    return 0;
+}`,
+  "path-sum-ii": `int main() {
+    int tokenCount, targetSum;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    cin >> targetSum;
+    Solution solution;
+    const auto paths = solution.pathSum(root, targetSum);
+    cout << paths.size();
+    for (const auto& path : paths) {
+        cout << "\\n";
+        for (size_t index = 0; index < path.size(); index++) {
+            if (index > 0) cout << " ";
+            cout << path[index];
+        }
+    }
+    return 0;
+}`,
+  "binary-tree-right-side-view": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    const auto values = solution.rightSideView(root);
+    for (size_t index = 0; index < values.size(); index++) {
+        if (index > 0) cout << " ";
+        cout << values[index];
+    }
+    return 0;
+}`,
+  "binary-tree-maximum-path-sum": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    cout << solution.maxPathSum(root);
+    return 0;
+}`,
+  "recover-binary-search-tree": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    solution.recoverTree(root);
+    vector<int> values;
+    function<void(TreeNode*)> inorder = [&](TreeNode* node) {
+        if (!node) return;
+        inorder(node->left);
+        values.push_back(node->val);
+        inorder(node->right);
+    };
+    inorder(root);
+    for (size_t index = 0; index < values.size(); index++) {
+        if (index > 0) cout << " ";
+        cout << values[index];
+    }
+    return 0;
+}`,
+  "vertical-order-traversal": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    const auto columns = solution.verticalTraversal(root);
+    for (size_t row = 0; row < columns.size(); row++) {
+        if (row > 0) cout << "\\n";
+        for (size_t column = 0; column < columns[row].size(); column++) {
+            if (column > 0) cout << " ";
+            cout << columns[row][column];
+        }
+    }
+    return 0;
+}`,
+  "binary-tree-cameras": `int main() {
+    int tokenCount;
+    cin >> tokenCount;
+    TreeNode* root = readTree(tokenCount);
+    Solution solution;
+    cout << solution.minCameraCover(root);
+    return 0;
+}`,
+};
+
+const buildRandomListCppSource = (sourceCode) => buildSolutionClassCppSource(
+  sourceCode,
+  `class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    Node(int x) : val(x), next(nullptr), random(nullptr) {}
+};`,
+  `int main() {
+    int length;
+    cin >> length;
+    vector<Node*> nodes(length);
+    for (int index = 0; index < length; index++) {
+        int value;
+        cin >> value;
+        nodes[index] = new Node(value);
+        if (index > 0) nodes[index - 1]->next = nodes[index];
+    }
+    for (int index = 0; index < length; index++) {
+        int randomIndex;
+        cin >> randomIndex;
+        if (randomIndex >= 0 && randomIndex < length) nodes[index]->random = nodes[randomIndex];
+    }
+
+    Solution solution;
+    Node* copy = solution.copyRandomList(nodes.empty() ? nullptr : nodes[0]);
+    if (!copy) {
+        cout << "EMPTY";
+        return 0;
+    }
+    vector<Node*> copiedNodes;
+    unordered_map<Node*, int> copiedIndices;
+    for (Node* node = copy; node; node = node->next) {
+        copiedIndices[node] = copiedNodes.size();
+        copiedNodes.push_back(node);
+    }
+    for (size_t index = 0; index < copiedNodes.size(); index++) {
+        if (index > 0) cout << " ";
+        cout << copiedNodes[index]->val;
+    }
+    cout << "\\n";
+    for (size_t index = 0; index < copiedNodes.size(); index++) {
+        if (index > 0) cout << " ";
+        Node* random = copiedNodes[index]->random;
+        cout << (random && copiedIndices.count(random) ? copiedIndices[random] : -1);
+    }
+    return 0;
+}`
+);
+
+const buildLruCacheCppSource = (sourceCode) => `#include <bits/stdc++.h>
+using namespace std;
+
+${sourceCode}
+
+int main() {
+    int capacity, operationCount;
+    cin >> capacity >> operationCount;
+    LRUCache cache(capacity);
+    bool firstOutput = true;
+    for (int index = 0; index < operationCount; index++) {
+        string operation;
+        int key;
+        cin >> operation >> key;
+        if (operation == "GET") {
+            if (!firstOutput) cout << "\\n";
+            cout << cache.get(key);
+            firstOutput = false;
+        } else if (operation == "PUT") {
+            int value;
+            cin >> value;
+            cache.put(key, value);
+        }
+    }
+    return 0;
+}`;
+
 export const prepareSourceCode = ({
   sourceCode,
   language,
@@ -374,6 +749,30 @@ int main() {
 
   if (questionId === "serialize-deserialize-binary-tree") {
     return buildTreeCodecCppSource(sourceCode);
+  }
+
+  if (questionId === "copy-list-with-random-pointer") {
+    return buildRandomListCppSource(sourceCode);
+  }
+
+  if (questionId === "lru-cache") {
+    return buildLruCacheCppSource(sourceCode);
+  }
+
+  if (linkedListCppDrivers[questionId]) {
+    return buildSolutionClassCppSource(
+      sourceCode,
+      cppListNodeDefinition,
+      linkedListCppDrivers[questionId]
+    );
+  }
+
+  if (treeCppDrivers[questionId]) {
+    return buildSolutionClassCppSource(
+      sourceCode,
+      cppTreeNodeDefinition,
+      treeCppDrivers[questionId]
+    );
   }
 
   const problem = getProblemById(questionId);
