@@ -59,6 +59,8 @@ const ResumeUpload = () => {
     setAnalysisComplete(false);
     setMessage("");
     setMessageType("");
+    localStorage.removeItem("resumeData");
+    localStorage.removeItem("interviewData");
   };
 
   const handleFileChange = (event) => {
@@ -141,11 +143,14 @@ const ResumeUpload = () => {
       }
 
       if (!response.ok || data.success === false) {
-        throw new Error(
+        const responseError = new Error(
           data.error ||
             data.message ||
             "Resume analysis failed."
         );
+
+        responseError.code = data.code;
+        throw responseError;
       }
 
       const resumeData = {
@@ -209,6 +214,15 @@ const ResumeUpload = () => {
       setMessage(errorMessage);
       setMessageType("error");
       setAnalysisComplete(false);
+
+      localStorage.removeItem("resumeData");
+      localStorage.removeItem("interviewData");
+
+      if (error.code === "NON_RESUME_PDF") {
+        window.alert(
+          "Invalid resume\n\nThis PDF does not appear to be a resume or CV. Please upload your actual resume."
+        );
+      }
     } finally {
       setIsAnalyzing(false);
     }
