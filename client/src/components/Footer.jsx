@@ -5,14 +5,14 @@ function Footer() {
   return (
     <footer
       id="contact"
-      className="scroll-mt-24 bg-slate-950 border-t border-white/10 py-12 px-6"
+      className="scroll-mt-24 border-t border-white/10 bg-[#03050d] px-6 py-16"
     >
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid gap-12 md:grid-cols-3">
 
           <div>
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-3xl font-medium tracking-[-0.04em] text-white">
               PrepAI
             </h2>
 
@@ -63,14 +63,14 @@ function Footer() {
               Connect
             </h3>
 
-            <div className="flex gap-4 text-2xl text-gray-400">
+            <div className="flex gap-3 text-xl text-gray-400">
               <a
                 href="https://github.com/souvik835217-byte/PrepAI"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="PrepAI on GitHub"
                 title="GitHub"
-                className="transition hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition hover:-translate-y-1 hover:border-white/30 hover:bg-white/5 hover:text-white"
               >
                 <BsGithub />
               </a>
@@ -81,7 +81,7 @@ function Footer() {
                 rel="noreferrer"
                 aria-label="LinkedIn"
                 title="LinkedIn"
-                className="transition hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition hover:-translate-y-1 hover:border-white/30 hover:bg-white/5 hover:text-white"
               >
                 <BsLinkedin />
               </a>
@@ -92,7 +92,7 @@ function Footer() {
                 rel="noreferrer"
                 aria-label="X"
                 title="X"
-                className="transition hover:text-white"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition hover:-translate-y-1 hover:border-white/30 hover:bg-white/5 hover:text-white"
               >
                 <BsTwitterX />
               </a>
@@ -101,7 +101,7 @@ function Footer() {
 
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 text-center text-gray-500">
+        <div className="mt-12 border-t border-white/10 pt-7 text-center text-sm text-gray-500">
           © 2026 PrepAI. All rights reserved.
         </div>
 

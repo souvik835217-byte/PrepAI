@@ -2,160 +2,175 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContextStore";
 
-function AnimatedRobot() {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <div
-      className="relative flex h-64 w-64 items-center justify-center sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-96 lg:w-96"
-      role="img"
-      aria-label="Animated PrepAI robot assistant"
-    >
-      <motion.div
-        className="absolute inset-3 rounded-full bg-gradient-to-br from-purple-500 via-violet-500 to-blue-500 shadow-[0_0_90px_rgba(139,92,246,0.45)]"
-        animate={reduceMotion ? undefined : { scale: [1, 1.035, 1], rotate: [0, 2, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <motion.div
-        className="absolute inset-7 rounded-full border border-dashed border-white/30"
-        animate={reduceMotion ? undefined : { rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-      >
-        <span className="absolute -top-1 left-1/2 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_16px_#67e8f9]" />
-        <span className="absolute -bottom-1 left-1/4 h-2 w-2 rounded-full bg-fuchsia-200 shadow-[0_0_14px_#f5d0fe]" />
-      </motion.div>
-
-      <motion.div
-        className="relative z-10 flex flex-col items-center"
-        animate={reduceMotion ? undefined : { y: [-8, 8, -8] }}
-        transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={reduceMotion ? undefined : { scale: 1.06, rotate: -2 }}
-      >
-        <div className="relative h-12 w-1.5 rounded-full bg-slate-200">
-          <motion.span
-            className="absolute -left-2.5 -top-5 h-6 w-6 rounded-full bg-amber-300 shadow-[0_0_22px_#fcd34d]"
-            animate={reduceMotion ? undefined : { scale: [1, 1.25, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="relative -mt-1 h-36 w-44 rounded-[2.25rem] border-4 border-white/80 bg-gradient-to-b from-white to-violet-200 shadow-[0_22px_45px_rgba(15,23,42,0.4)] sm:h-40 sm:w-48">
-          <div className="absolute -left-4 top-12 h-14 w-5 rounded-l-xl bg-fuchsia-400" />
-          <div className="absolute -right-4 top-12 h-14 w-5 rounded-r-xl bg-fuchsia-400" />
-
-          <div className="absolute left-1/2 top-7 flex h-16 w-[82%] -translate-x-1/2 items-center justify-around rounded-3xl bg-slate-900 px-5 shadow-inner shadow-black/60">
-            {[0, 1].map((eye) => (
-              <motion.span
-                key={eye}
-                className="h-8 w-4 rounded-full bg-cyan-300 shadow-[0_0_18px_#22d3ee]"
-                animate={reduceMotion ? undefined : { scaleY: [1, 1, 0.12, 1, 1] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  times: [0, 0.43, 0.47, 0.51, 1],
-                  delay: eye * 0.04,
-                }}
-              />
-            ))}
-          </div>
-
-          <motion.div
-            className="absolute bottom-5 left-1/2 h-3 w-12 -translate-x-1/2 rounded-full bg-slate-700"
-            animate={reduceMotion ? undefined : { width: [48, 34, 48] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-
-        <div className="mt-3 h-16 w-28 rounded-b-3xl rounded-t-xl border-4 border-white/70 bg-gradient-to-b from-violet-200 to-violet-400 shadow-xl">
-          <motion.div
-            className="mx-auto mt-4 h-5 w-5 rounded-full border-4 border-cyan-200 bg-cyan-400 shadow-[0_0_18px_#22d3ee]"
-            animate={reduceMotion ? undefined : { opacity: [0.65, 1, 0.65] }}
-            transition={{ duration: 1.4, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-7 h-5 w-36 rounded-full bg-slate-950/50 blur-md"
-        animate={reduceMotion ? undefined : { scaleX: [1, 0.78, 1], opacity: [0.5, 0.3, 0.5] }}
-        transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </div>
-  );
-}
-
 function Hero() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const reduceMotion = useReducedMotion();
 
   const handleStartFree = () => {
     navigate(user ? "/company-selection" : "/login");
   };
 
   const handleLearnMore = () => {
-    document
-      .getElementById("features")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    document.getElementById("features")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
-    <section className="flex min-h-[90vh] items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-purple-900 px-5 py-16 text-white sm:px-6 md:py-20">
-      <div className="mx-auto grid w-full max-w-[1400px] items-center gap-12 md:grid-cols-[1.15fr_0.85fr] md:gap-8 lg:gap-10">
+    <section className="relative min-h-[calc(100vh-1rem)] overflow-hidden bg-slate-950 text-white">
+      <motion.div
+        className="absolute -inset-[3%] bg-cover bg-[70%_center] md:bg-center"
+        style={{
+          backgroundImage:
+            "url('/images/prepai-cinematic-hero.png')",
+        }}
+        initial={reduceMotion ? false : { scale: 1.06, x: "0%", y: "0%" }}
+        animate={
+          reduceMotion
+            ? { scale: 1 }
+            : {
+                scale: [1.06, 1.11, 1.07, 1.06],
+                x: ["0%", "-1.2%", "0.7%", "0%"],
+                y: ["0%", "-0.7%", "0.4%", "0%"],
+              }
+        }
+        transition={{
+          duration: 22,
+          repeat: reduceMotion ? 0 : Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/55 to-slate-950/15" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20" />
+
+      <motion.div
+        className="absolute inset-y-0 left-[-20%] w-[65%] bg-gradient-to-r from-transparent via-cyan-300/[0.08] to-transparent blur-3xl"
+        animate={
+          reduceMotion
+            ? undefined
+            : { x: ["-15%", "70%", "-15%"] }
+        }
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute -right-24 top-[18%] h-[30rem] w-[30rem] rounded-full bg-blue-500/15 blur-[110px]"
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+                x: [0, -90, 20, 0],
+                y: [0, 55, -20, 0],
+                opacity: [0.45, 0.75, 0.5, 0.45],
+              }
+        }
+        transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute inset-y-0 right-[8%] w-px bg-gradient-to-b from-transparent via-cyan-200/40 to-transparent shadow-[0_0_32px_rgba(34,211,238,0.45)]"
+        animate={reduceMotion ? undefined : { x: [0, -520, 0], opacity: [0, 0.8, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {[
+          [58, 28, 7, 0],
+          [67, 38, 5, 1.5],
+          [76, 55, 8, 0.8],
+          [84, 31, 4, 2.1],
+          [62, 69, 6, 2.8],
+          [91, 63, 5, 1.1],
+          [72, 78, 4, 3.2],
+        ].map(([left, top, size, delay], index) => (
+          <motion.span
+            key={`${left}-${top}`}
+            className={`absolute rounded-full ${index % 2 === 0 ? "bg-cyan-300" : "bg-violet-300"}`}
+            style={{ left: `${left}%`, top: `${top}%`, width: size, height: size }}
+            animate={
+              reduceMotion
+                ? undefined
+                : {
+                    y: [0, -22, 0],
+                    x: [0, index % 2 === 0 ? 12 : -10, 0],
+                    opacity: [0.15, 0.8, 0.15],
+                    scale: [0.8, 1.25, 0.8],
+                  }
+            }
+            transition={{
+              duration: 4.5 + index * 0.45,
+              delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-1rem)] max-w-7xl items-center px-6 pb-16 pt-32 sm:px-8 lg:px-10">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 38 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
         >
-          <p className="mb-4 font-semibold text-purple-400">
-            PrepAI — Learn. Practice. Compete. Succeed.
+          <p className="mb-6 text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">
+            AI-powered career preparation
           </p>
 
-          <h1 className="font-extrabold leading-tight">
-            <span className="block text-4xl sm:text-5xl md:text-[2.75rem] lg:text-6xl">
-              Prepare Smarter.
-            </span>
-            <span className="mt-2 block text-3xl text-purple-400 sm:text-4xl md:text-[2.35rem] lg:whitespace-nowrap lg:text-[3.25rem] xl:text-[3.5rem]">
-              Practice DSA. Ace Interviews.
+          <h1 className="text-5xl font-medium leading-[0.98] tracking-[-0.055em] sm:text-6xl lg:text-8xl">
+            Prepare smarter.
+            <span className="mt-2 block text-white/70">
+              Make it real.
             </span>
           </h1>
 
-          <p className="mt-6 text-lg text-gray-300">
-            Analyze your resume, master coding problems, compete in contests,
-            and practice AI-powered interviews—all in one platform.
+          <p className="mt-7 max-w-xl text-lg leading-8 text-slate-200/85 sm:text-xl">
+            Analyze your resume, master DSA, and practice AI-powered
+            interviews in one focused platform.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={handleStartFree}
-              className="w-full rounded-xl bg-purple-600 px-6 py-3 font-semibold hover:bg-purple-700 sm:w-auto"
+              className="min-w-44 rounded-lg bg-white px-7 py-4 text-sm font-bold uppercase tracking-wide text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-50 hover:shadow-[0_16px_45px_rgba(34,211,238,0.22)]"
             >
-              Start Free
+              Get started
             </button>
 
             <button
               type="button"
               onClick={handleLearnMore}
-              className="w-full rounded-xl border border-gray-400 px-6 py-3 hover:border-white sm:w-auto"
+              className="min-w-44 rounded-lg border border-white/35 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-md transition duration-300 hover:border-white/70 hover:bg-white/10"
             >
-              Learn More
+              Explore PrepAI
             </button>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="flex justify-center md:justify-end"
-        >
-          <AnimatedRobot />
+          <p className="mt-5 text-sm text-slate-300/75">
+            Start for free. Build confidence before the real interview.
+          </p>
         </motion.div>
       </div>
+
+      <motion.button
+        type="button"
+        onClick={handleLearnMore}
+        aria-label="Scroll to features"
+        className="absolute bottom-8 right-8 z-10 hidden h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/15 text-xl text-white backdrop-blur md:flex"
+        animate={reduceMotion ? undefined : { y: [0, 7, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity }}
+      >
+        ↓
+      </motion.button>
     </section>
   );
 }

@@ -12,13 +12,13 @@ function CTA() {
   };
 
   return (
-    <section className="bg-gradient-to-r from-purple-700 via-indigo-700 to-blue-700 py-24 px-6">
+    <section className="animated-aurora relative overflow-hidden bg-[linear-gradient(110deg,#111827,#4338ca,#0e7490,#111827)] py-28 px-6">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto text-center"
+        className="relative z-10 max-w-4xl mx-auto text-center"
       >
         <h2 className="text-4xl md:text-5xl font-bold text-white">
           Ready to Ace Your Next Interview?

@@ -37,15 +37,15 @@ const steps = [
 
 function HowItWorks() {
   return (
-    <section className="bg-slate-900 py-24 px-6">
+    <section className="bg-[#060914] py-28 px-6 text-white">
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-bold text-white">
+          <h2 className="text-5xl font-medium tracking-[-0.04em] text-white">
             How PrepAI Works
           </h2>
 
-          <p className="text-gray-400 mt-4">
+          <p className="text-slate-400 mt-4">
             Five simple steps to become interview ready.
           </p>
         </div>
@@ -60,20 +60,20 @@ function HowItWorks() {
               viewport={{ once: true }}
               className="flex flex-col md:flex-row items-center gap-8"
             >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center text-white shadow-lg">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-white/15 bg-gradient-to-br from-violet-600 to-cyan-500 text-white shadow-lg shadow-violet-950/40">
                 {step.icon}
               </div>
 
-              <div className="flex-1 bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="group flex-1 rounded-2xl border border-white/10 bg-white/[0.035] p-8 backdrop-blur transition duration-500 hover:border-cyan-400/30 hover:bg-white/[0.065]">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-2xl font-medium text-white">
                     {step.title}
                   </h3>
 
                   <BsCheckCircle className="text-green-400 text-2xl" />
                 </div>
 
-                <p className="text-gray-400 mt-3 leading-7">
+                <p className="text-slate-400 mt-3 leading-7">
                   {step.desc}
                 </p>
               </div>

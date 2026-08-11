@@ -223,37 +223,39 @@ const ResumeUpload = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f2f5fa] text-slate-900">
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[450px] w-[450px] rounded-full bg-blue-200/45 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-900">
+      <div className="pointer-events-none absolute -left-40 -top-40 h-[450px] w-[450px] rounded-full bg-cyan-400/10 blur-3xl" />
 
-      <div className="pointer-events-none absolute -bottom-44 -right-32 h-[460px] w-[460px] rounded-full bg-indigo-200/40 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-44 -right-32 h-[460px] w-[460px] rounded-full bg-violet-500/10 blur-3xl" />
 
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/70 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
 
-      <header className="relative z-10 border-b border-slate-200/70 bg-white/75 backdrop-blur-xl">
+      <header className="relative z-10 border-b border-white/10 bg-slate-950/65 text-white backdrop-blur-2xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             type="button"
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white shadow-sm">
-              P
-            </div>
+            <img
+              src="/favicon.svg"
+              alt=""
+              className="h-10 w-10 rounded-xl shadow-sm"
+            />
 
             <div className="text-left">
               <p className="font-bold tracking-tight">
                 PrepAI
               </p>
 
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-300">
                 Personal interview preparation
               </p>
             </div>
           </button>
 
-          <div className="hidden items-center gap-2 text-sm text-slate-500 sm:flex">
-            <FiShield className="text-emerald-600" />
+          <div className="hidden items-center gap-2 text-sm text-slate-300 sm:flex">
+            <FiShield className="text-cyan-300" />
             Secure resume processing
           </div>
         </div>
@@ -263,7 +265,7 @@ const ResumeUpload = () => {
         <button
           type="button"
           onClick={() => navigate("/company-selection")}
-          className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
+          className="mb-7 inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-cyan-300"
         >
           <FiArrowLeft />
           Back to company selection
@@ -279,7 +281,7 @@ const ResumeUpload = () => {
               opacity: 1,
               x: 0,
             }}
-            className="flex flex-col justify-between rounded-[28px] bg-gradient-to-br from-slate-950 via-slate-900 to-[#172554] p-7 text-white shadow-2xl shadow-slate-400/20 sm:p-9"
+            className="flex flex-col justify-between rounded-[28px] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950 p-7 text-white shadow-2xl shadow-black/25 sm:p-9"
           >
             <div>
               <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-medium text-white/80">
@@ -297,14 +299,14 @@ const ResumeUpload = () => {
                 questions.
               </p>
 
-              <div className="mt-7 rounded-2xl border border-blue-300/20 bg-blue-400/10 p-5">
+              <div className="mt-7 rounded-2xl border border-cyan-300/20 bg-cyan-400/10 p-5">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-blue-200">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-cyan-200">
                     <FiBriefcase />
                   </div>
 
                   <div>
-                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-blue-300">
+                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-cyan-300">
                       Target company
                     </p>
 
@@ -353,15 +355,15 @@ const ResumeUpload = () => {
               opacity: 1,
               x: 0,
             }}
-            className="rounded-[28px] border border-white/80 bg-white/90 p-6 shadow-xl shadow-slate-300/25 backdrop-blur-xl sm:p-8"
+            className="rounded-[28px] border border-white/80 bg-white/95 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl sm:p-8"
           >
             <div>
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">
                   Resume upload
                 </p>
 
-                <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">
+                <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1.5 text-xs font-semibold text-cyan-700">
                   <FiBriefcase />
                   {selectedCompany}
                 </span>
@@ -386,10 +388,10 @@ const ResumeUpload = () => {
               onDrop={handleDrop}
               className={`mt-7 cursor-pointer rounded-2xl border-2 border-dashed p-6 transition ${
                 isDragging
-                  ? "border-blue-500 bg-blue-50"
+                  ? "border-cyan-500 bg-cyan-50"
                   : file
                     ? "border-emerald-300 bg-emerald-50/70"
-                    : "border-slate-300 bg-slate-50/80 hover:border-blue-400 hover:bg-blue-50/50"
+                    : "border-slate-300 bg-slate-50/80 hover:border-cyan-400 hover:bg-cyan-50/50"
               }`}
             >
               <input
@@ -402,7 +404,7 @@ const ResumeUpload = () => {
 
               {!file ? (
                 <div className="flex min-h-[240px] flex-col items-center justify-center text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600 text-2xl text-white shadow-lg shadow-blue-200">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-violet-600 text-2xl text-white shadow-lg shadow-cyan-200">
                     <FiUploadCloud />
                   </div>
 
@@ -456,7 +458,7 @@ const ResumeUpload = () => {
                   messageType === "success"
                     ? "border-emerald-200 bg-emerald-50 text-emerald-700"
                     : messageType === "loading"
-                      ? "border-blue-200 bg-blue-50 text-blue-700"
+                      ? "border-cyan-200 bg-cyan-50 text-cyan-700"
                       : "border-red-200 bg-red-50 text-red-700"
                 }`}
               >
@@ -477,7 +479,7 @@ const ResumeUpload = () => {
                 type="button"
                 onClick={analyzeResume}
                 disabled={!file || isAnalyzing}
-                className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-slate-900 px-6 py-4 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+                className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl bg-slate-950 px-6 py-4 text-sm font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:bg-slate-300"
               >
                 {isAnalyzing ? (
                   <>
@@ -492,7 +494,7 @@ const ResumeUpload = () => {
               <button
                 type="button"
                 onClick={openAnalysis}
-                className="mt-6 flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700"
+                className="mt-6 flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 to-violet-600 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-cyan-200 transition hover:from-cyan-700 hover:to-violet-700"
               >
                 View AI resume analysis
               </button>

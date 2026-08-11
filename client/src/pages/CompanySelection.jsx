@@ -157,21 +157,21 @@ const CompanySelection = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <div className="pointer-events-none absolute -left-40 -top-40 h-[430px] w-[430px] rounded-full bg-indigo-600/20 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-[#060914] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[url('/images/prepai-cinematic-hero.png')] bg-cover bg-[68%_center] opacity-[0.08] grayscale-[20%]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060914] via-[#060914]/95 to-[#060914]/70" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,#a5b4fc_1px,transparent_1px),linear-gradient(to_bottom,#a5b4fc_1px,transparent_1px)] [background-size:64px_64px]" />
+      <div className="pointer-events-none absolute -left-48 top-1/4 h-[34rem] w-[34rem] rounded-full bg-violet-600/15 blur-[130px]" />
+      <div className="pointer-events-none absolute -right-48 bottom-20 h-[32rem] w-[32rem] rounded-full bg-cyan-500/10 blur-[130px]" />
 
-      <div className="pointer-events-none absolute -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-purple-600/15 blur-3xl" />
-
-      <header className="relative z-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur-xl">
+      <header className="relative z-20 border-b border-white/10 bg-slate-950/65 text-white backdrop-blur-2xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             type="button"
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-950/40">
-              P
-            </div>
+            <img src="/favicon.svg" alt="" className="h-10 w-10 rounded-xl shadow-lg" />
 
             <div className="text-left">
               <p className="font-bold">PrepAI</p>
@@ -182,46 +182,52 @@ const CompanySelection = () => {
             </div>
           </button>
 
-          <div className="hidden rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2 text-xs font-semibold text-slate-300 sm:block">
+          <div className="hidden rounded-full border border-white/10 bg-white/[0.07] px-5 py-2 text-xs font-semibold text-slate-200 sm:block">
             Step 1 of 2
           </div>
         </div>
       </header>
 
       <main className="relative z-10 mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:py-12">
-        <button
-          type="button"
-          onClick={() => navigate("/dashboard")}
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-white"
-        >
-          <FiArrowLeft />
-          Back to dashboard
-        </button>
+        <div className="relative pb-12 pt-3 sm:pb-14 sm:pt-5">
 
-        <div className="mt-8 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.17em] text-indigo-400">
-            Interview preference
-          </p>
+          <div className="relative z-10">
+            <button
+              type="button"
+              onClick={() => navigate("/dashboard")}
+              className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-cyan-200"
+            >
+              <FiArrowLeft />
+              Back to dashboard
+            </button>
 
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Configure your interview
-          </h1>
+            <div className="mt-10 max-w-3xl sm:mt-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-violet-300">
+                Interview preference
+              </p>
 
-          <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base">
-            Select an interview style, target role and difficulty.
-            PrepAI will combine these preferences
-            with your resume to generate personalized questions.
-          </p>
+              <h1 className="mt-5 text-4xl font-medium leading-tight tracking-[-0.045em] text-white sm:text-6xl">
+                Configure your interview.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-400">
+                Choose the company, role and challenge level. PrepAI combines
+                your preferences with your resume to create a focused,
+                personalized interview.
+              </p>
+
+            </div>
+          </div>
         </div>
 
         {error && (
-          <div className="mt-7 rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm font-medium text-red-300">
+          <div className="mt-7 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm font-medium text-red-700">
             {error}
           </div>
         )}
 
-        <div className="mt-9 grid gap-7 xl:grid-cols-[1fr_340px]">
-          <div className="space-y-7">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.035] shadow-2xl shadow-black/25 backdrop-blur-xl">
             {/* Company selection */}
             <SelectionSection
               icon={<FiBriefcase />}
@@ -241,14 +247,14 @@ const CompanySelection = () => {
                         setSelectedCompany(company.name);
                         setError("");
                       }}
-                      className={`relative rounded-[22px] border p-5 text-left shadow-lg transition duration-200 ${
+                      className={`relative min-h-[205px] rounded-2xl border p-5 text-left transition duration-200 ${
                         isSelected
-                          ? "border-indigo-500 bg-indigo-500/15 shadow-indigo-950/40"
-                          : "border-slate-700/80 bg-slate-950/60 shadow-black/20 hover:-translate-y-1 hover:border-indigo-500/60 hover:bg-slate-800/80"
+                          ? "border-cyan-400/50 bg-gradient-to-br from-violet-600/25 via-slate-900/80 to-cyan-500/10 text-white shadow-lg shadow-violet-950/30"
+                          : "border-white/10 bg-slate-950/45 text-white hover:-translate-y-0.5 hover:border-cyan-400/30 hover:bg-white/[0.06]"
                       }`}
                     >
                       {isSelected && (
-                        <div className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-indigo-500 text-white shadow-lg shadow-indigo-950/50">
+                        <div className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-950/40">
                           <FiCheck />
                         </div>
                       )}
@@ -256,11 +262,17 @@ const CompanySelection = () => {
                       <div
                         className={`flex h-12 w-12 items-center justify-center rounded-xl text-xl ${
                           isSelected
-                            ? "bg-indigo-500 text-white"
-                            : "bg-slate-800 text-slate-300"
+                            ? "bg-gradient-to-br from-violet-600 to-cyan-500 text-white"
+                            : "border border-white/10 bg-white/[0.04] text-violet-300"
                         }`}
                       >
-                        <FiBriefcase />
+                        {company.name === "General" ? (
+                          <FiTarget />
+                        ) : (
+                          <span className="text-sm font-bold tracking-tight">
+                            {company.name.slice(0, 2).toUpperCase()}
+                          </span>
+                        )}
                       </div>
 
                       <h2 className="mt-5 text-lg font-semibold">
@@ -317,12 +329,12 @@ const CompanySelection = () => {
                       }
                       className={`relative rounded-2xl border p-5 text-left transition ${
                         isSelected
-                          ? "border-indigo-500 bg-indigo-500/15"
-                          : "border-slate-700 bg-slate-950/60 hover:border-indigo-500/60 hover:bg-slate-800"
+                          ? "border-cyan-400/50 bg-gradient-to-br from-violet-600/20 to-cyan-500/10 text-white shadow-sm"
+                          : "border-white/10 bg-slate-950/45 text-white hover:border-cyan-400/30 hover:bg-white/[0.06]"
                       }`}
                     >
                       {isSelected && (
-                        <div className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500 text-sm text-white">
+                        <div className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-400 text-sm text-slate-950">
                           <FiCheck />
                         </div>
                       )}
@@ -383,12 +395,12 @@ const CompanySelection = () => {
 
           {/* Summary */}
           <aside>
-            <div className="rounded-[26px] border border-slate-700/80 bg-slate-900/90 p-6 shadow-2xl shadow-black/30 backdrop-blur xl:sticky xl:top-8">
+            <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-violet-600/15 via-slate-900/90 to-cyan-500/[0.08] p-6 text-white shadow-2xl shadow-black/25 backdrop-blur-xl xl:sticky xl:top-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-xl text-white shadow-lg shadow-indigo-950/40">
                 <FiBriefcase />
               </div>
 
-              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-indigo-400">
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-violet-300">
                 Interview summary
               </p>
 
@@ -396,7 +408,7 @@ const CompanySelection = () => {
                 Your configuration
               </h2>
 
-              <div className="mt-6 divide-y divide-slate-800">
+              <div className="mt-6 divide-y divide-white/[0.08]">
                 <SummaryRow
                   label={
                     selectedCompany === "General"
@@ -431,8 +443,8 @@ const CompanySelection = () => {
                 />
               </div>
 
-              <div className="mt-6 rounded-2xl border border-indigo-500/20 bg-indigo-500/10 p-4">
-                <p className="text-sm font-semibold text-indigo-200">
+              <div className="mt-6 rounded-2xl border border-white/[0.08] bg-white/[0.06] p-4">
+                <p className="text-sm font-semibold text-white">
                   Personalized interview
                 </p>
 
@@ -445,7 +457,7 @@ const CompanySelection = () => {
               <button
                 type="button"
                 onClick={continueToResume}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-950/40 transition hover:from-indigo-500 hover:to-purple-500"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-cyan-50"
               >
                 Continue to resume
                 <FiArrowRight />
@@ -465,9 +477,9 @@ const SelectionSection = ({
   children,
 }) => {
   return (
-    <section className="rounded-[26px] border border-slate-700/80 bg-slate-900/80 p-5 shadow-2xl shadow-black/20 backdrop-blur sm:p-7">
+    <section className="border-b border-white/[0.07] p-5 last:border-b-0 sm:p-7">
       <div className="mb-6 flex items-start gap-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/15 text-lg text-indigo-300">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-violet-400/20 bg-violet-500/10 text-lg text-violet-300">
           {icon}
         </div>
 
@@ -498,8 +510,8 @@ const OptionButton = ({
       onClick={onClick}
       className={`relative rounded-xl border px-4 py-3 text-sm font-semibold transition ${
         active
-          ? "border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-950/40"
-          : "border-slate-700 bg-slate-950/60 text-slate-300 hover:border-indigo-500/60 hover:bg-slate-800 hover:text-white"
+          ? "border-cyan-400/50 bg-gradient-to-r from-violet-600 to-cyan-500 text-white shadow-md shadow-violet-950/30"
+          : "border-white/10 bg-slate-950/45 text-slate-300 hover:border-cyan-400/30 hover:bg-white/[0.06] hover:text-white"
       }`}
     >
       <span className="flex items-center justify-center gap-2">

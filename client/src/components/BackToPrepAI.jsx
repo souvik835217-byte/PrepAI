@@ -40,7 +40,7 @@ const BackToPrepAI = () => {
       onClick={handleHomeClick}
       aria-label="Go to PrepAI landing page"
       title="PrepAI Home"
-      className="fixed right-4 top-4 z-[100] inline-flex items-center gap-2 rounded-xl border border-slate-700/90 bg-slate-950/95 px-4 py-2.5 text-sm font-semibold text-slate-200 shadow-xl shadow-slate-950/25 backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-500 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:right-6 sm:top-5"
+      className="fixed right-4 top-3 z-[100] inline-flex h-9 items-center gap-2 rounded-lg border border-indigo-400/30 bg-slate-900/95 px-3.5 text-sm font-semibold text-slate-100 shadow-lg shadow-slate-950/30 backdrop-blur transition hover:-translate-y-0.5 hover:border-indigo-400/60 hover:bg-indigo-500/15 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950 sm:right-6 sm:px-4"
     >
       <FiHome aria-hidden="true" />
       <span>Home</span>

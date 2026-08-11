@@ -29,7 +29,7 @@ const reviews = [
 
 function Reviews() {
   return (
-    <section className="bg-gray-50 py-24 px-6">
+    <section className="bg-[#f4f5f8] py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-flex rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-700">
@@ -50,7 +50,7 @@ function Reviews() {
           {reviews.map((item) => (
             <article
               key={item.name}
-              className="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition duration-300"
+              className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_14px_40px_rgba(15,23,42,0.05)] transition duration-500 hover:-translate-y-2 hover:border-violet-200 hover:shadow-[0_28px_70px_rgba(79,70,229,0.12)]"
             >
               <div className="flex gap-1">
                 {Array.from({ length: item.rating }).map((_, index) => (

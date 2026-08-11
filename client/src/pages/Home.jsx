@@ -44,7 +44,7 @@ function Home() {
     <>
       <Navbar />
 
-      <main className="pt-20">
+      <main>
         <section id="home">
           <Hero />
         </section>

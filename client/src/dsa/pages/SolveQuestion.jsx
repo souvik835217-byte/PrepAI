@@ -713,7 +713,7 @@ const SolveQuestion = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/95 backdrop-blur">
-        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-3 py-3 pl-4 pr-36 sm:flex-row sm:items-center sm:justify-between sm:pr-40">
           <button
             type="button"
             onClick={() => navigate(questionsPath)}
@@ -723,7 +723,7 @@ const SolveQuestion = () => {
             Back to questions
           </button>
 
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:justify-end sm:gap-3">
             {!authLoading && !user && (
               <button
                 type="button"

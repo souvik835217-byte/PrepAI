@@ -8,7 +8,7 @@ import {
 
 function DashboardPreview() {
   return (
-    <section className="bg-slate-950 py-28 px-6">
+    <section className="border-y border-slate-200 bg-[#f4f5f8] py-28 px-6">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
         {/* Left */}
@@ -18,17 +18,17 @@ function DashboardPreview() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <p className="text-purple-400 font-semibold mb-3">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-violet-600">
             Dashboard Preview
           </p>
 
-          <h2 className="text-5xl font-bold text-white leading-tight">
+          <h2 className="text-5xl font-medium leading-[1.04] tracking-[-0.045em] text-slate-950 lg:text-6xl">
             Experience AI-powered
             <br />
             Interview Preparation
           </h2>
 
-          <p className="text-gray-400 mt-6 text-lg leading-8">
+          <p className="text-slate-600 mt-6 text-lg leading-8">
             Upload your resume, track interview progress, receive AI feedback,
             and improve your communication with real-time analytics.
           </p>
@@ -40,7 +40,8 @@ function DashboardPreview() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl"
+          whileHover={{ y: -8, rotate: -0.5 }}
+          className="rounded-[2rem] border border-slate-800 bg-slate-950 p-8 shadow-[0_35px_90px_rgba(15,23,42,0.25)] transition-shadow hover:shadow-[0_45px_110px_rgba(79,70,229,0.25)]"
         >
           {/* Header */}
           <div className="flex justify-between items-center mb-8">

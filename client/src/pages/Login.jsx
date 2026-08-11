@@ -227,16 +227,22 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-950 p-5 text-white sm:p-6">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-950 p-5 text-white sm:p-6">
+      <div
+        className="absolute inset-0 bg-cover bg-[72%_center] opacity-45"
+        style={{ backgroundImage: "url('/images/prepai-cinematic-hero.png')" }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/55" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="w-full max-w-md rounded-3xl border border-gray-800 bg-gray-900 p-7 text-center shadow-2xl sm:p-10"
+        className="relative z-10 w-full max-w-md rounded-[2rem] border border-white/15 bg-slate-950/70 p-7 text-center shadow-[0_35px_100px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-10"
       >
         <Link
           to="/"
-          className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-purple-600"
+          className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-cyan-500 shadow-lg shadow-violet-950/50 transition hover:-translate-y-1"
           aria-label="Back to PrepAI home"
         >
           <FaRobot className="text-3xl" />

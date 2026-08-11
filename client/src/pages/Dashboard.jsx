@@ -290,10 +290,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <div className="pointer-events-none absolute -left-40 top-24 h-96 w-96 rounded-full bg-indigo-600/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-40 top-1/2 h-[30rem] w-[30rem] rounded-full bg-purple-600/10 blur-3xl" />
-      <header className="relative z-30 border-b border-slate-800 bg-slate-950/90 backdrop-blur-xl">
+    <div className="relative min-h-screen overflow-hidden bg-[#060914] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[url('/images/prepai-cinematic-hero.png')] bg-cover bg-[68%_center] opacity-[0.055] grayscale-[20%]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060914] via-[#060914]/95 to-[#060914]/75" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,#a5b4fc_1px,transparent_1px),linear-gradient(to_bottom,#a5b4fc_1px,transparent_1px)] [background-size:64px_64px]" />
+      <div className="pointer-events-none absolute -left-48 top-1/4 h-[34rem] w-[34rem] animate-pulse rounded-full bg-violet-600/15 blur-[130px]" />
+      <div className="pointer-events-none absolute -right-48 top-1/2 h-[32rem] w-[32rem] animate-pulse rounded-full bg-cyan-500/10 blur-[130px] [animation-delay:1.5s]" />
+      <header className="relative z-30 border-b border-white/10 bg-slate-950/65 backdrop-blur-2xl">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
           <button
             type="button"
@@ -301,9 +304,11 @@ const Dashboard = () => {
             aria-label="Go to dashboard"
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold shadow-lg shadow-indigo-950/40">
-              P
-            </div>
+            <img
+              src="/favicon.svg"
+              alt=""
+              className="h-10 w-10 rounded-xl shadow-lg shadow-indigo-950/40"
+            />
 
             <div className="text-left">
               <h1 className="font-bold text-lg leading-tight">
@@ -410,14 +415,14 @@ const Dashboard = () => {
           </div>
         )}
 
-        <section className="rounded-[28px] border border-slate-700/80 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 text-white px-6 py-8 md:px-10 md:py-10 overflow-hidden relative shadow-2xl shadow-black/30">
+        <section className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-violet-600/20 via-slate-900 to-cyan-500/10 px-6 py-8 text-white shadow-2xl shadow-black/30 md:px-10 md:py-10">
           <div className="absolute w-72 h-72 rounded-full bg-blue-500/20 blur-3xl -top-28 -right-20" />
 
           <div className="absolute w-56 h-56 rounded-full bg-violet-500/20 blur-3xl -bottom-24 left-1/3" />
 
           <div className="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
             <div>
-              <p className="text-blue-300 text-sm font-semibold uppercase tracking-[0.2em]">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-violet-300">
                 Performance dashboard
               </p>
 
@@ -453,7 +458,7 @@ const Dashboard = () => {
                 <button
                   type="button"
                   onClick={() => navigate("/dsa")}
-                  className="rounded-xl bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+                  className="rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-3 font-semibold text-white shadow-lg shadow-violet-950/30 transition hover:-translate-y-0.5"
                 >
                   Open DSA Hub
                 </button>

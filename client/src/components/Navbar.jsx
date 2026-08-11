@@ -125,14 +125,14 @@ function Navbar() {
   };
 
   return (
-    <nav className="fixed left-0 top-0 z-50 w-full border-b border-gray-200/70 bg-white/90 backdrop-blur-xl">
+    <nav className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-slate-950/65 backdrop-blur-2xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           to="/"
           className="group flex items-center gap-3"
           onClick={() => setIsProfileOpen(false)}
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 shadow-lg transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-blue-600 shadow-lg shadow-indigo-200 transition-transform duration-300 group-hover:scale-105">
             <img
               src="/favicon.svg"
               alt=""
@@ -141,21 +141,21 @@ function Navbar() {
           </div>
 
           <div className="flex flex-col leading-none">
-            <span className="text-2xl font-extrabold tracking-tight text-gray-900">
+            <span className="text-2xl font-extrabold tracking-tight text-white">
               PrepAI
             </span>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-slate-300">
               AI-Powered Tech Career Platform
             </span>
           </div>
         </Link>
 
-        <div className="hidden items-center gap-8 font-medium text-gray-600 md:flex">
+        <div className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.06] p-1 font-medium text-slate-200 md:flex">
           {navigationItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="transition hover:text-purple-600"
+              className="rounded-full px-4 py-2 text-sm transition hover:bg-white/10 hover:text-white"
             >
               {item.label}
             </a>
@@ -163,7 +163,7 @@ function Navbar() {
 
           <Link
             to={user ? "/dashboard" : "/login"}
-            className="flex items-center gap-2 transition hover:text-purple-600"
+            className="flex items-center gap-2 rounded-full px-4 py-2 text-sm transition hover:bg-white/10 hover:text-white"
           >
             <FiGrid />
             Dashboard
@@ -171,7 +171,7 @@ function Navbar() {
 
           <Link
             to="/dsa"
-            className="rounded-full border border-purple-200 bg-purple-50 px-4 py-2 text-sm font-semibold text-purple-700 transition hover:border-purple-300 hover:bg-purple-100"
+            className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-cyan-50 hover:shadow-md"
           >
             Explore DSA
           </Link>

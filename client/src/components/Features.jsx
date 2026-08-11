@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   BsFileEarmarkText,
   BsMic,
@@ -50,46 +50,80 @@ const features = [
 ];
 
 function Features() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="bg-slate-900 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white">
-            Powerful Features
-          </h2>
+    <section className="relative overflow-hidden bg-[#060914] px-6 py-28 text-white">
+      <motion.div
+        className="pointer-events-none absolute inset-0 bg-cover bg-[68%_center] opacity-[0.13] grayscale-[20%]"
+        style={{ backgroundImage: "url('/images/prepai-cinematic-hero.png')" }}
+        animate={reduceMotion ? undefined : { scale: [1.04, 1.1, 1.04], x: [0, -18, 0] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060914] via-[#060914]/90 to-[#060914]/55" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#060914] via-transparent to-[#060914]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.055] [background-image:linear-gradient(to_right,#a5b4fc_1px,transparent_1px),linear-gradient(to_bottom,#a5b4fc_1px,transparent_1px)] [background-size:64px_64px]" />
+      <motion.div
+        className="pointer-events-none absolute -left-48 top-1/4 h-[34rem] w-[34rem] rounded-full bg-violet-600/20 blur-[130px]"
+        animate={reduceMotion ? undefined : { x: [0, 120, 0], y: [0, 55, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute -right-48 bottom-20 h-[32rem] w-[32rem] rounded-full bg-cyan-500/15 blur-[130px]"
+        animate={reduceMotion ? undefined : { x: [0, -90, 0], y: [0, -45, 0] }}
+        transition={{ duration: 19, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Everything you need to prepare smarter, improve faster,
-            and confidently crack your next interview.
-          </p>
-        </div>
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid gap-16 lg:grid-cols-[0.72fr_1.28fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:sticky lg:top-32 lg:self-start"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-violet-300">
+              The PrepAI system
+            </p>
+            <h2 className="mt-5 max-w-md text-4xl font-medium leading-tight tracking-[-0.04em] sm:text-6xl">
+              Everything you need. Nothing you don&apos;t.
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-8 text-slate-400">
+              A focused preparation workflow designed to take you from first review to interview-ready.
+            </p>
+          </motion.div>
 
-        {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title || index}
-              whileHover={{
-                y: -8,
-                scale: 1.03,
-              }}
-              transition={{ duration: 0.3 }}
-              className="h-full rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-lg"
-            >
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-purple-600 to-blue-500 text-white">
-                {feature.icon}
-              </div>
-
-              <h3 className="mb-3 text-2xl font-semibold text-white">
-                {feature.title}
-              </h3>
-
-              <p className="leading-7 text-gray-400">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          <div className="border-t border-white/15">
+            {features.map((feature, index) => (
+              <motion.article
+                key={feature.title}
+                initial={{ opacity: 0, x: 28 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.55, delay: index * 0.04 }}
+                className="group relative grid gap-5 overflow-hidden border-b border-white/15 py-8 sm:grid-cols-[3.5rem_1fr_auto] sm:items-center sm:py-10"
+              >
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-violet-600/10 via-cyan-500/[0.06] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-0" />
+                <div className="relative text-sm font-semibold text-slate-500">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <div className="relative">
+                  <h3 className="text-2xl font-medium tracking-tight transition-colors group-hover:text-cyan-200 sm:text-3xl">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 max-w-xl leading-7 text-slate-400">
+                    {feature.description}
+                  </p>
+                </div>
+                <motion.div
+                  className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-xl text-violet-300"
+                  whileHover={{ rotate: 8, scale: 1.08 }}
+                >
+                  {feature.icon}
+                </motion.div>
+              </motion.article>
+            ))}
+          </div>
         </div>
 
         <motion.div
@@ -97,7 +131,7 @@ function Features() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.5 }}
-          className="relative mt-10 overflow-hidden rounded-3xl border border-purple-400/20 bg-gradient-to-br from-slate-950 via-slate-900 to-purple-950 p-8 shadow-2xl shadow-purple-950/20 md:p-10"
+          className="relative mt-20 overflow-hidden rounded-[2rem] border border-white/15 bg-gradient-to-br from-violet-600/20 via-slate-900 to-cyan-500/10 p-8 shadow-2xl shadow-black/30 md:p-10"
         >
           <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-purple-600/15 blur-3xl" />
 
