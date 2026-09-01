@@ -44,13 +44,13 @@ const DSALayout = () => {
         }
         title={
           isSidebarVisible
-            ? "Hide DSA Hub"
-            : "Show DSA Hub"
+            ? "Hide PrepAI Code Arena"
+            : "Show PrepAI Code Arena"
         }
         aria-label={
           isSidebarVisible
-            ? "Hide DSA Hub"
-            : "Show DSA Hub"
+            ? "Hide PrepAI Code Arena"
+            : "Show PrepAI Code Arena"
         }
         aria-expanded={isSidebarVisible}
         className={`fixed top-1/2 z-50 hidden h-12 w-8 -translate-y-1/2 items-center justify-center rounded-r-xl border border-l-0 border-slate-700 bg-slate-900 text-slate-300 shadow-xl transition-all duration-300 hover:bg-indigo-600 hover:text-white lg:flex ${

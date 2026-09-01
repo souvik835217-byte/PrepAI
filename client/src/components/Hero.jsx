@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContextStore";
@@ -6,6 +7,18 @@ function Hero() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const reduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+  const disableMotion = reduceMotion || isMobile;
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const updateMobileState = () => setIsMobile(mobileQuery.matches);
+
+    updateMobileState();
+    mobileQuery.addEventListener("change", updateMobileState);
+
+    return () => mobileQuery.removeEventListener("change", updateMobileState);
+  }, []);
 
   const handleStartFree = () => {
     navigate(user ? "/company-selection" : "/login");
@@ -26,9 +39,9 @@ function Hero() {
           backgroundImage:
             "url('/images/prepai-cinematic-hero.png')",
         }}
-        initial={reduceMotion ? false : { scale: 1.06, x: "0%", y: "0%" }}
+        initial={disableMotion ? false : { scale: 1.06, x: "0%", y: "0%" }}
         animate={
-          reduceMotion
+          disableMotion
             ? { scale: 1 }
             : {
                 scale: [1.06, 1.11, 1.07, 1.06],
@@ -38,7 +51,7 @@ function Hero() {
         }
         transition={{
           duration: 22,
-          repeat: reduceMotion ? 0 : Infinity,
+          repeat: disableMotion ? 0 : Infinity,
           ease: "easeInOut",
         }}
       />
@@ -49,7 +62,7 @@ function Hero() {
       <motion.div
         className="absolute inset-y-0 left-[-20%] w-[65%] bg-gradient-to-r from-transparent via-cyan-300/[0.08] to-transparent blur-3xl"
         animate={
-          reduceMotion
+          disableMotion
             ? undefined
             : { x: ["-15%", "70%", "-15%"] }
         }
@@ -63,7 +76,7 @@ function Hero() {
       <motion.div
         className="pointer-events-none absolute -right-24 top-[18%] h-[30rem] w-[30rem] rounded-full bg-blue-500/15 blur-[110px]"
         animate={
-          reduceMotion
+          disableMotion
             ? undefined
             : {
                 x: [0, -90, 20, 0],
@@ -76,7 +89,7 @@ function Hero() {
 
       <motion.div
         className="pointer-events-none absolute inset-y-0 right-[8%] w-px bg-gradient-to-b from-transparent via-cyan-200/40 to-transparent shadow-[0_0_32px_rgba(34,211,238,0.45)]"
-        animate={reduceMotion ? undefined : { x: [0, -520, 0], opacity: [0, 0.8, 0] }}
+        animate={disableMotion ? undefined : { x: [0, -520, 0], opacity: [0, 0.8, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
 
@@ -95,7 +108,7 @@ function Hero() {
             className={`absolute rounded-full ${index % 2 === 0 ? "bg-cyan-300" : "bg-violet-300"}`}
             style={{ left: `${left}%`, top: `${top}%`, width: size, height: size }}
             animate={
-              reduceMotion
+              disableMotion
                 ? undefined
                 : {
                     y: [0, -22, 0],
@@ -166,7 +179,7 @@ function Hero() {
         onClick={handleLearnMore}
         aria-label="Scroll to features"
         className="absolute bottom-8 right-8 z-10 hidden h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-black/15 text-xl text-white backdrop-blur md:flex"
-        animate={reduceMotion ? undefined : { y: [0, 7, 0] }}
+        animate={disableMotion ? undefined : { y: [0, 7, 0] }}
         transition={{ duration: 2.2, repeat: Infinity }}
       >
         ↓

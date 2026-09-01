@@ -298,7 +298,7 @@ const TopicPractice = () => {
           className="mb-6 flex items-center gap-2 text-sm font-medium text-slate-400 transition hover:text-white"
         >
           <FiArrowLeft />
-          Back to DSA Hub
+          Back to PrepAI Code Arena
         </button>
 
         <section className="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-indigo-950/60 p-7 md:p-10">

@@ -147,7 +147,7 @@ function Features() {
                     Coding Workspace
                   </p>
                   <h3 className="mt-1 text-3xl font-bold text-white">
-                    DSA Hub
+                    PrepAI Code Arena
                   </h3>
                 </div>
               </div>
@@ -179,7 +179,7 @@ function Features() {
               to="/dsa"
               className="inline-flex shrink-0 items-center justify-center rounded-xl bg-white px-6 py-3.5 font-semibold text-slate-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-purple-50"
             >
-              Explore DSA Hub
+              Explore PrepAI Code Arena
               <span className="ml-2">→</span>
             </Link>
           </div>

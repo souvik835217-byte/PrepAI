@@ -92,3 +92,31 @@ textarea:focus-visible {
     animation: none;
   }
 }
+
+/* Glass blur and large animated gradients are costly to composite on phones. */
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .backdrop-blur,
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  [class*="blur-["] {
+    filter: blur(48px) !important;
+  }
+
+  .animate-pulse,
+  .animated-gradient-text,
+  .aurora-section,
+  .animated-aurora,
+  .color-card::before {
+    animation: none !important;
+  }
+}

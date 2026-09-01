@@ -63,7 +63,7 @@ const DSANav = () => {
         </p>
 
         <h2 className="mt-2 text-xl font-bold text-white">
-          DSA Hub
+          PrepAI Code Arena
         </h2>
       </div>
 

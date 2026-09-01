@@ -460,7 +460,7 @@ const Dashboard = () => {
                   onClick={() => navigate("/dsa")}
                   className="rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-5 py-3 font-semibold text-white shadow-lg shadow-violet-950/30 transition hover:-translate-y-0.5"
                 >
-                  Open DSA Hub
+                  Open PrepAI Code Arena
                 </button>
               </div>
             </div>

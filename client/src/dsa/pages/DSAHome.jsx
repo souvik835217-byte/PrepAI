@@ -225,7 +225,7 @@ const DSAHome = () => {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-indigo-400">
-                PrepAI DSA Hub
+                PrepAI Code Arena
               </p>
 
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">

@@ -2,11 +2,6 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
-import CompanySelection from "../pages/CompanySelection";
-import EvaluatingInterview from "../pages/EvaluatingInterview";
-import InterviewSetup from "../pages/InterviewSetup";
-import PreparingInterview from "../pages/PreparingInterview";
-import DSARoutes from "../dsa/routes/DSARoutes";
 
 const Home = lazy(() => import("../pages/Home"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -18,6 +13,17 @@ const ResumeAnalysis = lazy(() =>
   import("../pages/ResumeAnalysis")
 );
 const History = lazy(() => import("../pages/History"));
+const CompanySelection = lazy(() =>
+  import("../pages/CompanySelection")
+);
+const EvaluatingInterview = lazy(() =>
+  import("../pages/EvaluatingInterview")
+);
+const InterviewSetup = lazy(() => import("../pages/InterviewSetup"));
+const PreparingInterview = lazy(() =>
+  import("../pages/PreparingInterview")
+);
+const DSARoutes = lazy(() => import("../dsa/routes/DSARoutes"));
 
 const PageFallback = () => (
   <div className="flex min-h-screen items-center justify-center bg-slate-950 text-white">
