@@ -117,10 +117,13 @@ const CompanySelection = () => {
   );
 
   const [error, setError] = useState("");
+  const [showSelectionWarning, setShowSelectionWarning] =
+    useState(false);
 
   const continueToResume = () => {
     if (!selectedCompany) {
       setError("Please select an interview style.");
+      setShowSelectionWarning(true);
       return;
     }
 
@@ -244,9 +247,13 @@ const CompanySelection = () => {
                       key={company.name}
                       type="button"
                       onClick={() => {
-                        setSelectedCompany(company.name);
+                        setSelectedCompany((currentCompany) =>
+                          currentCompany === company.name ? "" : company.name
+                        );
                         setError("");
+                        setShowSelectionWarning(false);
                       }}
+                      aria-pressed={isSelected}
                       className={`relative min-h-[205px] rounded-2xl border p-5 text-left transition duration-200 ${
                         isSelected
                           ? "border-cyan-400/50 bg-gradient-to-br from-violet-600/25 via-slate-900/80 to-cyan-500/10 text-white shadow-lg shadow-violet-950/30"
@@ -286,6 +293,10 @@ const CompanySelection = () => {
                   );
                 })}
               </div>
+
+              <p className="mt-4 text-xs text-slate-500">
+                Click a selected style again to deselect it.
+              </p>
             </SelectionSection>
 
             {/* Role selection */}
@@ -418,7 +429,7 @@ const CompanySelection = () => {
                   value={
                     selectedCompany === "General"
                       ? "General practice"
-                      : selectedCompany
+                      : selectedCompany || "Not selected"
                   }
                 />
 
@@ -466,6 +477,37 @@ const CompanySelection = () => {
           </aside>
         </div>
       </main>
+
+      {showSelectionWarning && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 px-5 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="selection-warning-title"
+        >
+          <div className="w-full max-w-md rounded-2xl border border-red-400/30 bg-slate-900 p-6 shadow-2xl shadow-black/50">
+            <h2
+              id="selection-warning-title"
+              className="text-xl font-semibold text-white"
+            >
+              Select an interview style
+            </h2>
+
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              Choose General Practice or a company before continuing to start
+              your interview setup.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => setShowSelectionWarning(false)}
+              className="mt-6 w-full rounded-xl bg-cyan-400 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+            >
+              Choose a style
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
