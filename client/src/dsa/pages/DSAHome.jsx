@@ -306,7 +306,7 @@ const DSAHome = () => {
             </button>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 2xl:grid-cols-4">
             {statCards.map((card) => {
               const Icon = card.icon;
 
