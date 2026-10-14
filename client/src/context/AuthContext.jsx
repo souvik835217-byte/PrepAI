@@ -4,7 +4,10 @@ import {
   useState,
 } from "react";
 
-import { onAuthStateChanged } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { AuthContext } from "./authContextStore";
 
@@ -16,7 +19,23 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(
       auth,
-      (firebaseUser) => {
+      async (firebaseUser) => {
+        const usesPasswordProvider =
+          firebaseUser?.providerData.some(
+            ({ providerId }) => providerId === "password"
+          );
+
+        if (
+          firebaseUser &&
+          usesPasswordProvider &&
+          !firebaseUser.emailVerified
+        ) {
+          setUser(null);
+          setAuthLoading(false);
+          await signOut(auth);
+          return;
+        }
+
         setUser(firebaseUser);
         setAuthLoading(false);
       },

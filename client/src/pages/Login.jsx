@@ -2,7 +2,9 @@ import { useState } from "react";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  sendEmailVerification,
   sendPasswordResetEmail,
+  signOut,
   signInWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
@@ -25,6 +27,55 @@ import {
 import { useAuth } from "../context/authContextStore";
 import { auth } from "../firebase/firebase";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const COMMON_PASSWORDS = new Set([
+  "12345678",
+  "password",
+  "password123",
+  "password123!",
+  "qwerty123",
+  "qwerty123!",
+  "admin123",
+  "admin123!",
+  "letmein123",
+  "welcome123",
+  "welcome123!",
+]);
+
+const getSignUpValidationError = (email, password, name) => {
+  if (!EMAIL_PATTERN.test(email) || email.length > 254) {
+    return "Enter a valid email address.";
+  }
+
+  if (password.length < 10) {
+    return "Password must contain at least 10 characters.";
+  }
+
+  if (
+    !/[a-z]/.test(password) ||
+    !/[A-Z]/.test(password) ||
+    !/\d/.test(password) ||
+    !/[^A-Za-z0-9]/.test(password)
+  ) {
+    return "Use uppercase, lowercase, a number, and a special character.";
+  }
+
+  const normalizedPassword = password.toLowerCase();
+  const emailName = email.split("@")[0];
+  const compactName = name.toLowerCase().replace(/\s+/g, "");
+
+  if (
+    COMMON_PASSWORDS.has(normalizedPassword) ||
+    /(.)\1{5,}/.test(password) ||
+    (emailName.length >= 4 && normalizedPassword.includes(emailName)) ||
+    (compactName.length >= 4 && normalizedPassword.includes(compactName))
+  ) {
+    return "Choose a password that does not use common words, repeated characters, your name, or your email.";
+  }
+
+  return "";
+};
+
 const getAuthErrorMessage = (error) => {
   const messages = {
     "auth/email-already-in-use":
@@ -46,7 +97,7 @@ const getAuthErrorMessage = (error) => {
     "auth/user-not-found":
       "No account was found for this email.",
     "auth/weak-password":
-      "Use a password with at least six characters.",
+      "Choose a stronger password.",
   };
 
   return (
@@ -107,16 +158,22 @@ const Login = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setErrorMessage(
-        "Password must contain at least six characters."
-      );
-      return;
-    }
-
     if (isSignUp && password !== confirmPassword) {
       setErrorMessage("The passwords do not match.");
       return;
+    }
+
+    if (isSignUp) {
+      const validationError = getSignUpValidationError(
+        normalizedEmail,
+        password,
+        name.trim()
+      );
+
+      if (validationError) {
+        setErrorMessage(validationError);
+        return;
+      }
     }
 
     setLoadingAction("email");
@@ -136,10 +193,14 @@ const Login = () => {
           displayName: name.trim(),
         });
 
-        completeAuthentication(
-          credential.user,
-          `Welcome, ${name.trim().split(" ")[0]}! Your account is ready.`
+        await sendEmailVerification(credential.user);
+        await signOut(auth);
+
+        setSuccessMessage(
+          "Account created. Check your inbox and verify your email before logging in."
         );
+        setPassword("");
+        setConfirmPassword("");
         return;
       }
 
@@ -149,6 +210,15 @@ const Login = () => {
           normalizedEmail,
           password
         );
+
+      if (!credential.user.emailVerified) {
+        await sendEmailVerification(credential.user);
+        await signOut(auth);
+        setErrorMessage(
+          "Verify your email before logging in. We sent you a new verification link."
+        );
+        return;
+      }
 
       completeAuthentication(
         credential.user,
@@ -319,7 +389,11 @@ const Login = () => {
                     ? "new-password"
                     : "current-password"
                 }
-                placeholder="At least 6 characters"
+                placeholder={
+                  isSignUp
+                    ? "10+ characters with mixed types"
+                    : "Enter your password"
+                }
                 className="w-full rounded-xl border border-gray-700 bg-gray-950 py-3 pl-11 pr-12 text-white outline-none transition placeholder:text-gray-600 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10"
               />
               <button
@@ -337,6 +411,12 @@ const Login = () => {
                 {showPassword ? <FiEyeOff /> : <FiEye />}
               </button>
             </span>
+            {isSignUp && (
+              <span className="mt-2 block text-xs leading-5 text-gray-500">
+                Use 10+ characters with uppercase, lowercase, a number,
+                and a special character. Do not use your name or email.
+              </span>
+            )}
           </label>
 
           {isSignUp && (
