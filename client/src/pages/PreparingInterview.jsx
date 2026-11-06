@@ -84,9 +84,11 @@ const PreparingInterview = () => {
               <div className="relative">
                 <div className="absolute inset-0 rounded-2xl bg-white blur-xl opacity-30" />
 
-                <div className="relative w-14 h-14 rounded-2xl border border-white/20 bg-white/15 backdrop-blur flex items-center justify-center text-xl font-black">
-                  P
-                </div>
+                <img
+                  src="/favicon.svg"
+                  alt="PrepAI logo"
+                  className="relative h-14 w-14 rounded-2xl shadow-lg"
+                />
               </div>
 
               <p className="mt-5 text-sm font-semibold text-blue-100">

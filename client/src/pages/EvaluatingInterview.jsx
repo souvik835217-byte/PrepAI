@@ -78,9 +78,11 @@ const EvaluatingInterview = () => {
       <main className="relative z-10 w-full max-w-3xl">
         <section className="overflow-hidden rounded-[32px] border border-white/80 bg-white/90 shadow-2xl shadow-slate-300/30 backdrop-blur-xl">
           <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 px-7 py-10 text-center text-white sm:px-10">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-2xl font-bold">
-              P
-            </div>
+            <img
+              src="/favicon.svg"
+              alt="PrepAI logo"
+              className="mx-auto h-16 w-16 rounded-2xl shadow-lg"
+            />
 
             <p className="mt-5 text-sm font-semibold text-blue-200">
               PrepAI Evaluation

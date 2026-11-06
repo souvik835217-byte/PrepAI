@@ -1661,9 +1661,11 @@ const Interview = () => {
               onClick={() => navigate("/dashboard")}
               className="flex items-center gap-3"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 font-bold text-white">
-                P
-              </div>
+              <img
+                src="/favicon.svg"
+                alt="PrepAI logo"
+                className="h-10 w-10 rounded-xl shadow-sm"
+              />
 
               <div className="text-left">
                 <p className="font-bold">PrepAI</p>
@@ -1808,9 +1810,11 @@ const Interview = () => {
         <div className="mx-auto max-w-7xl px-5 py-4 sm:px-8">
           <div className="flex items-center gap-5">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 font-bold text-white">
-                P
-              </div>
+              <img
+                src="/favicon.svg"
+                alt="PrepAI logo"
+                className="h-10 w-10 rounded-xl shadow-sm"
+              />
 
               <div>
                 <p className="font-bold">

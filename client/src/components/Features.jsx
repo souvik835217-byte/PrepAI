@@ -62,7 +62,6 @@ function Features() {
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060914] via-[#060914]/90 to-[#060914]/55" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#060914] via-transparent to-[#060914]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.055] [background-image:linear-gradient(to_right,#a5b4fc_1px,transparent_1px),linear-gradient(to_bottom,#a5b4fc_1px,transparent_1px)] [background-size:64px_64px]" />
       <motion.div
         className="pointer-events-none absolute -left-48 top-1/4 h-[34rem] w-[34rem] rounded-full bg-violet-600/20 blur-[130px]"
         animate={reduceMotion ? undefined : { x: [0, 120, 0], y: [0, 55, 0] }}

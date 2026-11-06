@@ -626,9 +626,11 @@ const History = () => {
             onClick={() => navigate("/dashboard")}
             className="flex items-center gap-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 font-bold text-white shadow-lg shadow-indigo-950/40">
-              P
-            </div>
+            <img
+              src="/favicon.svg"
+              alt="PrepAI logo"
+              className="h-10 w-10 rounded-xl shadow-lg shadow-indigo-950/40"
+            />
 
             <div className="text-left">
               <p className="font-bold">PrepAI</p>
