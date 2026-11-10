@@ -12,8 +12,8 @@ import {
   FiX,
 } from "react-icons/fi";
 
-const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000")
+  .replace(/\/+$/, "");
 
 const ResumeUpload = () => {
   const navigate = useNavigate();
@@ -101,9 +101,9 @@ const ResumeUpload = () => {
   };
 
   const analyzeResume = async () => {
-    if (!file) {
+    if (!file || isAnalyzing) {
       setMessage("Please select your resume first.");
-      setMessageType("error");
+      if (!file) setMessageType("error");
       return;
     }
 

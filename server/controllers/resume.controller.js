@@ -49,6 +49,7 @@ export const isLikelyResume = (text) => {
 
 export const analyzeResume = async (req, res) => {
   let filePath = null;
+  let pdfDocument = null;
 
   try {
     if (!req.file) {
@@ -71,27 +72,23 @@ export const analyzeResume = async (req, res) => {
 
     filePath = req.file.path;
 
-    const fileBuffer = await fs.promises.readFile(filePath);
-
-    const pdfData = new Uint8Array(fileBuffer);
-
-    const pdfDocument = await pdfjsLib.getDocument({
-      data: pdfData,
+    pdfDocument = await pdfjsLib.getDocument({
+      url: filePath,
+      useSystemFonts: false,
     }).promise;
 
-    const pageTexts = await Promise.all(
-      Array.from(
-        { length: pdfDocument.numPages },
-        async (_, index) => {
-          const page = await pdfDocument.getPage(index + 1);
-          const content = await page.getTextContent();
-
-          return content.items
-            .map((item) => item.str || "")
-            .join(" ");
-        }
-      )
-    );
+    // Extract pages one at a time to keep memory and CPU spikes down for
+    // longer resumes, releasing each page's resources as soon as it's read.
+    const pageTexts = [];
+    for (let pageNumber = 1; pageNumber <= pdfDocument.numPages; pageNumber += 1) {
+      const page = await pdfDocument.getPage(pageNumber);
+      try {
+        const content = await page.getTextContent();
+        pageTexts.push(content.items.map((item) => item.str || "").join(" "));
+      } finally {
+        page.cleanup();
+      }
+    }
 
     const resumeText = pageTexts.join("\n");
 
@@ -145,6 +142,10 @@ export const analyzeResume = async (req, res) => {
           : undefined,
     });
   } finally {
+    if (pdfDocument) {
+      await pdfDocument.destroy().catch(() => {});
+    }
+
     if (filePath) {
       try {
         await fs.promises.unlink(filePath);
