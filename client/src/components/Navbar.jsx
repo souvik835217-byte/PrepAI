@@ -132,7 +132,7 @@ function Navbar() {
           className="group flex items-center gap-3"
           onClick={() => setIsProfileOpen(false)}
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-blue-600 shadow-lg shadow-indigo-200 transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-blue-600 shadow-lg shadow-indigo-950/40 transition-transform duration-300 group-hover:scale-105">
             <img
               src="/favicon.svg"
               alt=""

@@ -244,7 +244,7 @@ const ResumeUpload = () => {
 
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
 
-      <header className="relative z-10 border-b border-white/10 bg-slate-950/65 text-white backdrop-blur-2xl">
+      <header className="relative z-10 border-b border-white/10 bg-slate-950 text-white shadow-lg shadow-black/20">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
           <button
             type="button"
